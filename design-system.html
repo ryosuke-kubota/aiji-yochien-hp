@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>愛児幼稚園 デザインシステム</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body class="system-page">
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="愛児幼稚園 トップ">
+        <img class="brand__mark" src="./assets/images/icon-house.png" alt="" aria-hidden="true">
+        <span class="brand__text">
+          <span class="brand__eyebrow">学校法人　愛児学園</span>
+          <span class="brand__name">愛児幼稚園</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="デザインシステムメニュー">
+        <a href="./index.html">トップ</a>
+        <a href="./about.html">園の紹介</a>
+        <a href="./concept.html">教育について</a>
+        <a href="./annual.html">園での生活</a>
+        <a href="./guide.html">未就園児の方へ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-pill header-pill--green" href="./index.html">トップページへ</a>
+      </div>
+    </header>
+
+    <main class="system-main">
+      <section class="system-hero">
+        <p class="hero__kicker">Design System</p>
+        <h1>下層ページ制作のための<br>愛児幼稚園らしさ</h1>
+        <p>
+          丸みのある写真マスク、やさしい余白、緑・桃・青・黄のアクセントを軸に、
+          未就園児の方へや園の生活ページへ展開できる部品をまとめています。
+        </p>
+      </section>
+
+      <section class="system-section" id="tokens">
+        <h2>Color Tokens</h2>
+        <div class="token-grid">
+          <div class="token"><span style="background:#8cc757"></span>--color-green<br>#8cc757</div>
+          <div class="token"><span style="background:#ee7887"></span>--color-pink<br>#ee7887</div>
+          <div class="token"><span style="background:#5ba0d5"></span>--color-blue<br>#5ba0d5</div>
+          <div class="token"><span style="background:#f4b72f"></span>--color-yellow<br>#f4b72f</div>
+          <div class="token"><span style="background:#fff8eb"></span>--color-cream<br>#fff8eb</div>
+        </div>
+      </section>
+
+      <section class="system-section" id="components">
+        <h2>Buttons</h2>
+        <div class="component-row">
+          <a class="button button--primary" href="#">入園をご検討の方へ<span aria-hidden="true">›</span></a>
+          <a class="button button--ghost" href="#">園について知る<span aria-hidden="true">›</span></a>
+          <a class="button button--yellow" href="#">未就園児の方へ<span aria-hidden="true">›</span></a>
+          <a class="button button--blue" href="#">子育て支援<span aria-hidden="true">›</span></a>
+        </div>
+      </section>
+
+      <section class="system-section">
+        <h2>Cards</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <img class="feature-card__icon" src="./assets/images/icon-sprout.png" alt="" aria-hidden="true">
+            <h3>自然環境</h3>
+            <p>カードは白背景、淡い影、8px角丸で統一します。</p>
+            <a class="mini-circle mini-circle--green" href="#" aria-label="自然環境">›</a>
+          </article>
+          <article class="feature-card">
+            <img class="feature-card__icon" src="./assets/images/icon-heart.png" alt="" aria-hidden="true">
+            <h3>こころ</h3>
+            <p>見出しは太く、本文は短めにまとめます。</p>
+            <a class="mini-circle mini-circle--pink" href="#" aria-label="こころ">›</a>
+          </article>
+          <article class="feature-card">
+            <img class="feature-card__icon" src="./assets/images/icon-book.png" alt="" aria-hidden="true">
+            <h3>まなび</h3>
+            <p>写真・アイコンはAI生成素材で統一します。</p>
+            <a class="mini-circle mini-circle--blue" href="#" aria-label="まなび">›</a>
+          </article>
+          <article class="feature-card">
+            <img class="feature-card__icon" src="./assets/images/icon-bag.png" alt="" aria-hidden="true">
+            <h3>安心</h3>
+            <p>色は用途ごとに緑・桃・青・黄へ割り当てます。</p>
+            <a class="mini-circle mini-circle--yellow" href="#" aria-label="安心">›</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="system-section" id="template">
+        <h2>Subpage Hero Template</h2>
+        <div class="sample-subpage">
+          <div>
+            <div class="section-heading section-heading--left">
+              <h3>入園のご案内</h3>
+              <img class="heading-dots" src="./assets/images/heading-dots.png" alt="" aria-hidden="true">
+            </div>
+            <p>
+              下層ページはこの見出し、リード文、丸みのある写真ブロックを基本形にします。
+            </p>
+            <a class="button button--primary" href="./index.html">トップへ戻る<span aria-hidden="true">›</span></a>
+          </div>
+          <figure class="blob-photo blob-photo--small">
+            <img src="./assets/images/news-campus.png" alt="園舎イメージ">
+          </figure>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
