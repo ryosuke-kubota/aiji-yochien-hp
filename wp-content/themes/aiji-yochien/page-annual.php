@@ -18,7 +18,7 @@ get_header();
           </p>
           <a class="button button--yellow" href="<?php echo aiji_page_url( 'schedule' ); ?>">入園のご案内も見る<span aria-hidden="true">›</span></a>
         </div>
-        <figure class="subpage-hero__visual">
+        <figure class="subpage-hero__visual subpage-hero__visual--annual">
           <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="園庭で走る子どもたちのイメージ">
           <img class="subpage-hero__deco" src="<?php echo aiji_asset( 'images/deco-bird-card.png' ); ?>" alt="" aria-hidden="true">
         </figure>

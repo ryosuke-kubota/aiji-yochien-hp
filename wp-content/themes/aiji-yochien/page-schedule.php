@@ -18,7 +18,7 @@ get_header();
           </p>
           <a class="button button--primary" href="<?php echo aiji_page_url( 'guide' ); ?>#tour">見学会で雰囲気を見る<span aria-hidden="true">›</span></a>
         </div>
-        <figure class="subpage-hero__visual">
+        <figure class="subpage-hero__visual subpage-hero__visual--schedule">
           <img src="<?php echo aiji_asset( 'images/card-prekindergarten.png' ); ?>" alt="親子活動のイメージ">
           <img class="subpage-hero__deco" src="<?php echo aiji_asset( 'images/deco-dot-yellow.png' ); ?>" alt="" aria-hidden="true">
         </figure>

@@ -21,7 +21,7 @@ get_header();
           </p>
           <a class="button button--primary" href="<?php echo aiji_page_url( 'guide' ); ?>">見学・入園について<span aria-hidden="true">›</span></a>
         </div>
-        <figure class="subpage-hero__visual">
+        <figure class="subpage-hero__visual subpage-hero__visual--about">
           <img src="<?php echo aiji_asset( 'images/news-campus.png' ); ?>" alt="園舎と園庭のイメージ">
           <img class="subpage-hero__deco" src="<?php echo aiji_asset( 'images/deco-flower.png' ); ?>" alt="" aria-hidden="true">
         </figure>

@@ -18,7 +18,7 @@ get_header();
           </p>
           <a class="button button--primary" href="<?php echo aiji_page_url( 'schedule' ); ?>">入園のご案内を見る<span aria-hidden="true">›</span></a>
         </div>
-        <figure class="subpage-hero__visual">
+        <figure class="subpage-hero__visual subpage-hero__visual--concept">
           <img src="<?php echo aiji_asset( 'images/philosophy-craft-circle.png' ); ?>" alt="制作活動をする園児のイメージ">
           <img class="subpage-hero__deco" src="<?php echo aiji_asset( 'images/deco-sprinkles-blue.png' ); ?>" alt="" aria-hidden="true">
         </figure>

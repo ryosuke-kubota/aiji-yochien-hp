@@ -35,10 +35,16 @@ function aiji_page_url( string $slug ): string {
 	return $page ? esc_url( get_permalink( $page ) ) : esc_url( home_url( '/' ) );
 }
 
-/** カテゴリースラッグ → タグ色クラス */
+/**
+ * タグ色クラス。先頭固定（重要）は緑、それ以外はカテゴリーで決まる。
+ * 参考デザイン: 重要なお知らせ=緑 / 通常のお知らせ=青 / 園の様子=ピンク / 行事=黄
+ */
 function aiji_tag_class( WP_Post $post ): string {
+	if ( is_sticky( $post->ID ) ) {
+		return 'tag--green';
+	}
 	$map = array(
-		'news-info' => 'tag--green',
+		'news-info' => 'tag--blue',
 		'daily'     => 'tag--pink',
 		'event'     => 'tag--yellow',
 	);

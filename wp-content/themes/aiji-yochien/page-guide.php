@@ -18,7 +18,7 @@ get_header();
           </p>
           <a class="button button--primary" href="#tour">見学会・説明会を見る<span aria-hidden="true">›</span></a>
         </div>
-        <figure class="subpage-hero__visual">
+        <figure class="subpage-hero__visual subpage-hero__visual--guide">
           <img src="<?php echo aiji_asset( 'images/card-admission.png' ); ?>" alt="未就園児の方へのイメージ">
           <img class="subpage-hero__deco" src="<?php echo aiji_asset( 'images/deco-bird-card.png' ); ?>" alt="" aria-hidden="true">
         </figure>

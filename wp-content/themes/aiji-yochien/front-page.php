@@ -124,7 +124,6 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
             <figure class="round-photo round-photo--small">
               <img src="<?php echo aiji_asset( 'images/philosophy-bubbles-circle.png' ); ?>" alt="しゃぼん玉で遊ぶ園児">
             </figure>
-            <img class="deco deco--house" src="<?php echo aiji_asset( 'images/icon-house.png' ); ?>" alt="" aria-hidden="true">
             <img class="deco deco-flower deco-flower--one" src="<?php echo aiji_asset( 'images/deco-flower.png' ); ?>" alt="" aria-hidden="true">
             <img class="deco deco-flower deco-flower--two" src="<?php echo aiji_asset( 'images/deco-flower.png' ); ?>" alt="" aria-hidden="true">
             <img class="deco deco-sprinkles" src="<?php echo aiji_asset( 'images/deco-sprinkles-blue.png' ); ?>" alt="" aria-hidden="true">
