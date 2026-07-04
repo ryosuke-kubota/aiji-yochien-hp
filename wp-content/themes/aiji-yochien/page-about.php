@@ -66,17 +66,17 @@ get_header();
         </div>
         <div class="value-grid">
           <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/icon-heart.png' ); ?>" alt="" aria-hidden="true">
+            <img src="<?php echo aiji_asset( 'images/card-icon-lesson-manners.png' ); ?>" alt="" aria-hidden="true">
             <h3>心（マインド）</h3>
             <p>自立心・向上心・競争心・探求心・好奇心を日々の遊びの中で育みます。</p>
           </article>
           <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/icon-sprout.png' ); ?>" alt="" aria-hidden="true">
+            <img src="<?php echo aiji_asset( 'images/card-icon-lesson-gym.png' ); ?>" alt="" aria-hidden="true">
             <h3>力（能力）</h3>
             <p>表現力・判断力・理解力・集中力・注意力を、体験を通して伸ばします。</p>
           </article>
           <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/icon-book.png' ); ?>" alt="" aria-hidden="true">
+            <img src="<?php echo aiji_asset( 'images/card-icon-about-craft.png' ); ?>" alt="" aria-hidden="true">
             <h3>性（パーソナリティ）</h3>
             <p>創造性・積極性・感受性・協調性・社会性を、友だちとの関わりの中で培います。</p>
           </article>
@@ -111,22 +111,22 @@ get_header();
         </div>
         <div class="facility-grid">
           <article class="facility-card">
-            <img src="<?php echo aiji_asset( 'images/news-campus.png' ); ?>" alt="園舎のイメージ">
+            <img src="<?php echo aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="園舎のイメージ">
             <h3>園舎・保育室</h3>
             <p>制作やごっこ遊び、音楽活動など、年齢に合わせた活動が広がる保育室。</p>
           </article>
           <article class="facility-card">
-            <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="園庭のイメージ">
+            <img src="<?php echo aiji_asset( 'images/card-icon-about-playground.png' ); ?>" alt="園庭のイメージ">
             <h3>園庭</h3>
             <p>走る、登る、砂で遊ぶなど、体を動かしながら友だちとの関わりを深めます。</p>
           </article>
           <article class="facility-card">
-            <img src="<?php echo aiji_asset( 'images/philosophy-craft-circle.png' ); ?>" alt="制作活動のイメージ">
+            <img src="<?php echo aiji_asset( 'images/card-icon-about-craft.png' ); ?>" alt="制作活動のイメージ">
             <h3>制作スペース</h3>
             <p>絵画や工作を通して、手を動かす楽しさと表現する力を育てます。</p>
           </article>
           <article class="facility-card">
-            <img src="<?php echo aiji_asset( 'images/philosophy-bubbles-circle.png' ); ?>" alt="外遊びのイメージ">
+            <img src="<?php echo aiji_asset( 'images/card-icon-annual-season.png' ); ?>" alt="季節のあそびのイメージ">
             <h3>季節のあそび</h3>
             <p>自然や季節を感じる活動を、日常の保育と行事に取り入れます。</p>
           </article>

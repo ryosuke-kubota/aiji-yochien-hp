@@ -39,7 +39,7 @@ get_header();
           <article class="schedule-step">
             <div class="schedule-time">7:30</div>
             <div><h3>早朝保育</h3><p>早い時間の登園にも対応。先生や友だちとゆったり過ごします。</p></div>
-            <img src="<?php echo aiji_asset( 'images/card-admission.png' ); ?>" alt="登園のイメージ">
+            <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="登園のイメージ">
           </article>
           <article class="schedule-step">
             <div class="schedule-time">8:30</div>
@@ -54,7 +54,7 @@ get_header();
           <article class="schedule-step">
             <div class="schedule-time">12:00</div>
             <div><h3>お弁当</h3><p>みんなで楽しく食べながら、食事のマナーも身につけます。</p></div>
-            <img src="<?php echo aiji_asset( 'images/card-parenting.png' ); ?>" alt="お弁当のイメージ">
+            <img src="<?php echo aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="お弁当のイメージ">
           </article>
           <article class="schedule-step">
             <div class="schedule-time">13:00</div>
@@ -64,7 +64,7 @@ get_header();
           <article class="schedule-step">
             <div class="schedule-time">14:30</div>
             <div><h3>降園・延長保育</h3><p>月・火・木・金は14:30、水曜は13:30降園。延長保育は18:30までです。</p></div>
-            <img src="<?php echo aiji_asset( 'images/news-campus.png' ); ?>" alt="園舎のイメージ">
+            <img src="<?php echo aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="園舎のイメージ">
           </article>
         </div>
       </section>
@@ -72,17 +72,17 @@ get_header();
       <section class="page-section" id="care">
         <div class="value-grid">
           <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/icon-bag.png' ); ?>" alt="" aria-hidden="true">
+            <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true">
             <h3>早朝保育</h3>
             <p>朝7:30から受け入れ。早い時間の登園が必要なご家庭も安心です。</p>
           </article>
           <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/icon-heart.png' ); ?>" alt="" aria-hidden="true">
+            <img src="<?php echo aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="" aria-hidden="true">
             <h3>延長保育</h3>
             <p>降園後は18:30まで延長保育。お仕事帰りのお迎えにも対応します。</p>
           </article>
           <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/icon-sprout.png' ); ?>" alt="" aria-hidden="true">
+            <img src="<?php echo aiji_asset( 'images/card-icon-lesson-swimming.png' ); ?>" alt="" aria-hidden="true">
             <h3>夏期保育</h3>
             <p>夏休み中も夏期保育を実施。お泊まり保育など夏ならではの体験も。</p>
           </article>

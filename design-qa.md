@@ -20,6 +20,14 @@
   - `/private/tmp/aiji-about-desktop-v2.png`
   - `/private/tmp/aiji-guide-desktop-v2.png`
   - `/private/tmp/aiji-guide-mobile-v2.png`
+- Latest page-card screenshots:
+  - `/private/tmp/aiji-about-cards-desktop.png`
+  - `/private/tmp/aiji-concept-cards-desktop.png`
+  - `/private/tmp/aiji-annual-cards-desktop.png`
+  - `/private/tmp/aiji-schedule-cards-desktop.png`
+  - `/private/tmp/aiji-guide-cards-desktop.png`
+  - `/private/tmp/aiji-guide-cards-mobile.png`
+  - `/private/tmp/aiji-design-system-card-variants.png`
 
 **Viewport**
 - Latest desktop comparison: `1024 x 1536`
@@ -74,11 +82,17 @@
 - Generated a new raster tree illustration with the built-in image generation flow, removed the chroma-key background, saved it as `assets/images/deco-tree-round-ai.png`, and replaced the previous tree SVG references.
 - Deleted the unused `assets/images/deco-tree-round.svg`; no SVG files remain in `assets/images`.
 - Refined the latest feature-card pass: extended the pale green lower background band upward, moved the feature heading into the reference-like `title + sprout + dot line` layout using raster PNG assets, restored card height/white surface density, and centered the card icons.
+- Generated a 16-piece AI raster card-icon set, removed the chroma-key background, split it into transparent PNG assets, and assigned page-specific icons/images to lower-page cards: introduction/facility, education activities, annual monthly events, daily schedule, tour cards, and admission flow.
+- Added card-icon CSS variants for value cards, facility/lesson icon cards, event cards, month cards, schedule thumbnails, photo-card icons, and admission-flow items.
+- Added the new page-specific card variants to `design-system.html` so future lower pages can reuse the correct icon/image approach.
 
 **Lower Page Verification**
 - Checked `index.html`, all five lower-page wireframes, and `design-system.html` at `1024px`, `862px`, and `390px`.
 - No broken images, horizontal overflow, clipped buttons, or sticky-header side gaps were found.
 - Subpage hero decoration images are constrained to `78px x 78px`.
+- Latest page-card pass checked `about.html`, `concept.html`, `annual.html`, `schedule.html`, and `guide.html` at `1200px` and `390px`; no broken images or horizontal overflow were found.
+- Confirmed the lower pages now use 16 AI-generated transparent PNG card icons under `assets/images/card-icon-*.png`.
+- Checked `design-system.html` at `1200px`; no broken images or horizontal overflow were found after adding the card-variant samples.
 
 **Latest Hero Verification**
 - Checked the revised hero at `1440px`, `1024px`, `862px`, and `390px`.

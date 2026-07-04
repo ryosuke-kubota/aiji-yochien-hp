@@ -113,7 +113,8 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
     ".event-grid",
     ".month-grid",
     ".schedule-track",
-    ".guide-flow"
+    ".guide-flow",
+    ".event-gallery"
   ];
   const STAGGER_STEP_MS = 90;
   const STAGGER_MAX_MS = 540;
@@ -157,5 +158,64 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
       el.classList.add(`js-reveal--${variant}`);
     }
     observer.observe(el);
+  });
+}
+
+// 行事フォトギャラリーのライトボックス
+const galleryItems = document.querySelectorAll(".event-gallery__item");
+if (galleryItems.length > 0) {
+  const lightbox = document.createElement("div");
+  lightbox.className = "aiji-lightbox";
+  lightbox.setAttribute("role", "dialog");
+  lightbox.setAttribute("aria-modal", "true");
+  lightbox.setAttribute("aria-label", "写真の拡大表示");
+  lightbox.innerHTML = `
+    <button class="aiji-lightbox__close" type="button" aria-label="閉じる">×</button>
+    <figure class="aiji-lightbox__figure">
+      <img src="" alt="">
+      <figcaption class="aiji-lightbox__caption"></figcaption>
+    </figure>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lightboxImg = lightbox.querySelector("img");
+  const lightboxCaption = lightbox.querySelector(".aiji-lightbox__caption");
+  const closeButton = lightbox.querySelector(".aiji-lightbox__close");
+  let lastFocused = null;
+
+  const openLightbox = (item) => {
+    const img = item.querySelector("img");
+    const caption = item.querySelector("figcaption");
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxCaption.textContent = caption ? caption.textContent : "";
+    lightbox.classList.add("is-open");
+    lastFocused = document.activeElement;
+    closeButton.focus();
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove("is-open");
+    lastFocused?.focus();
+  };
+
+  galleryItems.forEach((item) => {
+    item.setAttribute("tabindex", "0");
+    item.setAttribute("role", "button");
+    item.addEventListener("click", () => openLightbox(item));
+    item.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLightbox(item);
+      }
+    });
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
   });
 }

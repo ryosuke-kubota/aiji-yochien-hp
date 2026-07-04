@@ -1147,6 +1147,10 @@ main {
   align-items: center;
 }
 
+.system-card-sample {
+  margin-top: 18px;
+}
+
 .sample-subpage {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -1357,6 +1361,19 @@ main {
   object-fit: cover;
 }
 
+.photo-card--icon {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(255, 248, 235, 0.92), rgba(246, 251, 235, 0.9));
+}
+
+.photo-card--icon img {
+  width: min(260px, 86%);
+  height: 260px;
+  padding: 18px;
+  object-fit: contain;
+}
+
 .value-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1372,9 +1389,9 @@ main {
 }
 
 .value-card img {
-  width: 52px;
-  height: 52px;
-  margin-bottom: 14px;
+  width: 68px;
+  height: 68px;
+  margin-bottom: 12px;
   object-fit: contain;
 }
 
@@ -1452,6 +1469,29 @@ main {
   object-fit: cover;
 }
 
+.facility-card img[src*="card-icon-"],
+.lesson-card--icon img {
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(255, 248, 235, 0.8), rgba(238, 248, 232, 0.72));
+  object-fit: contain;
+}
+
+.event-card--icon {
+  grid-template-columns: 74px 1fr;
+  align-items: center;
+}
+
+.event-card--icon img {
+  grid-row: span 3;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.event-card--icon .button {
+  justify-self: start;
+}
+
 .facility-card h3,
 .lesson-card h3,
 .event-card h3 {
@@ -1475,13 +1515,26 @@ main {
 }
 
 .month-card {
+  display: grid;
+  grid-template-columns: 1fr 58px;
+  align-items: start;
   padding: 20px;
   border-radius: var(--radius-card);
   background: #fff;
   box-shadow: var(--shadow-card);
 }
 
+.month-card__icon {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-self: end;
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
 .month-card h3 {
+  grid-column: 1;
   margin: 0 0 10px;
   color: var(--color-green-deep);
   font-size: 24px;
@@ -1489,6 +1542,7 @@ main {
 }
 
 .month-card ul {
+  grid-column: 1 / -1;
   display: grid;
   gap: 5px;
   margin: 0;
@@ -1538,6 +1592,12 @@ main {
   object-fit: cover;
 }
 
+.schedule-step img[src*="card-icon-"] {
+  padding: 10px;
+  background: linear-gradient(180deg, rgba(255, 248, 235, 0.86), rgba(238, 248, 232, 0.82));
+  object-fit: contain;
+}
+
 .guide-flow {
   counter-reset: guide;
   display: grid;
@@ -1546,7 +1606,11 @@ main {
 
 .guide-flow__item {
   position: relative;
-  padding: 22px 24px 22px 76px;
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 24px;
   border-radius: var(--radius-card);
   background: #fff;
   box-shadow: var(--shadow-card);
@@ -1554,19 +1618,25 @@ main {
 
 .guide-flow__item::before {
   position: absolute;
-  left: 22px;
-  top: 22px;
+  left: 18px;
+  top: 18px;
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   color: #fff;
   background: var(--color-green);
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 900;
   counter-increment: guide;
   content: counter(guide);
+}
+
+.guide-flow__icon {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
 }
 
 .guide-flow__item h3 {

@@ -41,22 +41,26 @@ get_header();
           <p>園児募集のスケジュールです。見学やご相談は随時、お電話で受け付けています。</p>
         </div>
         <div class="event-grid">
-          <article class="event-card">
+          <article class="event-card event-card--icon">
+            <img src="<?php echo aiji_asset( 'images/card-icon-guide-documents.png' ); ?>" alt="" aria-hidden="true">
             <h3>願書配布　9月1日から</h3>
             <p>入園願書は9月1日から園にて配布します。お気軽にお越しください。</p>
             <a class="button button--small button--primary" href="#contact">問い合わせる<span aria-hidden="true">›</span></a>
           </article>
-          <article class="event-card">
+          <article class="event-card event-card--icon">
+            <img src="<?php echo aiji_asset( 'images/card-icon-annual-calendar.png' ); ?>" alt="" aria-hidden="true">
             <h3>願書受付　10月1日から</h3>
             <p>10月1日から受付開始。定員になり次第締め切らせていただきます。</p>
             <a class="button button--small button--yellow" href="#contact">問い合わせる<span aria-hidden="true">›</span></a>
           </article>
-          <article class="event-card">
+          <article class="event-card event-card--icon">
+            <img src="<?php echo aiji_asset( 'images/card-icon-about-playground.png' ); ?>" alt="" aria-hidden="true">
             <h3>2歳児から受け入れます</h3>
             <p>2歳児クラスからの入園が可能。長時間保育で子育てを支えます。</p>
             <a class="button button--small button--blue" href="#contact">相談する<span aria-hidden="true">›</span></a>
           </article>
-          <article class="event-card">
+          <article class="event-card event-card--icon">
+            <img src="<?php echo aiji_asset( 'images/card-icon-guide-consult.png' ); ?>" alt="" aria-hidden="true">
             <h3>園見学・個別相談</h3>
             <p>入園や転入、預かり保育、通園方法のご相談は随時承ります。</p>
             <a class="button button--small button--ghost" href="#contact">問い合わせる<span aria-hidden="true">›</span></a>
@@ -70,11 +74,11 @@ get_header();
           <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
         </div>
         <div class="guide-flow">
-          <article class="guide-flow__item"><h3>資料請求・お問い合わせ</h3><p>まずは園の資料、募集状況、見学可能日を確認します。</p></article>
-          <article class="guide-flow__item"><h3>見学会・説明会に参加</h3><p>園の雰囲気、保育内容、入園のご案内を実際にご覧いただきます。</p></article>
-          <article class="guide-flow__item"><h3>願書配布・申込</h3><p>必要書類や提出期限をわかりやすく掲載します。</p></article>
-          <article class="guide-flow__item"><h3>面談・手続き</h3><p>お子さまの様子やご家庭の希望を伺い、入園準備へ進みます。</p></article>
-          <article class="guide-flow__item"><h3>入園</h3><p>新しい生活が安心して始められるよう、持ち物や準備物も案内します。</p></article>
+          <article class="guide-flow__item"><img class="guide-flow__icon" src="<?php echo aiji_asset( 'images/card-icon-guide-consult.png' ); ?>" alt="" aria-hidden="true"><div><h3>資料請求・お問い合わせ</h3><p>まずは園の資料、募集状況、見学可能日を確認します。</p></div></article>
+          <article class="guide-flow__item"><img class="guide-flow__icon" src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true"><div><h3>見学会・説明会に参加</h3><p>園の雰囲気、保育内容、入園のご案内を実際にご覧いただきます。</p></div></article>
+          <article class="guide-flow__item"><img class="guide-flow__icon" src="<?php echo aiji_asset( 'images/card-icon-guide-documents.png' ); ?>" alt="" aria-hidden="true"><div><h3>願書配布・申込</h3><p>必要書類や提出期限をわかりやすく掲載します。</p></div></article>
+          <article class="guide-flow__item"><img class="guide-flow__icon" src="<?php echo aiji_asset( 'images/card-icon-lesson-manners.png' ); ?>" alt="" aria-hidden="true"><div><h3>面談・手続き</h3><p>お子さまの様子やご家庭の希望を伺い、入園準備へ進みます。</p></div></article>
+          <article class="guide-flow__item"><img class="guide-flow__icon" src="<?php echo aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="" aria-hidden="true"><div><h3>入園</h3><p>新しい生活が安心して始められるよう、持ち物や準備物も案内します。</p></div></article>
         </div>
       </section>
 

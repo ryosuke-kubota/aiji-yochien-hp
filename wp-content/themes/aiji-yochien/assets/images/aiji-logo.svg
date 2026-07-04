@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 愛児幼稚園 園章 -->
+  <circle cx="100" cy="100" r="91" fill="#fff" stroke="#8B1D23" stroke-width="9"/>
+  <text x="57" y="72" text-anchor="middle" fill="#8B1D23" font-family="'Hiragino Maru Gothic ProN', 'Yu Gothic', sans-serif" font-size="47" font-weight="800">愛</text>
+  <text x="143" y="72" text-anchor="middle" fill="#8B1D23" font-family="'Hiragino Maru Gothic ProN', 'Yu Gothic', sans-serif" font-size="47" font-weight="800">児</text>
+  <circle cx="100" cy="127" r="61" fill="#8B1D23"/>
+  <text x="100" y="150" text-anchor="middle" fill="#fff" font-family="'Hiragino Maru Gothic ProN', 'Yu Gothic', sans-serif" font-size="64" font-weight="800">幼</text>
+</svg>

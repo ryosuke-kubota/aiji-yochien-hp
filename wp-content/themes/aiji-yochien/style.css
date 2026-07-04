@@ -2640,3 +2640,221 @@ main {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================
+   カードアイコン素材対応（静的HTML更新の反映）
+   ========================================= */
+
+.value-card img {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 12px;
+}
+
+.photo-card--icon {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(255, 248, 235, 0.92), rgba(246, 251, 235, 0.9));
+}
+
+.photo-card--icon img {
+  width: min(260px, 86%);
+  height: 260px;
+  padding: 18px;
+  object-fit: contain;
+}
+
+.facility-card img[src*="card-icon-"],
+.lesson-card--icon img {
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(255, 248, 235, 0.8), rgba(238, 248, 232, 0.72));
+  object-fit: contain;
+}
+
+.event-card--icon {
+  grid-template-columns: 74px 1fr;
+  align-items: center;
+}
+
+.event-card--icon img {
+  grid-row: span 3;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.event-card--icon .button {
+  justify-self: start;
+}
+
+.month-card {
+  display: grid;
+  grid-template-columns: 1fr 58px;
+  align-items: start;
+  column-gap: 10px;
+}
+
+.month-card__icon {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-self: end;
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.schedule-step img[src*="card-icon-"] {
+  padding: 10px;
+  background: linear-gradient(180deg, rgba(255, 248, 235, 0.86), rgba(238, 248, 232, 0.82));
+  object-fit: contain;
+}
+
+.guide-flow__item {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 24px;
+}
+
+.guide-flow__icon {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+}
+
+.guide-flow__item::before {
+  left: 14px;
+  top: 14px;
+  width: 26px;
+  height: 26px;
+  font-size: 12px;
+}
+
+/* =========================================
+   行事フォトギャラリー
+   ========================================= */
+
+.event-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.event-gallery__item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  cursor: zoom-in;
+  transition: translate 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-gallery__item:hover {
+  translate: 0 -5px;
+  box-shadow: 0 20px 40px rgba(96, 83, 66, 0.14);
+}
+
+.event-gallery__item img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: scale 0.5s ease;
+}
+
+.event-gallery__item:hover img {
+  scale: 1.05;
+}
+
+.event-gallery__item figcaption {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(49, 41, 35, 0.62);
+  font-size: 12.5px;
+  font-weight: 800;
+  backdrop-filter: blur(4px);
+}
+
+/* --- ライトボックス --- */
+.aiji-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 48px);
+  background: rgba(35, 28, 22, 0.82);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.aiji-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.aiji-lightbox__figure {
+  margin: 0;
+  max-width: min(880px, 100%);
+  scale: 0.92;
+  transition: scale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aiji-lightbox.is-open .aiji-lightbox__figure {
+  scale: 1;
+}
+
+.aiji-lightbox__figure img {
+  width: 100%;
+  max-height: 74vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.aiji-lightbox__caption {
+  margin-top: 12px;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.aiji-lightbox__close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.aiji-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+@media (max-width: 1024px) {
+  .event-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .event-gallery {
+    grid-template-columns: 1fr;
+  }
+}

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.3.1';
+const AIJI_THEME_VERSION = '1.5.0';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -23,6 +23,12 @@ function aiji_enqueue_assets(): void {
 	wp_enqueue_script( 'aiji-script', get_template_directory_uri() . '/assets/js/script.js', array(), AIJI_THEME_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'aiji_enqueue_assets' );
+
+/** 園章をファビコンとして出力 */
+function aiji_favicon(): void {
+	echo '<link rel="icon" href="' . aiji_asset( 'images/aiji-logo.svg' ) . '" type="image/svg+xml">' . "\n";
+}
+add_action( 'wp_head', 'aiji_favicon' );
 
 /** テーマ内アセットURL */
 function aiji_asset( string $path ): string {
