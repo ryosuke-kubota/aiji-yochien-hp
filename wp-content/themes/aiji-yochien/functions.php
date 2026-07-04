@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.6.0';
+const AIJI_THEME_VERSION = '1.6.1';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -26,7 +26,7 @@ add_action( 'wp_enqueue_scripts', 'aiji_enqueue_assets' );
 
 /** 園章をファビコンとして出力 */
 function aiji_favicon(): void {
-	echo '<link rel="icon" href="' . aiji_asset( 'images/aiji-logo.svg' ) . '" type="image/svg+xml">' . "\n";
+	echo '<link rel="icon" href="' . aiji_asset( 'images/aiji-logo.png' ) . '" type="image/png">' . "\n";
 }
 add_action( 'wp_head', 'aiji_favicon' );
 
