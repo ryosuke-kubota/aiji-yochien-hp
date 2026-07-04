@@ -10,11 +10,11 @@ get_header();
       <nav class="breadcrumb" aria-label="パンくず"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">ホーム</a><span>›</span><span>入園のご案内</span></nav>
       <section class="subpage-hero">
         <div class="subpage-hero__copy">
-          <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/icon-book.png' ); ?>" alt="" aria-hidden="true">Daily Schedule</p>
+          <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/icon-book.png' ); ?>" alt="" aria-hidden="true">Admission Guide</p>
           <h1>入園のご案内</h1>
           <p class="subpage-hero__lead">
-            早朝保育は7:30から、延長保育は18:30まで。
-            長時間保育と送迎バスで、働くご家庭の毎日もしっかり支えます。
+            願書配布は9月1日から、願書受付は10月1日から。
+            2歳児から受け入れています。募集要項と入園までの流れをご案内します。
           </p>
           <a class="button button--primary" href="<?php echo aiji_page_url( 'guide' ); ?>#tour">見学会で雰囲気を見る<span aria-hidden="true">›</span></a>
         </div>
@@ -25,84 +25,83 @@ get_header();
       </section>
 
       <nav class="page-tabs" aria-label="ページ内メニュー">
-        <a href="#daily">幼児クラス</a>
-        <a href="#care">預かり保育</a>
-        <a href="#point">生活のポイント</a>
+        <a href="#dates">募集スケジュール</a>
+        <a href="#flow">入園までの流れ</a>
+        <a href="#info">募集概要</a>
+        <a href="#contact">お問い合わせ</a>
       </nav>
 
-      <section class="page-section soft-panel cream-panel" id="daily">
-        <div class="section-heading section-heading--left">
-          <h2>幼児クラスの1日</h2>
-          <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
-        </div>
-        <div class="schedule-track">
-          <article class="schedule-step">
-            <div class="schedule-time">7:30</div>
-            <div><h3>早朝保育</h3><p>早い時間の登園にも対応。先生や友だちとゆったり過ごします。</p></div>
-            <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="登園のイメージ">
-          </article>
-          <article class="schedule-step">
-            <div class="schedule-time">8:30</div>
-            <div><h3>登園・自由あそび</h3><p>朝の支度を整えたら、9:30まで好きな遊びをじっくり楽しみます。</p></div>
-            <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="自由あそびのイメージ">
-          </article>
-          <article class="schedule-step">
-            <div class="schedule-time">10:00</div>
-            <div><h3>設定保育</h3><p>英語・体育・音楽などのレッスンや制作を、年齢に合わせて行います。</p></div>
-            <img src="<?php echo aiji_asset( 'images/philosophy-craft-circle.png' ); ?>" alt="レッスンのイメージ">
-          </article>
-          <article class="schedule-step">
-            <div class="schedule-time">12:00</div>
-            <div><h3>お弁当</h3><p>みんなで楽しく食べながら、食事のマナーも身につけます。</p></div>
-            <img src="<?php echo aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="お弁当のイメージ">
-          </article>
-          <article class="schedule-step">
-            <div class="schedule-time">13:00</div>
-            <div><h3>自由あそび・保育</h3><p>外遊びや絵本など、落ち着いた時間と遊びの時間を組み合わせます。</p></div>
-            <img src="<?php echo aiji_asset( 'images/philosophy-bubbles-circle.png' ); ?>" alt="外遊びのイメージ">
-          </article>
-          <article class="schedule-step">
-            <div class="schedule-time">14:30</div>
-            <div><h3>降園・延長保育</h3><p>月・火・木・金は14:30、水曜は13:30降園。延長保育は18:30までです。</p></div>
-            <img src="<?php echo aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="園舎のイメージ">
-          </article>
-        </div>
-      </section>
-
-      <section class="page-section" id="care">
-        <div class="value-grid">
-          <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true">
-            <h3>早朝保育</h3>
-            <p>朝7:30から受け入れ。早い時間の登園が必要なご家庭も安心です。</p>
-          </article>
-          <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="" aria-hidden="true">
-            <h3>延長保育</h3>
-            <p>降園後は18:30まで延長保育。お仕事帰りのお迎えにも対応します。</p>
-          </article>
-          <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/card-icon-lesson-swimming.png' ); ?>" alt="" aria-hidden="true">
-            <h3>夏期保育</h3>
-            <p>夏休み中も夏期保育を実施。お泊まり保育など夏ならではの体験も。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="page-section soft-panel split-section" id="point">
-        <div class="text-stack">
+      <section class="page-section" id="dates">
+        <div class="page-section__head">
           <div class="section-heading section-heading--left">
-            <h2>生活のポイント</h2>
+            <h2>園児募集スケジュール</h2>
             <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
           </div>
-          <p>
-            1日の中で、子どもたちは遊び・学び・食事・休息をバランスよく経験します。
-            正課や行事だけでなく、身支度や片付けなどの生活習慣も大切にしています。
-          </p>
+          <p>見学やご相談は随時、お電話で受け付けています。</p>
         </div>
-        <figure class="photo-card">
-          <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="園庭遊びのイメージ">
-        </figure>
+        <div class="event-grid">
+          <article class="event-card event-card--icon">
+            <img src="<?php echo aiji_asset( 'images/card-icon-guide-documents.png' ); ?>" alt="" aria-hidden="true">
+            <h3>願書配布　9月1日から</h3>
+            <p>入園願書は9月1日から園にて配布します。お気軽にお越しください。</p>
+            <a class="button button--small button--primary" href="#contact">問い合わせる<span aria-hidden="true">›</span></a>
+          </article>
+          <article class="event-card event-card--icon">
+            <img src="<?php echo aiji_asset( 'images/card-icon-annual-calendar.png' ); ?>" alt="" aria-hidden="true">
+            <h3>願書受付　10月1日から</h3>
+            <p>10月1日から受付開始。定員になり次第締め切らせていただきます。</p>
+            <a class="button button--small button--yellow" href="#contact">問い合わせる<span aria-hidden="true">›</span></a>
+          </article>
+          <article class="event-card event-card--icon">
+            <img src="<?php echo aiji_asset( 'images/card-icon-about-playground.png' ); ?>" alt="" aria-hidden="true">
+            <h3>2歳児から受け入れます</h3>
+            <p>2歳児クラスからの入園が可能。詳しくは未就園児の方へのページをご覧ください。</p>
+            <a class="button button--small button--blue" href="<?php echo aiji_page_url( 'guide' ); ?>">詳しく見る<span aria-hidden="true">›</span></a>
+          </article>
+          <article class="event-card event-card--icon">
+            <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true">
+            <h3>園見学・個別相談</h3>
+            <p>入園や転入、預かり保育、通園方法のご相談は随時承ります。</p>
+            <a class="button button--small button--ghost" href="<?php echo aiji_page_url( 'guide' ); ?>#tour">見学の案内を見る<span aria-hidden="true">›</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-section soft-panel cream-panel" id="flow">
+        <div class="section-heading section-heading--left">
+          <h2>入園までの流れ</h2>
+          <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
+        </div>
+        <div class="guide-flow">
+          <article class="guide-flow__item"><img class="guide-flow__icon" src="<?php echo aiji_asset( 'images/card-icon-guide-consult.png' ); ?>" alt="" aria-hidden="true"><div><h3>資料請求・お問い合わせ</h3><p>まずは園の資料、募集状況、見学可能日を確認します。</p></div></article>
+          <article class="guide-flow__item"><img class="guide-flow__icon" src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true"><div><h3>見学会・説明会に参加</h3><p>園の雰囲気、保育内容、入園のご案内を実際にご覧いただきます。</p></div></article>
+          <article class="guide-flow__item"><img class="guide-flow__icon" src="<?php echo aiji_asset( 'images/card-icon-guide-documents.png' ); ?>" alt="" aria-hidden="true"><div><h3>願書配布・申込</h3><p>願書配布は9月1日から、受付は10月1日からです。</p></div></article>
+          <article class="guide-flow__item"><img class="guide-flow__icon" src="<?php echo aiji_asset( 'images/card-icon-lesson-manners.png' ); ?>" alt="" aria-hidden="true"><div><h3>面談・手続き</h3><p>お子さまの様子やご家庭の希望を伺い、入園準備へ進みます。</p></div></article>
+          <article class="guide-flow__item"><img class="guide-flow__icon" src="<?php echo aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="" aria-hidden="true"><div><h3>入園</h3><p>新しい生活が安心して始められるよう、持ち物や準備物も案内します。</p></div></article>
+        </div>
+      </section>
+
+      <section class="page-section soft-panel" id="info">
+        <div class="section-heading section-heading--left">
+          <h2>募集概要</h2>
+          <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
+        </div>
+        <dl class="overview-list">
+          <dt>募集人数</dt><dd>2才児: 若干名／年少クラス（3才児）: 30名／年中クラス（4才児）: 20名／年長クラス（5才児）: 若干名</dd>
+          <dt>願書配布</dt><dd>9月1日から</dd>
+          <dt>募集期間</dt><dd>10月1日〜 願書受付開始　※定員になり次第締め切らせていただきます。</dd>
+          <dt>保育時間</dt><dd>早朝保育 7:30〜／通常保育 8:30〜14:30（水曜は13:30降園）／延長保育 18:30まで</dd>
+          <dt>通園</dt><dd>送迎バスあり</dd>
+          <dt>備考</dt><dd>子育て世帯の保護者の負担軽減が拡充されています。詳しくは園にお問い合わせください。</dd>
+        </dl>
+      </section>
+
+      <section class="page-cta" id="contact">
+        <div>
+          <h2>入園について相談する</h2>
+          <p>募集状況、願書、2歳児クラスなど、お気軽にお問い合わせください。<br>認定こども園 愛児幼稚園　TEL 06-6691-0502</p>
+        </div>
+        <a class="button button--primary" href="tel:0666910502">電話で問い合わせる<span aria-hidden="true">›</span></a>
       </section>
     </main>
 

@@ -39,7 +39,7 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
             心も体も健やかに育つ環境をつくります。
           </p>
           <div class="hero__buttons">
-            <a class="button button--primary button--pink" href="<?php echo aiji_page_url( 'guide' ); ?>">入園をご検討の方へ<span aria-hidden="true">›</span></a>
+            <a class="button button--primary button--pink" href="<?php echo aiji_page_url( 'schedule' ); ?>">入園をご検討の方へ<span aria-hidden="true">›</span></a>
             <a class="button button--ghost" href="<?php echo aiji_page_url( 'about' ); ?>">園について知る<span aria-hidden="true">›</span></a>
           </div>
         </div>
@@ -202,7 +202,7 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
           <div class="link-card__copy">
             <h2>入園を<br>ご検討の方へ</h2>
             <p>入園の流れや募集要項など、詳しい情報はこちらから。</p>
-            <a class="button button--small button--pink" href="<?php echo aiji_page_url( 'guide' ); ?>">詳しく見る<span aria-hidden="true">›</span></a>
+            <a class="button button--small button--pink" href="<?php echo aiji_page_url( 'schedule' ); ?>">詳しく見る<span aria-hidden="true">›</span></a>
           </div>
           <img src="<?php echo aiji_asset( 'images/card-admission.png' ); ?>" alt="未就園児の方へのイメージ写真">
         </article>
