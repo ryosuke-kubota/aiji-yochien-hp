@@ -38,30 +38,30 @@ get_header();
           <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
         </div>
         <div class="month-grid">
-          <article class="month-card"><h3>4月</h3><ul><li>入園式</li><li>始業式</li><li>対面式</li></ul></article>
-          <article class="month-card"><h3>5月</h3><ul><li>春の遠足</li><li>保育参観</li><li>親子活動</li></ul></article>
-          <article class="month-card"><h3>6月</h3><ul><li>歯科・内科検診</li><li>プール開き</li><li>制作あそび</li></ul></article>
-          <article class="month-card"><h3>7月</h3><ul><li>七夕会</li><li>夏まつり</li><li>お泊まり保育</li></ul></article>
-          <article class="month-card" id="summer"><h3>8月</h3><ul><li>夏休み預かり保育</li><li>園庭開放</li><li>水あそび</li></ul></article>
-          <article class="month-card"><h3>9月</h3><ul><li>お月見</li><li>公開保育</li><li>敬老の日の活動</li></ul></article>
-          <article class="month-card" id="autumn"><h3>10月</h3><ul><li>運動会</li><li>秋の遠足</li><li>お芋掘り</li></ul></article>
-          <article class="month-card"><h3>11月</h3><ul><li>七五三</li><li>音楽発表</li><li>作品展示</li></ul></article>
-          <article class="month-card" id="winter"><h3>12月</h3><ul><li>クリスマス会</li><li>おもちつき</li><li>終業式</li></ul></article>
-          <article class="month-card"><h3>1月</h3><ul><li>始業式</li><li>冬のあそび</li><li>お正月あそび</li></ul></article>
-          <article class="month-card"><h3>2月</h3><ul><li>節分</li><li>生活発表会</li><li>保育参観</li></ul></article>
-          <article class="month-card"><h3>3月</h3><ul><li>お別れ遠足</li><li>卒園式</li><li>修了式</li></ul></article>
+          <article class="month-card"><h3>4月</h3><ul><li>入園式</li></ul></article>
+          <article class="month-card"><h3>5月</h3><ul><li>健康診断</li><li>プラネタリウム</li></ul></article>
+          <article class="month-card"><h3>6月</h3><ul><li>保育参観</li><li>じゃがいも掘り</li></ul></article>
+          <article class="month-card"><h3>7月</h3><ul><li>プール開き</li><li>七夕まつり</li><li>盆踊り・夏期保育</li></ul></article>
+          <article class="month-card" id="summer"><h3>8月</h3><ul><li>夏期保育</li><li>お泊まり保育</li></ul></article>
+          <article class="month-card"><h3>9月</h3><ul><li>2学期スタート</li></ul></article>
+          <article class="month-card" id="autumn"><h3>10月</h3><ul><li>運動会</li><li>お芋掘り</li><li>秋の遠足</li></ul></article>
+          <article class="month-card"><h3>11月</h3><ul><li>作品展</li></ul></article>
+          <article class="month-card" id="winter"><h3>12月</h3><ul><li>クリスマス会</li><li>おもちつき</li></ul></article>
+          <article class="month-card"><h3>1月</h3><ul><li>3学期スタート</li><li>お正月あそび</li></ul></article>
+          <article class="month-card"><h3>2月</h3><ul><li>豆まき</li><li>おゆうぎ会</li></ul></article>
+          <article class="month-card"><h3>3月</h3><ul><li>お別れ遠足</li><li>卒園式</li></ul></article>
         </div>
       </section>
 
       <section class="page-section split-section" id="nature">
         <div class="soft-panel text-stack">
           <div class="section-heading section-heading--left">
-            <h2>季節の自然体験</h2>
+            <h2>愛児農園</h2>
             <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
           </div>
           <p>
-            植え付けや収穫、園庭での観察など、季節ごとの自然とのふれあいを掲載するエリアです。
-            収穫物を持ち帰る行事や食育につながる活動もここで紹介します。
+            愛児農園では、じゃが芋・さつま芋・玉ねぎ・大根作りに挑戦します。
+            じゃがいも掘りやお芋掘りなど収穫の体験が、食べものへの感謝や食育につながっています。
           </p>
         </div>
         <figure class="photo-card">

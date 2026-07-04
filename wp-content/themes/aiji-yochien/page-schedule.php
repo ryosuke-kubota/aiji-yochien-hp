@@ -13,8 +13,8 @@ get_header();
           <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/icon-book.png' ); ?>" alt="" aria-hidden="true">Daily Schedule</p>
           <h1>入園のご案内</h1>
           <p class="subpage-hero__lead">
-            登園、朝の活動、クラス活動、給食、降園、預かり保育。
-            保護者が園生活を具体的にイメージできる時系列で紹介します。
+            早朝保育は7:30から、延長保育は18:30まで。
+            長時間保育と送迎バスで、働くご家庭の毎日もしっかり支えます。
           </p>
           <a class="button button--primary" href="<?php echo aiji_page_url( 'guide' ); ?>#tour">見学会で雰囲気を見る<span aria-hidden="true">›</span></a>
         </div>
@@ -38,27 +38,32 @@ get_header();
         <div class="schedule-track">
           <article class="schedule-step">
             <div class="schedule-time">7:30</div>
-            <div><h3>順次登園・預かり保育</h3><p>朝の支度を整え、先生や友だちとゆったり過ごします。</p></div>
+            <div><h3>早朝保育</h3><p>早い時間の登園にも対応。先生や友だちとゆったり過ごします。</p></div>
             <img src="<?php echo aiji_asset( 'images/card-admission.png' ); ?>" alt="登園のイメージ">
           </article>
           <article class="schedule-step">
-            <div class="schedule-time">9:30</div>
-            <div><h3>朝の会・クラス活動</h3><p>歌、制作、文字や数、園庭遊びなど、年齢に合わせた活動を行います。</p></div>
-            <img src="<?php echo aiji_asset( 'images/philosophy-craft-circle.png' ); ?>" alt="制作活動のイメージ">
+            <div class="schedule-time">8:30</div>
+            <div><h3>登園・自由あそび</h3><p>朝の支度を整えたら、9:30まで好きな遊びをじっくり楽しみます。</p></div>
+            <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="自由あそびのイメージ">
+          </article>
+          <article class="schedule-step">
+            <div class="schedule-time">10:00</div>
+            <div><h3>設定保育</h3><p>英語・体育・音楽などのレッスンや制作を、年齢に合わせて行います。</p></div>
+            <img src="<?php echo aiji_asset( 'images/philosophy-craft-circle.png' ); ?>" alt="レッスンのイメージ">
           </article>
           <article class="schedule-step">
             <div class="schedule-time">12:00</div>
-            <div><h3>昼食</h3><p>給食を通して、食べる楽しさや食事のマナーを身につけます。</p></div>
-            <img src="<?php echo aiji_asset( 'images/card-parenting.png' ); ?>" alt="昼食のイメージ">
+            <div><h3>お弁当</h3><p>みんなで楽しく食べながら、食事のマナーも身につけます。</p></div>
+            <img src="<?php echo aiji_asset( 'images/card-parenting.png' ); ?>" alt="お弁当のイメージ">
           </article>
           <article class="schedule-step">
             <div class="schedule-time">13:00</div>
-            <div><h3>午後の活動</h3><p>外遊び、絵本、制作の続きなど、落ち着いた時間と遊びの時間を組み合わせます。</p></div>
+            <div><h3>自由あそび・保育</h3><p>外遊びや絵本など、落ち着いた時間と遊びの時間を組み合わせます。</p></div>
             <img src="<?php echo aiji_asset( 'images/philosophy-bubbles-circle.png' ); ?>" alt="外遊びのイメージ">
           </article>
           <article class="schedule-step">
-            <div class="schedule-time">14:00</div>
-            <div><h3>降園・預かり保育開始</h3><p>通常降園後は、必要に応じて預かり保育へつながります。</p></div>
+            <div class="schedule-time">14:30</div>
+            <div><h3>降園・延長保育</h3><p>月・火・木・金は14:30、水曜は13:30降園。延長保育は18:30までです。</p></div>
             <img src="<?php echo aiji_asset( 'images/news-campus.png' ); ?>" alt="園舎のイメージ">
           </article>
         </div>
@@ -68,18 +73,18 @@ get_header();
         <div class="value-grid">
           <article class="value-card">
             <img src="<?php echo aiji_asset( 'images/icon-bag.png' ); ?>" alt="" aria-hidden="true">
-            <h3>朝の預かり</h3>
-            <p>早い時間の登園が必要なご家庭向けの導線を掲載します。</p>
+            <h3>早朝保育</h3>
+            <p>朝7:30から受け入れ。早い時間の登園が必要なご家庭も安心です。</p>
           </article>
           <article class="value-card">
             <img src="<?php echo aiji_asset( 'images/icon-heart.png' ); ?>" alt="" aria-hidden="true">
-            <h3>午後の預かり</h3>
-            <p>降園後のおやつ、遊び、休息の流れを整理します。</p>
+            <h3>延長保育</h3>
+            <p>降園後は18:30まで延長保育。お仕事帰りのお迎えにも対応します。</p>
           </article>
           <article class="value-card">
             <img src="<?php echo aiji_asset( 'images/icon-sprout.png' ); ?>" alt="" aria-hidden="true">
-            <h3>長期休暇</h3>
-            <p>夏・冬・春休み中の保育時間や利用条件を掲載します。</p>
+            <h3>夏期保育</h3>
+            <p>夏休み中も夏期保育を実施。お泊まり保育など夏ならではの体験も。</p>
           </article>
         </div>
       </section>

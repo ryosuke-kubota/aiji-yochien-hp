@@ -40,15 +40,16 @@ get_header();
             <h2>ごあいさつ</h2>
             <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
           </div>
-          <p class="section-lead">心豊かに、やさしく、たくましく。</p>
+          <p class="section-lead">「楽しい」「安心できる」幼稚園を目指して。</p>
           <p>
-            愛児幼稚園では、毎日の遊びや行事、制作、自然とのふれあいを通して、
-            子どもたちの「やってみたい」という気持ちを育みます。
+            愛児幼稚園は昭和26年8月に開園し、子どもたち、保護者、地域住民の方々に助けられながら、
+            一歩一歩、歩んできました。令和元年に園舎をリニューアルし「認定こども園」としてスタートしました。
           </p>
           <p>
-            知識を教え込むのではなく、友だちや先生との関わりの中で自分で考え、
-            表現し、最後まで取り組む力を伸ばすことを大切にします。
+            「先生！だいすき！」と信頼関係を築くことで「安心」できる場となり、「友だち大好き！」と
+            先生や友だちと一緒にさまざまな遊びを経験することで、生きる力の基礎や知識を蓄える基礎が形成されると考えます。
           </p>
+          <p class="about-signature">理事長　白樫 章行</p>
         </div>
         <figure class="photo-card">
           <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="園庭で遊ぶ子どもたち">
@@ -61,23 +62,23 @@ get_header();
             <h2>教育理念</h2>
             <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
           </div>
-          <p>徳・体・知のバランスを整え、幼児期に必要な心と体と学びの基礎を育てます。</p>
+          <p>幼児期（2歳〜5歳）は、性格・人格・個性が作られる大切な時期。心・力・性のバランスを大切に育てます。</p>
         </div>
         <div class="value-grid">
           <article class="value-card">
             <img src="<?php echo aiji_asset( 'images/icon-heart.png' ); ?>" alt="" aria-hidden="true">
-            <h3>徳</h3>
-            <p>素直な心、感謝する心、思いやりの心を日々の生活の中で育みます。</p>
+            <h3>心（マインド）</h3>
+            <p>自立心・向上心・競争心・探求心・好奇心を日々の遊びの中で育みます。</p>
           </article>
           <article class="value-card">
             <img src="<?php echo aiji_asset( 'images/icon-sprout.png' ); ?>" alt="" aria-hidden="true">
-            <h3>体</h3>
-            <p>園庭遊びや運動あそびを通して、健やかでたくましい体をつくります。</p>
+            <h3>力（能力）</h3>
+            <p>表現力・判断力・理解力・集中力・注意力を、体験を通して伸ばします。</p>
           </article>
           <article class="value-card">
             <img src="<?php echo aiji_asset( 'images/icon-book.png' ); ?>" alt="" aria-hidden="true">
-            <h3>知</h3>
-            <p>制作、音楽、言葉、数への興味を広げ、学ぶ楽しさを感じる環境を整えます。</p>
+            <h3>性（パーソナリティ）</h3>
+            <p>創造性・積極性・感受性・協調性・社会性を、友だちとの関わりの中で培います。</p>
           </article>
         </div>
       </section>
@@ -88,11 +89,15 @@ get_header();
           <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
         </div>
         <dl class="overview-list">
-          <dt>名称</dt><dd>学校法人 愛児学園　愛児幼稚園</dd>
-          <dt>対象</dt><dd>満3歳児・3歳児・4歳児・5歳児</dd>
-          <dt>保育時間</dt><dd>通常保育、預かり保育、長期休暇中の保育を整理して掲載する想定です。</dd>
-          <dt>給食</dt><dd>栄養バランスや季節感を大切にした献立を紹介します。</dd>
-          <dt>通園</dt><dd>徒歩・送迎・バスなど、実際の運用に合わせて掲載します。</dd>
+          <dt>名称</dt><dd>学校法人 稲垣学園　認定こども園 愛児幼稚園</dd>
+          <dt>所在地</dt><dd>〒558-0002 大阪市住吉区長居西3-1-14</dd>
+          <dt>電話</dt><dd>06-6691-0502</dd>
+          <dt>対象</dt><dd>2歳児・3歳児（年少）・4歳児（年中）・5歳児（年長）</dd>
+          <dt>沿革</dt><dd>昭和26年8月 開園。令和元年 園舎をリニューアルし「認定こども園」としてスタート。</dd>
+          <dt>保育時間</dt><dd>早朝保育 7:30〜／通常保育 8:30〜14:30（水曜は13:30降園）／延長保育 18:30まで</dd>
+          <dt>通園</dt><dd>送迎バスあり（ご自宅への搬送サービス）</dd>
+          <dt>安全</dt><dd>大手セキュリティ会社と契約（24時間安心・カード管理）、耐震・耐久補強施設</dd>
+          <dt>嘱託医</dt><dd>内科: 医療法人 てらかど診療所／歯科: 医療法人橘正会 片山歯科医院／薬剤師: 神原 加寿子</dd>
         </dl>
       </section>
 

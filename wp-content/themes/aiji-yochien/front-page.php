@@ -107,13 +107,13 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
               <h2>愛児幼稚園の想い</h2>
               <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
             </div>
-            <p class="section-lead">愛され、見守られ、<br>自分らしく育つ毎日を。</p>
+            <p class="section-lead">思いやり、優しい心。<br>健康で明るく、体力あふれ、<br>想像力たくましい子どもへ。</p>
             <p>
-              愛児幼稚園は、家庭や地域とのつながりを大切にしながら、
-              子どもたちの「やってみたい！」という気持ちを育みます。
+              愛児幼稚園は昭和26年の開園以来、保護者や地域の皆さまに支えられながら、
+              「楽しい」「安心できる」幼稚園を目指してきました。
             </p>
             <p>
-              豊かな体験を通して、思いやりの心とたくましく生きる力を育てていきます。
+              遊びのなかで学んで考える幼児教育を大切に、一人一人の子どもと丁寧に向き合い、生きる力の基礎を培います。
             </p>
             <a class="button button--ghost" href="<?php echo aiji_page_url( 'concept' ); ?>">教育について詳しく見る<span aria-hidden="true">›</span></a>
           </div>
@@ -138,32 +138,64 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
           </div>
           <div class="feature-grid">
             <article class="feature-card">
+              <img class="feature-card__icon" src="<?php echo aiji_asset( 'images/icon-book.png' ); ?>" alt="" aria-hidden="true">
+              <h3>英語レッスン<span class="tag tag--blue">イチオシ</span></h3>
+              <p>物の名前・歌・色カードを使って、楽しく英語にふれます。</p>
+              <a class="mini-circle mini-circle--blue" href="<?php echo aiji_page_url( 'concept' ); ?>" aria-label="英語レッスンを詳しく見る">›</a>
+            </article>
+            <article class="feature-card">
               <img class="feature-card__icon" src="<?php echo aiji_asset( 'images/icon-sprout.png' ); ?>" alt="" aria-hidden="true">
-              <h3>豊かな自然環境</h3>
-              <p>のびのびと体を動かし、自然とのふれあいを大切にしています。</p>
-              <a class="mini-circle mini-circle--green" href="<?php echo aiji_page_url( 'concept' ); ?>" aria-label="豊かな自然環境を詳しく見る">›</a>
+              <h3>体育レッスン<span class="tag tag--green">イチオシ</span></h3>
+              <p>なわとび・鉄棒・トランポリンで、楽しみながら体力づくり。</p>
+              <a class="mini-circle mini-circle--green" href="<?php echo aiji_page_url( 'concept' ); ?>" aria-label="体育レッスンを詳しく見る">›</a>
             </article>
             <article class="feature-card">
               <img class="feature-card__icon" src="<?php echo aiji_asset( 'images/icon-heart.png' ); ?>" alt="" aria-hidden="true">
-              <h3>思いやりの心を育む</h3>
-              <p>友だちや先生との関わりの中で、やさしさや感謝の心を育てます。</p>
-              <a class="mini-circle mini-circle--pink" href="<?php echo aiji_page_url( 'concept' ); ?>" aria-label="思いやりの心を詳しく見る">›</a>
-            </article>
-            <article class="feature-card">
-              <img class="feature-card__icon" src="<?php echo aiji_asset( 'images/icon-book.png' ); ?>" alt="" aria-hidden="true">
-              <h3>主体性を伸ばす教育</h3>
-              <p>遊びや体験を通して、子どもたちの「やりたい！」を応援します。</p>
-              <a class="mini-circle mini-circle--blue" href="<?php echo aiji_page_url( 'concept' ); ?>" aria-label="主体性を伸ばす教育を詳しく見る">›</a>
+              <h3>2歳児から入園OK</h3>
+              <p>2歳児から受け入れ。長時間保育で子育てを支えます。</p>
+              <a class="mini-circle mini-circle--pink" href="<?php echo aiji_page_url( 'guide' ); ?>" aria-label="入園について詳しく見る">›</a>
             </article>
             <article class="feature-card">
               <img class="feature-card__icon" src="<?php echo aiji_asset( 'images/icon-bag.png' ); ?>" alt="" aria-hidden="true">
-              <h3>安心のサポート体制</h3>
-              <p>子育てご家庭を支え、安心して通える環境づくりに努めています。</p>
-              <a class="mini-circle mini-circle--yellow" href="<?php echo aiji_page_url( 'guide' ); ?>" aria-label="安心のサポート体制を詳しく見る">›</a>
+              <h3>送迎バス・安心設備</h3>
+              <p>送迎バスあり。24時間セキュリティと耐震補強施設で安心です。</p>
+              <a class="mini-circle mini-circle--yellow" href="<?php echo aiji_page_url( 'about' ); ?>" aria-label="園の設備を詳しく見る">›</a>
             </article>
           </div>
         </section>
       </div>
+
+      <section class="pickup section-anchor" id="lessons">
+        <div class="section-heading section-heading--center">
+          <h2>愛児幼稚園のイチオシレッスン</h2>
+          <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
+        </div>
+        <p class="pickup__lead">他の園にはない、当園自慢の2つのレッスン。遊びのなかで学んで考える力を育てます。</p>
+        <div class="pickup-grid">
+          <article class="pickup-card pickup-card--english">
+            <figure class="pickup-card__photo">
+              <img src="<?php echo aiji_asset( 'images/card-prekindergarten.png' ); ?>" alt="英語レッスンを楽しむ園児">
+              <span class="pickup-card__badge tag tag--blue">イチオシ</span>
+            </figure>
+            <div class="pickup-card__body">
+              <h3>英語レッスン</h3>
+              <p>物の名前・歌・色カードを使って、遊びながら自然に英語を覚えます。「できた！」「言えた！」の積み重ねが、ことばへの好奇心を大きく育てます。</p>
+              <a class="button button--small button--blue" href="<?php echo aiji_page_url( 'concept' ); ?>#regular">レッスンを詳しく見る<span aria-hidden="true">›</span></a>
+            </div>
+          </article>
+          <article class="pickup-card pickup-card--gym">
+            <figure class="pickup-card__photo">
+              <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="体育レッスンで走る園児たち">
+              <span class="pickup-card__badge tag tag--green">イチオシ</span>
+            </figure>
+            <div class="pickup-card__body">
+              <h3>体育レッスン</h3>
+              <p>なわとび・鉄棒・トランポリンに楽しく挑戦。体を思いきり動かす毎日が、健康で明るく、体力あふれるたくましい体をつくります。</p>
+              <a class="button button--small button--primary" href="<?php echo aiji_page_url( 'concept' ); ?>#regular">レッスンを詳しく見る<span aria-hidden="true">›</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
 
       <section class="link-cards">
         <article class="link-card link-card--pink section-anchor" id="admission">

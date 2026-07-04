@@ -2114,3 +2114,529 @@ main {
     height: 66px;
   }
 }
+
+/* =========================================
+   アニメーション
+   既存の transform（反転・縮小など）を壊さないよう
+   translate / scale プロパティで動かす
+   ========================================= */
+
+@keyframes aiji-fade-up {
+  from {
+    opacity: 0;
+    translate: 0 26px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes aiji-hero-visual-in {
+  from {
+    opacity: 0;
+    translate: 44px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes aiji-pop {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes aiji-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -9px;
+  }
+}
+
+/* --- トップ: ヒーローの登場演出 --- */
+.hero__kicker,
+.hero h1,
+.hero__lead,
+.hero__buttons {
+  animation: aiji-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero h1 {
+  animation-delay: 0.12s;
+}
+
+.hero__lead {
+  animation-delay: 0.24s;
+}
+
+.hero__buttons {
+  animation-delay: 0.38s;
+}
+
+.hero__visual {
+  animation: aiji-hero-visual-in 1s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero .deco {
+  animation:
+    aiji-pop 0.7s 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    aiji-float 6s 1.6s ease-in-out infinite;
+}
+
+.hero .deco-dot--cream {
+  animation-delay: 0.72s, 1.8s;
+}
+
+.hero .deco-leaf {
+  animation-delay: 0.84s, 2s;
+}
+
+.hero .deco-flower--hero {
+  animation-delay: 0.96s, 2.2s;
+}
+
+/* --- 装飾のふわふわ浮遊 --- */
+.philosophy__photos .deco,
+.story-band__deco--flower,
+.story-band__deco--flower2,
+.story-band__deco--sprinkles,
+.story-band__deco--house,
+.subpage-hero__deco,
+.deco-card-bird {
+  animation: aiji-float 6s ease-in-out infinite;
+}
+
+.philosophy__photos .deco-flower--one {
+  animation-delay: 0.7s;
+}
+
+.philosophy__photos .deco-flower--two {
+  animation-duration: 7s;
+  animation-delay: 1.3s;
+}
+
+.philosophy__photos .deco-sprinkles {
+  animation-delay: 0.4s;
+}
+
+.story-band__deco--flower2 {
+  animation-delay: 1s;
+}
+
+.story-band__deco--sprinkles {
+  animation-duration: 7s;
+  animation-delay: 0.5s;
+}
+
+.story-band__deco--house {
+  animation-delay: 0.3s;
+}
+
+/* --- 木のパララックス（スクロール駆動アニメーション対応ブラウザのみ） --- */
+@supports (animation-timeline: view()) {
+  @keyframes aiji-drift {
+    from {
+      translate: 0 42px;
+    }
+    to {
+      translate: 0 -34px;
+    }
+  }
+
+  .story-band__deco--tree {
+    animation: aiji-drift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 100%;
+  }
+}
+
+/* --- スクロールでふわっと表示（JSが .js-reveal を付与） --- */
+.js-reveal {
+  opacity: 0;
+  translate: 0 30px;
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    translate 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* --- カードのホバー --- */
+.feature-card,
+.link-card,
+.value-card,
+.lesson-card,
+.facility-card,
+.event-card,
+.month-card {
+  transition: translate 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover,
+.link-card:hover,
+.value-card:hover,
+.lesson-card:hover,
+.facility-card:hover,
+.event-card:hover,
+.month-card:hover {
+  translate: 0 -6px;
+  box-shadow: 0 20px 40px rgba(96, 83, 66, 0.13);
+}
+
+.news-row {
+  transition: background-color 0.25s ease;
+}
+
+.news-row:hover {
+  background-color: rgba(255, 248, 232, 0.9);
+}
+
+.news-row b {
+  transition: translate 0.25s ease;
+}
+
+.news-row:hover b {
+  translate: 4px 0;
+}
+
+/* --- 動きを減らす設定のユーザーにはアニメーションを止める --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================
+   アニメーション バリエーション v2
+   ========================================= */
+
+/* --- リビールの方向バリエーション --- */
+.js-reveal--left {
+  translate: -40px 0;
+}
+
+.js-reveal--right {
+  translate: 40px 0;
+}
+
+.js-reveal--zoom {
+  translate: 0 14px;
+  scale: 0.9;
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    translate 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    scale 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+}
+
+/* --- トップ: ヒーロー見出しの1文字ずつ弾む登場 --- */
+@keyframes aiji-char-in {
+  from {
+    opacity: 0;
+    translate: 0 0.7em;
+    rotate: 8deg;
+  }
+  70% {
+    opacity: 1;
+    translate: 0 -0.08em;
+    rotate: -2deg;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    rotate: 0deg;
+  }
+}
+
+.hero--chars .hero__kicker,
+.hero--chars h1 {
+  animation: none;
+  opacity: 1;
+}
+
+.hero__char {
+  display: inline-block;
+  animation: aiji-char-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc(0.1s + var(--char-i) * 0.055s);
+}
+
+/* --- トップ: ベルがリンリンと揺れる --- */
+@keyframes aiji-bell-swing {
+  0%,
+  12%,
+  100% {
+    rotate: 0deg;
+  }
+  2% {
+    rotate: 14deg;
+  }
+  5% {
+    rotate: -11deg;
+  }
+  8% {
+    rotate: 7deg;
+  }
+  10% {
+    rotate: -4deg;
+  }
+}
+
+.important__bell {
+  transform-origin: 50% 8%;
+  animation: aiji-bell-swing 5.2s ease-in-out 2.4s infinite;
+}
+
+/* --- トップ: ヒーロー写真がゆっくり呼吸する --- */
+@keyframes aiji-breathe {
+  0%,
+  100% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.02;
+  }
+}
+
+.hero__visual {
+  animation:
+    aiji-hero-visual-in 1s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both,
+    aiji-breathe 10s 1.6s ease-in-out infinite;
+}
+
+/* --- 見出し横の芽アイコンがゆらゆら --- */
+@keyframes aiji-sway {
+  0%,
+  100% {
+    rotate: -4deg;
+  }
+  50% {
+    rotate: 5deg;
+  }
+}
+
+.heading-sprout {
+  transform-origin: 50% 90%;
+  animation: aiji-sway 4s ease-in-out infinite;
+}
+
+/* --- ホバーのバリエーション --- */
+@keyframes aiji-jump {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  35% {
+    translate: 0 -8px;
+  }
+  60% {
+    translate: 0 0;
+  }
+  80% {
+    translate: 0 -3px;
+  }
+}
+
+.feature-card:hover .feature-card__icon {
+  animation: aiji-jump 0.6s ease;
+}
+
+.mini-circle {
+  transition: scale 0.25s ease;
+}
+
+.mini-circle:hover {
+  scale: 1.18;
+}
+
+.link-card img {
+  transition: scale 0.4s ease;
+}
+
+.link-card:hover img {
+  scale: 1.06;
+}
+
+.to-top {
+  transition: translate 0.25s ease, box-shadow 0.25s ease;
+}
+
+.to-top:hover {
+  translate: 0 -4px;
+}
+
+/* --- クロージング見出し: スクロール連動ズーム（対応ブラウザのみ） --- */
+@supports (animation-timeline: view()) {
+  @keyframes aiji-closing-in {
+    from {
+      opacity: 0;
+      scale: 0.82;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  .closing h2 {
+    animation: aiji-closing-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+}
+
+/* =========================================
+   園情報表示（フッター・署名・イチオシタグ）
+   ========================================= */
+
+.site-footer__info {
+  position: relative;
+  z-index: 1;
+  padding: 20px 20px 8px;
+  text-align: center;
+}
+
+.site-footer__name {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.site-footer__address {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.about-signature {
+  text-align: right;
+  font-weight: 900;
+}
+
+.feature-card h3 .tag,
+.lesson-card h3 .tag {
+  margin-left: 8px;
+  vertical-align: 2px;
+}
+
+/* =========================================
+   イチオシレッスン（トップページ）
+   ========================================= */
+
+.pickup {
+  width: min(var(--container), calc(100% - var(--page-gutter)));
+  margin: 92px auto 0;
+}
+
+.pickup__lead {
+  margin: 14px 0 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.pickup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 26px;
+}
+
+.pickup-card {
+  overflow: hidden;
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-card);
+  transition: translate 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pickup-card--english {
+  background: linear-gradient(160deg, #f2f9ff, #e2f2ff);
+}
+
+.pickup-card--gym {
+  background: linear-gradient(160deg, #f2fae9, #e6f6d9);
+}
+
+.pickup-card:hover {
+  translate: 0 -6px;
+  box-shadow: 0 22px 44px rgba(96, 83, 66, 0.14);
+}
+
+.pickup-card__photo {
+  position: relative;
+  margin: 0;
+}
+
+.pickup-card__photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
+  transition: scale 0.5s ease;
+}
+
+.pickup-card:hover .pickup-card__photo img {
+  scale: 1.04;
+}
+
+.pickup-card__badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 12.5px;
+  padding: 4px 14px;
+  box-shadow: 0 6px 16px rgba(49, 41, 35, 0.18);
+}
+
+.pickup-card__body {
+  padding: 20px 24px 24px;
+}
+
+.pickup-card__body h3 {
+  margin: 0 0 8px;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.pickup-card--english h3 {
+  color: var(--color-blue);
+}
+
+.pickup-card--gym h3 {
+  color: var(--color-green-deep);
+}
+
+.pickup-card__body p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .pickup-grid {
+    grid-template-columns: 1fr;
+  }
+}

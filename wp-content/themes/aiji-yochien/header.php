@@ -23,7 +23,7 @@ $aiji_nav_items = array(
       <a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="愛児幼稚園 トップ">
         <img class="brand__mark" src="<?php echo aiji_asset( 'images/icon-house.png' ); ?>" alt="" aria-hidden="true">
         <span class="brand__text">
-          <span class="brand__eyebrow">学校法人　愛児学園</span>
+          <span class="brand__eyebrow">学校法人 稲垣学園　認定こども園</span>
           <span class="brand__name">愛児幼稚園</span>
         </span>
       </a>

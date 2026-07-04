@@ -13,7 +13,8 @@ get_header();
           <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/icon-bag.png' ); ?>" alt="" aria-hidden="true">Admission</p>
           <h1>未就園児の方へ</h1>
           <p class="subpage-hero__lead">
-            見学会、説明会、申込、面談、入園まで。
+            愛児幼稚園は2歳児から受け入れています。
+            願書配布は9月1日から、願書受付は10月1日から。
             初めての方にも迷わず進んでもらえるようご案内します。
           </p>
           <a class="button button--primary" href="#tour">見学会・説明会を見る<span aria-hidden="true">›</span></a>
@@ -37,28 +38,28 @@ get_header();
             <h2>見学会・説明会</h2>
             <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
           </div>
-          <p>日程・受付時間・内容・申込ボタンを1セットで確認できます。</p>
+          <p>園児募集のスケジュールです。見学やご相談は随時、お電話で受け付けています。</p>
         </div>
         <div class="event-grid">
           <article class="event-card">
-            <h3>新入園児見学会</h3>
-            <p>保育中の園内を自由に見学。個別質問にも対応する想定です。</p>
-            <a class="button button--small button--primary" href="#contact">申込む<span aria-hidden="true">›</span></a>
+            <h3>願書配布　9月1日から</h3>
+            <p>入園願書は9月1日から園にて配布します。お気軽にお越しください。</p>
+            <a class="button button--small button--primary" href="#contact">問い合わせる<span aria-hidden="true">›</span></a>
           </article>
           <article class="event-card">
-            <h3>入園説明会</h3>
-            <p>保育内容、園生活、入園までの流れ、費用などをまとめて説明します。</p>
-            <a class="button button--small button--yellow" href="#contact">申込む<span aria-hidden="true">›</span></a>
+            <h3>願書受付　10月1日から</h3>
+            <p>10月1日から受付開始。定員になり次第締め切らせていただきます。</p>
+            <a class="button button--small button--yellow" href="#contact">問い合わせる<span aria-hidden="true">›</span></a>
           </article>
           <article class="event-card">
-            <h3>未就園児向け園庭開放</h3>
-            <p>親子で参加できる活動や、園の雰囲気にふれる機会を掲載します。</p>
+            <h3>2歳児から受け入れます</h3>
+            <p>2歳児クラスからの入園が可能。長時間保育で子育てを支えます。</p>
             <a class="button button--small button--blue" href="#contact">相談する<span aria-hidden="true">›</span></a>
           </article>
           <article class="event-card">
-            <h3>個別相談</h3>
-            <p>転入、預かり保育、給食、通園方法などの相談導線を置きます。</p>
-            <a class="button button--small button--ghost" href="#contact">問い合わせ<span aria-hidden="true">›</span></a>
+            <h3>園見学・個別相談</h3>
+            <p>入園や転入、預かり保育、通園方法のご相談は随時承ります。</p>
+            <a class="button button--small button--ghost" href="#contact">問い合わせる<span aria-hidden="true">›</span></a>
           </article>
         </div>
       </section>
@@ -83,20 +84,21 @@ get_header();
           <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
         </div>
         <dl class="overview-list">
-          <dt>対象年齢</dt><dd>満3歳児、3歳児、4歳児、5歳児。正式な募集人数に差し替えます。</dd>
-          <dt>保育時間</dt><dd>通常保育、預かり保育、長期休暇中の保育を表で整理します。</dd>
-          <dt>必要書類</dt><dd>願書、家庭状況調査票、その他必要書類を掲載します。</dd>
-          <dt>費用</dt><dd>入園料、保育料、給食費、用品代などを掲載する想定です。</dd>
-          <dt>注意事項</dt><dd>参加回数、定員、駐車場、持ち物など、申込前に必要な情報をまとめます。</dd>
+          <dt>募集人数</dt><dd>2才児: 若干名／年少クラス（3才児）: 30名／年中クラス（4才児）: 20名／年長クラス（5才児）: 若干名</dd>
+          <dt>願書配布</dt><dd>9月1日から</dd>
+          <dt>募集期間</dt><dd>10月1日〜 願書受付開始　※定員になり次第締め切らせていただきます。</dd>
+          <dt>保育時間</dt><dd>早朝保育 7:30〜／通常保育 8:30〜14:30（水曜は13:30降園）／延長保育 18:30まで</dd>
+          <dt>通園</dt><dd>送迎バスあり</dd>
+          <dt>備考</dt><dd>子育て世帯の保護者の負担軽減が拡充されています。詳しくは園にお問い合わせください。</dd>
         </dl>
       </section>
 
       <section class="page-cta" id="contact">
         <div>
           <h2>見学・入園について相談する</h2>
-          <p>日程、空き状況、未就園児クラスなど、お気軽にお問い合わせください。</p>
+          <p>日程、空き状況、2歳児クラスなど、お気軽にお問い合わせください。<br>認定こども園 愛児幼稚園　TEL 06-6691-0502</p>
         </div>
-        <a class="button button--primary" href="mailto:info@example.com">お問い合わせ<span aria-hidden="true">›</span></a>
+        <a class="button button--primary" href="tel:0666910502">電話で問い合わせる<span aria-hidden="true">›</span></a>
       </section>
     </main>
 
