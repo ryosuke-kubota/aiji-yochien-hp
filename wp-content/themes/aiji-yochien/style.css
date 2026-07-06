@@ -2858,3 +2858,156 @@ main {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================
+   FAQ・費用・通年行事注記
+   ========================================= */
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: #fff;
+}
+
+.faq-item summary {
+  position: relative;
+  padding: 16px 48px 16px 52px;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::before {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  color: var(--color-green-deep);
+  content: "Q";
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.faq-item summary::after {
+  position: absolute;
+  right: 18px;
+  top: 16px;
+  color: var(--color-green);
+  content: "＋";
+  font-size: 18px;
+  font-weight: 900;
+  transition: rotate 0.25s ease;
+}
+
+.faq-item[open] summary::after {
+  rotate: 45deg;
+}
+
+.faq-item p {
+  position: relative;
+  margin: 0;
+  padding: 0 20px 18px 52px;
+  font-weight: 700;
+}
+
+.faq-item p::before {
+  position: absolute;
+  left: 16px;
+  top: -3px;
+  color: var(--color-pink);
+  content: "A";
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.fees-subheading {
+  margin: 28px 0 12px;
+  color: var(--color-green-deep);
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.month-grid__note {
+  margin: 16px 4px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+/* =========================================
+   アイコン型カードのデザイン調整
+   （アイコン拡大・中央配置、タイトル太字センター）
+   ========================================= */
+
+.value-card {
+  text-align: center;
+}
+
+.value-card img {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 14px;
+}
+
+.value-card h3 {
+  font-weight: 900;
+}
+
+.event-card--icon {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
+.event-card--icon img {
+  grid-row: auto;
+  width: 92px;
+  height: 92px;
+  margin-bottom: 2px;
+}
+
+.event-card--icon h3 {
+  font-weight: 900;
+}
+
+.event-card--icon .button {
+  justify-self: center;
+}
+
+/* 年間行事ページのヒーローフレーム */
+.subpage-hero__visual--events {
+  border-radius: 60% 40% 48% 52% / 44% 60% 40% 56%;
+}
+
+/* ナビ8項目対応: 狭めのPC幅でヘッダーが折り返さないように */
+@media (min-width: 861px) and (max-width: 1240px) {
+  .brand {
+    min-width: 0;
+  }
+
+  .brand__eyebrow {
+    font-size: 10px;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .site-nav {
+    gap: clamp(8px, 1.1vw, 16px);
+    font-size: 12px;
+  }
+
+  .header-pill {
+    min-width: 0;
+    padding: 9px 14px;
+    white-space: nowrap;
+  }
+}

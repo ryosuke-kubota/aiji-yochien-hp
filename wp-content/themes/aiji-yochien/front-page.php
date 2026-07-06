@@ -140,7 +140,7 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
             <article class="feature-card">
               <img class="feature-card__icon" src="<?php echo aiji_asset( 'images/icon-book.png' ); ?>" alt="" aria-hidden="true">
               <h3>英語レッスン<span class="tag tag--blue">イチオシ</span></h3>
-              <p>物の名前・歌・色カードを使って、楽しく英語にふれます。</p>
+              <p>約30年続く外国人講師の英会話。歌やカードで楽しく学びます。</p>
               <a class="mini-circle mini-circle--blue" href="<?php echo aiji_page_url( 'concept' ); ?>" aria-label="英語レッスンを詳しく見る">›</a>
             </article>
             <article class="feature-card">
@@ -179,7 +179,7 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
             </figure>
             <div class="pickup-card__body">
               <h3>英語レッスン</h3>
-              <p>物の名前・歌・色カードを使って、遊びながら自然に英語を覚えます。「できた！」「言えた！」の積み重ねが、ことばへの好奇心を大きく育てます。</p>
+              <p>約30年前から外国人講師による英会話レッスンを実施。物の名前・歌・色カードを使って、遊びながら自然に英語を覚えます。「できた！」「言えた！」の積み重ねが、ことばへの好奇心を大きく育てます。</p>
               <a class="button button--small button--blue" href="<?php echo aiji_page_url( 'concept' ); ?>#regular">レッスンを詳しく見る<span aria-hidden="true">›</span></a>
             </div>
           </article>
@@ -190,7 +190,7 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
             </figure>
             <div class="pickup-card__body">
               <h3>体育レッスン</h3>
-              <p>なわとび・鉄棒・トランポリンに楽しく挑戦。体を思いきり動かす毎日が、健康で明るく、体力あふれるたくましい体をつくります。</p>
+              <p>体育専任講師のもと、なわとび・鉄棒・トランポリンに楽しく挑戦。体を思いきり動かす毎日が、健康で明るく、体力あふれるたくましい体をつくります。</p>
               <a class="button button--small button--primary" href="<?php echo aiji_page_url( 'concept' ); ?>#regular">レッスンを詳しく見る<span aria-hidden="true">›</span></a>
             </div>
           </article>

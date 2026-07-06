@@ -7,6 +7,7 @@ $aiji_nav_items = array(
 	array( 'slug' => 'about', 'label' => '園の紹介' ),
 	array( 'slug' => 'concept', 'label' => '教育について' ),
 	array( 'slug' => 'annual', 'label' => '園での生活' ),
+	array( 'slug' => 'events', 'label' => '年間行事' ),
 	array( 'slug' => 'schedule', 'label' => '入園のご案内' ),
 	array( 'slug' => 'guide', 'label' => '未就園児の方へ' ),
 );
@@ -39,7 +40,7 @@ $aiji_nav_items = array(
           <a href="<?php echo aiji_page_url( $item['slug'] ); ?>"<?php echo is_page( $item['slug'] ) ? ' aria-current="page"' : ''; ?>><?php echo esc_html( $item['label'] ); ?></a>
         <?php endforeach; ?>
         <a href="<?php echo esc_url( home_url( '/#support' ) ); ?>">子育て支援</a>
-        <a href="<?php echo esc_url( home_url( '/#recruit' ) ); ?>">採用情報</a>
+        <a href="<?php echo aiji_page_url( 'about' ); ?>#recruit">採用情報</a>
       </nav>
 
       <div class="header-actions">

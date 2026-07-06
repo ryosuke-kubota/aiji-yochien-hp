@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.6.1';
+const AIJI_THEME_VERSION = '1.8.0';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -82,6 +82,7 @@ function aiji_activate(): void {
 		'about'    => '園の紹介',
 		'concept'  => '教育について',
 		'annual'   => '園での生活',
+		'events'   => '年間行事',
 		'schedule' => '入園のご案内',
 		'guide'    => '未就園児の方へ',
 		'news'     => 'お知らせ',

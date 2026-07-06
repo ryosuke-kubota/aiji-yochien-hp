@@ -68,12 +68,12 @@ get_header();
           <article class="lesson-card lesson-card--icon">
             <img src="<?php echo aiji_asset( 'images/card-icon-lesson-english.png' ); ?>" alt="英語レッスンのイメージ">
             <h3>英語レッスン<span class="tag tag--blue">イチオシ</span></h3>
-            <p>物の名前・歌・色カードを使って覚える、当園自慢のレッスンです。</p>
+            <p>約30年前から外国人講師による英会話指導を実施。物の名前・歌・色カードで楽しく覚えます。</p>
           </article>
           <article class="lesson-card lesson-card--icon">
             <img src="<?php echo aiji_asset( 'images/card-icon-lesson-gym.png' ); ?>" alt="体育レッスンのイメージ">
             <h3>体育レッスン<span class="tag tag--green">イチオシ</span></h3>
-            <p>なわとび・鉄棒・トランポリンで楽しみながら、たくましい体をつくります。</p>
+            <p>体育専任講師による指導。なわとび・鉄棒・トランポリンで楽しみながら、たくましい体をつくります。</p>
           </article>
           <article class="lesson-card lesson-card--icon">
             <img src="<?php echo aiji_asset( 'images/card-icon-lesson-music.png' ); ?>" alt="音楽レッスンのイメージ">
@@ -104,11 +104,15 @@ get_header();
             <h2>子育てサポート</h2>
             <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
           </div>
-          <p>長時間保育と送迎バスで、毎日の通園と子育てをしっかり支えます。</p>
+          <p>長時間保育と送迎バスをはじめ、細やかなサポートで毎日の通園と子育てをしっかり支えます。</p>
         </div>
         <div class="event-grid">
-          <article class="event-card event-card--icon"><img src="<?php echo aiji_asset( 'images/card-icon-annual-calendar.png' ); ?>" alt="" aria-hidden="true"><h3>預かり保育</h3><p>早朝保育7:30から、延長保育は18:30まで。長時間保育に対応します。</p></article>
-          <article class="event-card event-card--icon"><img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true"><h3>送迎バス</h3><p>送迎バスを運行。ご自宅への搬送サービスもあります。</p></article>
+          <article class="event-card event-card--icon"><img src="<?php echo aiji_asset( 'images/card-icon-annual-calendar.png' ); ?>" alt="" aria-hidden="true"><h3>預かり保育</h3><p>早朝保育7:30から、延長保育は18:30まで。当日のお電話でも利用できます。</p></article>
+          <article class="event-card event-card--icon"><img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true"><h3>送迎バス</h3><p>希望者は園バスで送迎。効率的なルートでご負担を少なくしています。</p></article>
+          <article class="event-card event-card--icon"><img src="<?php echo aiji_asset( 'images/card-icon-guide-consult.png' ); ?>" alt="" aria-hidden="true"><h3>病院搬送サービス</h3><p>園内でケガをした場合は園から病院へお連れし、完治するまで通院もお連れします。</p></article>
+          <article class="event-card event-card--icon"><img src="<?php echo aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="" aria-hidden="true"><h3>手作りおやつ</h3><p>預かり保育では季節のものを取り入れた手作りおやつを提供。食育にもつながります。</p></article>
+          <article class="event-card event-card--icon"><img src="<?php echo aiji_asset( 'images/card-icon-lesson-manners.png' ); ?>" alt="" aria-hidden="true"><h3>きょうだい入園割引</h3><p>兄弟・姉妹が在園児または卒園児の場合、入園準備金から1万円を減免します。</p></article>
+          <article class="event-card event-card--icon"><img src="<?php echo aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="" aria-hidden="true"><h3>衛生・安全設備</h3><p>各教室に空間除菌脱臭機と冷暖房を完備。浄水器や午睡用簡易ベッドも導入しています。</p></article>
         </div>
       </section>
 

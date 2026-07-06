@@ -91,13 +91,17 @@ get_header();
         <dl class="overview-list">
           <dt>名称</dt><dd>学校法人 稲垣学園　認定こども園 愛児幼稚園</dd>
           <dt>所在地</dt><dd>〒558-0002 大阪市住吉区長居西3-1-14</dd>
+          <dt>アクセス</dt><dd>地下鉄御堂筋線・JR阪和線「長居」駅から徒歩7分</dd>
           <dt>電話</dt><dd>06-6691-0502</dd>
+          <dt>メール</dt><dd>aiji@athena.ocn.ne.jp</dd>
           <dt>対象</dt><dd>2歳児・3歳児（年少）・4歳児（年中）・5歳児（年長）</dd>
-          <dt>沿革</dt><dd>昭和26年8月 開園。令和元年 園舎をリニューアルし「認定こども園」としてスタート。</dd>
-          <dt>保育時間</dt><dd>早朝保育 7:30〜／通常保育 8:30〜14:30（水曜は13:30降園）／延長保育 18:30まで</dd>
-          <dt>通園</dt><dd>送迎バスあり（ご自宅への搬送サービス）</dd>
-          <dt>安全</dt><dd>大手セキュリティ会社と契約（24時間安心・カード管理）、耐震・耐久補強施設</dd>
+          <dt>沿革</dt><dd>昭和26年8月 設立認可・開園。昭和62年 学校法人稲垣学園 設立。平成31年4月 新園舎竣工、「認定こども園」へ移行。</dd>
+          <dt>保育時間</dt><dd>早朝保育 7:30〜8:30／通常保育 8:30〜14:30（水曜は13:30降園）／延長保育 18:30まで</dd>
+          <dt>休園日</dt><dd>日曜・祝日・土曜・開園記念日（6月第3金曜日）　※夏期・冬期・春期休業あり（休業中も預かり保育を実施）</dd>
+          <dt>通園</dt><dd>徒歩・個人送迎・園バス（希望者）</dd>
+          <dt>安全</dt><dd>耐震・遮熱断熱性に優れた新園舎（平成31年竣工）、大手セキュリティ会社と契約（24時間安心・カード管理）</dd>
           <dt>嘱託医</dt><dd>内科: 医療法人 てらかど診療所／歯科: 医療法人橘正会 片山歯科医院／薬剤師: 神原 加寿子</dd>
+          <dt>認定</dt><dd>ECEQ（公開保育を活用した幼児教育の質向上システム）実施園</dd>
         </dl>
       </section>
 
@@ -107,13 +111,13 @@ get_header();
             <h2>施設紹介</h2>
             <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
           </div>
-          <p>安全性と、子どもたちが自分から遊びたくなる環境づくりを伝えるエリアです。</p>
+          <p>平成31年に完成した新園舎は、耐震性・遮熱断熱性に優れた安心の設計。各教室に冷暖房と空間除菌脱臭機を備え、浄水器や午睡用簡易ベッドなど衛生面にも配慮しています。</p>
         </div>
         <div class="facility-grid">
           <article class="facility-card">
             <img src="<?php echo aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="園舎のイメージ">
             <h3>園舎・保育室</h3>
-            <p>制作やごっこ遊び、音楽活動など、年齢に合わせた活動が広がる保育室。</p>
+            <p>各教室に冷暖房・空間除菌脱臭機を完備。制作や音楽活動など、年齢に合わせた活動が広がります。</p>
           </article>
           <article class="facility-card">
             <img src="<?php echo aiji_asset( 'images/card-icon-about-playground.png' ); ?>" alt="園庭のイメージ">
@@ -136,9 +140,17 @@ get_header();
       <section class="page-cta">
         <div>
           <h2>教育についてもあわせてご覧ください</h2>
-          <p>正課、課外活動、遊び場、給食など、毎日の保育内容を整理しています。</p>
+          <p>カリキュラムやレッスン、子育てサポートなど、毎日の保育内容を整理しています。</p>
         </div>
         <a class="button button--ghost" href="<?php echo aiji_page_url( 'concept' ); ?>">教育についてへ<span aria-hidden="true">›</span></a>
+      </section>
+
+      <section class="page-cta" id="recruit">
+        <div>
+          <h2>採用情報</h2>
+          <p>愛児幼稚園では現在、幼稚園教諭を募集しています。詳細はお電話にてお問い合わせください。<br>TEL 06-6691-0502</p>
+        </div>
+        <a class="button button--primary" href="tel:0666910502">電話で問い合わせる<span aria-hidden="true">›</span></a>
       </section>
     </main>
 

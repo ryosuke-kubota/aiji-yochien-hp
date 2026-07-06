@@ -28,6 +28,7 @@ get_header();
         <a href="#dates">募集スケジュール</a>
         <a href="#flow">入園までの流れ</a>
         <a href="#info">募集概要</a>
+        <a href="#fees">保育料・諸費用</a>
         <a href="#contact">お問い合わせ</a>
       </nav>
 
@@ -87,12 +88,43 @@ get_header();
           <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
         </div>
         <dl class="overview-list">
+          <dt>入園資格</dt><dd>2歳児より就学始期に達するまでの幼児</dd>
           <dt>募集人数</dt><dd>2才児: 若干名／年少クラス（3才児）: 30名／年中クラス（4才児）: 20名／年長クラス（5才児）: 若干名</dd>
           <dt>願書配布</dt><dd>9月1日から</dd>
-          <dt>募集期間</dt><dd>10月1日〜 願書受付開始　※定員になり次第締め切らせていただきます。</dd>
+          <dt>募集期間</dt><dd>10月1日〜 願書受付開始（受付時間 10:00〜17:00）　※定員になり次第締め切らせていただきます。</dd>
+          <dt>説明会</dt><dd>新入園児説明会・制服渡し: 1月中旬の指定日に保護者同伴でご出席ください。</dd>
           <dt>保育時間</dt><dd>早朝保育 7:30〜／通常保育 8:30〜14:30（水曜は13:30降園）／延長保育 18:30まで</dd>
-          <dt>通園</dt><dd>送迎バスあり</dd>
+          <dt>通園</dt><dd>徒歩・個人送迎・園バス（希望者）</dd>
           <dt>備考</dt><dd>子育て世帯の保護者の負担軽減が拡充されています。詳しくは園にお問い合わせください。</dd>
+        </dl>
+      </section>
+
+      <section class="page-section" id="fees">
+        <div class="page-section__head">
+          <div class="section-heading section-heading--left">
+            <h2>保育料・諸費用</h2>
+            <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
+          </div>
+          <p>1号認定の場合の主な費用です。金額や詳細は変更になる場合がありますので、最新の情報は園にご確認ください。</p>
+        </div>
+        <h3 class="fees-subheading">入園前にお支払いいただくもの</h3>
+        <dl class="overview-list">
+          <dt>入園準備金</dt><dd>40,000円（保育環境の維持・充実および入園手続きにかかる事務手数料）</dd>
+          <dt>保育用品代</dt><dd>制服代（体操服含む）約40,000円 ※必要な物のみの購入も可／夏制服 約9,000円／通園靴 約900円／通園カバン 約3,000円／防災ズキン 約3,000円</dd>
+          <dt>きょうだい減免</dt><dd>兄弟・姉妹が在園児または卒園児の場合、入園準備金から1万円を減免。同時に2名以上入園の場合は1人分の冬制服一式を全額減免します。</dd>
+        </dl>
+        <h3 class="fees-subheading">在園時に毎月お支払いいただくもの</h3>
+        <dl class="overview-list">
+          <dt>保育充実費</dt><dd>4,600円（外国人講師による英語教育など、保育の充実のための費用）</dd>
+          <dt>給食費</dt><dd>5,300円（2号認定は6,800円、3号認定は基本保育料に含む）</dd>
+          <dt>PTA費</dt><dd>500円</dd>
+          <dt>保育環境充実費</dt><dd>2,000円</dd>
+        </dl>
+        <h3 class="fees-subheading">ご利用される方のみお支払いいただくもの</h3>
+        <dl class="overview-list">
+          <dt>預かり保育利用料</dt><dd>利用した分をお支払いいただきます。長時間の利用が必要な場合は2号認定の支給をご案内します。</dd>
+          <dt>園バス代</dt><dd>月額4,000円（希望者）</dd>
+          <dt>遠足費・行事費</dt><dd>遠足は人数割（最大約3,000円）。行事ごとに事前にご案内します。</dd>
         </dl>
       </section>
 

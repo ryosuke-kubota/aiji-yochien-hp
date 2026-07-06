@@ -27,6 +27,7 @@ get_header();
       <nav class="page-tabs" aria-label="ページ内メニュー">
         <a href="#preschool">2歳児クラス</a>
         <a href="#tour">見学・相談</a>
+        <a href="#faq">よくあるご質問</a>
         <a href="#contact">お問い合わせ</a>
       </nav>
 
@@ -62,21 +63,21 @@ get_header();
         </div>
         <div class="event-grid">
           <article class="event-card event-card--icon">
-            <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true">
-            <h3>園見学</h3>
-            <p>保育中の園内を見学いただけます。園の雰囲気を実際にご覧ください。</p>
-            <a class="button button--small button--primary" href="#contact">申込む<span aria-hidden="true">›</span></a>
-          </article>
-          <article class="event-card event-card--icon">
             <img src="<?php echo aiji_asset( 'images/card-icon-about-playground.png' ); ?>" alt="" aria-hidden="true">
-            <h3>園庭開放</h3>
-            <p>親子で園庭あそびを体験。お友だちづくりのきっかけにもなります。</p>
+            <h3>園庭開放　第2・第4土曜日</h3>
+            <p>10:30〜12:30に園庭を開放しています。未就園児のお子さまも親子でご参加いただけます。</p>
             <a class="button button--small button--blue" href="#contact">相談する<span aria-hidden="true">›</span></a>
           </article>
           <article class="event-card event-card--icon">
-            <img src="<?php echo aiji_asset( 'images/card-icon-guide-consult.png' ); ?>" alt="" aria-hidden="true">
-            <h3>個別相談</h3>
-            <p>2歳児クラス、転入、預かり保育、通園方法など何でもご相談ください。</p>
+            <img src="<?php echo aiji_asset( 'images/card-icon-annual-season.png' ); ?>" alt="" aria-hidden="true">
+            <h3>未就園児体験　毎月1回</h3>
+            <p>6月〜2月に毎月1回、バルーン体験など親子で楽しめる体験の機会をご用意しています。</p>
+            <a class="button button--small button--primary" href="#contact">申込む<span aria-hidden="true">›</span></a>
+          </article>
+          <article class="event-card event-card--icon">
+            <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true">
+            <h3>園見学・個別相談</h3>
+            <p>保育中の園内見学や、2歳児クラス・転入・通園方法のご相談は随時承ります。</p>
             <a class="button button--small button--yellow" href="#contact">相談する<span aria-hidden="true">›</span></a>
           </article>
           <article class="event-card event-card--icon">
@@ -85,6 +86,31 @@ get_header();
             <p>願書配布は9月1日から。募集人数や入園までの流れはこちらです。</p>
             <a class="button button--small button--ghost" href="<?php echo aiji_page_url( 'schedule' ); ?>">入園のご案内へ<span aria-hidden="true">›</span></a>
           </article>
+        </div>
+      </section>
+
+      <section class="page-section soft-panel" id="faq">
+        <div class="section-heading section-heading--left">
+          <h2>よくあるご質問</h2>
+          <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>いつから入園できますか？年度の途中からでも入園できますか？</summary>
+            <p>年度途中のご入園も可能です。3歳のお誕生日が来たら、満3歳児として入園していただけます。詳しくは園まで直接お問い合わせください。</p>
+          </details>
+          <details class="faq-item">
+            <summary>おむつがまだ取れていないのですが大丈夫ですか？</summary>
+            <p>普通のパンツで登園していただきます。園に替えの衣類を用意していますので、失敗したときは随時着替えます。ご安心ください。</p>
+          </details>
+          <details class="faq-item">
+            <summary>偏食が多いのですが大丈夫ですか？</summary>
+            <p>苦手な食べものも少しずつ食べられるようになるよう、先生が声かけをしていきます。</p>
+          </details>
+          <details class="faq-item">
+            <summary>子どものことで悩んでいるのですが、相談できますか？</summary>
+            <p>随時ご相談を受け付けています。どんなことでもお気軽にお声かけください。</p>
+          </details>
         </div>
       </section>
 
