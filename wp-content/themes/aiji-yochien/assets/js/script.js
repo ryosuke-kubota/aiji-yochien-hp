@@ -161,8 +161,8 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
   });
 }
 
-// 行事フォトギャラリーのライトボックス
-const galleryItems = document.querySelectorAll(".event-gallery__item");
+// 行事フォトギャラリーのライトボックス（行事ごとの写真セットをスライダーで閲覧）
+const galleryItems = Array.from(document.querySelectorAll(".event-gallery__item"));
 if (galleryItems.length > 0) {
   const lightbox = document.createElement("div");
   lightbox.className = "aiji-lightbox";
@@ -171,24 +171,64 @@ if (galleryItems.length > 0) {
   lightbox.setAttribute("aria-label", "写真の拡大表示");
   lightbox.innerHTML = `
     <button class="aiji-lightbox__close" type="button" aria-label="閉じる">×</button>
+    <button class="aiji-lightbox__nav aiji-lightbox__nav--prev" type="button" aria-label="前の写真">‹</button>
     <figure class="aiji-lightbox__figure">
       <img src="" alt="">
       <figcaption class="aiji-lightbox__caption"></figcaption>
+      <p class="aiji-lightbox__counter" aria-live="polite"></p>
     </figure>
+    <button class="aiji-lightbox__nav aiji-lightbox__nav--next" type="button" aria-label="次の写真">›</button>
   `;
   document.body.appendChild(lightbox);
 
   const lightboxImg = lightbox.querySelector("img");
   const lightboxCaption = lightbox.querySelector(".aiji-lightbox__caption");
+  const lightboxCounter = lightbox.querySelector(".aiji-lightbox__counter");
   const closeButton = lightbox.querySelector(".aiji-lightbox__close");
+  const prevButton = lightbox.querySelector(".aiji-lightbox__nav--prev");
+  const nextButton = lightbox.querySelector(".aiji-lightbox__nav--next");
+  // クリックしたカード（行事）の写真セットだけをスライドで見せる
+  let photos = [];
+  let photoIndex = 0;
+  let groupTitle = "";
   let lastFocused = null;
+
+  const renderPhoto = () => {
+    const photo = photos[photoIndex];
+    if (!photo) return;
+    lightboxImg.src = photo.src;
+    lightboxImg.alt = photo.alt || groupTitle;
+    lightboxCaption.textContent = groupTitle;
+    const hasMultiple = photos.length > 1;
+    lightboxCounter.textContent = hasMultiple ? `${photoIndex + 1} / ${photos.length}` : "";
+    prevButton.style.display = hasMultiple ? "" : "none";
+    nextButton.style.display = hasMultiple ? "" : "none";
+  };
+
+  const showNext = () => {
+    photoIndex = (photoIndex + 1) % photos.length;
+    renderPhoto();
+  };
+  const showPrev = () => {
+    photoIndex = (photoIndex - 1 + photos.length) % photos.length;
+    renderPhoto();
+  };
 
   const openLightbox = (item) => {
     const img = item.querySelector("img");
     const caption = item.querySelector("figcaption");
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightboxCaption.textContent = caption ? caption.textContent : "";
+    groupTitle = caption ? caption.textContent : (img ? img.alt : "");
+    photos = img ? [{ src: img.src, alt: img.alt }] : [];
+    if (item.dataset.gallery) {
+      try {
+        const parsed = JSON.parse(item.dataset.gallery);
+        if (Array.isArray(parsed) && parsed.length > 0) photos = parsed;
+      } catch (error) {
+        // JSONが壊れていてもサムネイル1枚で表示する
+      }
+    }
+    photoIndex = 0;
+    renderPhoto();
     lightbox.classList.add("is-open");
     lastFocused = document.activeElement;
     closeButton.focus();
@@ -211,11 +251,16 @@ if (galleryItems.length > 0) {
     });
   });
 
+  nextButton.addEventListener("click", showNext);
+  prevButton.addEventListener("click", showPrev);
   closeButton.addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (event) => {
     if (event.target === lightbox) closeLightbox();
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
+    if (!lightbox.classList.contains("is-open")) return;
+    if (event.key === "Escape") closeLightbox();
+    if (photos.length > 1 && event.key === "ArrowRight") showNext();
+    if (photos.length > 1 && event.key === "ArrowLeft") showPrev();
   });
 }

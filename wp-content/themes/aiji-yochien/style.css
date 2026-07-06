@@ -32,8 +32,8 @@ Text Domain: aiji-yochien
   --shadow-card: 0 12px 28px rgba(96, 83, 66, 0.08);
   --radius-card: 8px;
   --radius-panel: 18px;
-  --container: 1240px;
-  --header-container: 1360px;
+  --container: 1360px;
+  --header-container: 1440px;
   --page-gutter: clamp(32px, 6vw, 64px);
   --section-space: 64px;
   --hero-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 780 384' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M118 10 C 260 -6 560 -4 780 6 L 780 346 C 700 380 620 344 528 358 C 440 372 372 332 284 350 C 204 366 138 362 108 320 C 84 286 92 246 100 210 C 108 172 82 128 90 84 C 96 44 92 16 118 10 Z'/%3E%3C/svg%3E");
@@ -679,7 +679,7 @@ main {
 
 .story-band {
   position: relative;
-  width: min(1160px, calc(100% - clamp(48px, 9vw, 96px)));
+  width: min(1280px, calc(100% - clamp(48px, 9vw, 96px)));
   margin: 96px auto 0;
   padding: 0 0 48px;
   border-radius: 84px 84px 72px 72px;
@@ -782,7 +782,7 @@ main {
 }
 
 .philosophy__copy {
-  max-width: 372px;
+  max-width: 500px;
 }
 
 .section-lead {
@@ -924,9 +924,10 @@ main {
 }
 
 .feature-card__icon {
-  width: 38px;
-  height: 38px;
-  margin: 0 auto 7px;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 10px;
+  object-fit: contain;
 }
 
 .feature-card h3 {
@@ -3010,4 +3011,112 @@ main {
     padding: 9px 14px;
     white-space: nowrap;
   }
+}
+
+/* =========================================
+   月別行事カード（サムネイル型）
+   ========================================= */
+
+.month-card--thumb {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.month-card__photo {
+  margin: 0;
+}
+
+.month-card__photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: scale 0.4s ease;
+}
+
+.month-card--thumb:hover .month-card__photo img {
+  scale: 1.05;
+}
+
+/* 写真がない月はアイコンイラストをサムネイル風に */
+.month-card__photo img[src*="card-icon-"] {
+  padding: 22px;
+  background: linear-gradient(180deg, rgba(255, 248, 235, 0.9), rgba(238, 248, 232, 0.85));
+  object-fit: contain;
+}
+
+.month-card__body {
+  padding: 12px 18px 16px;
+}
+
+.month-card--thumb h3 {
+  margin: 0 0 4px;
+}
+
+/* ギャラリーの補足 */
+.event-gallery__hint {
+  margin: 14px 4px 0;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================================
+   ライトボックス内スライダー・写真枚数バッジ
+   ========================================= */
+
+.event-gallery__count {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(49, 41, 35, 0.62);
+  font-size: 12px;
+  font-weight: 800;
+  backdrop-filter: blur(4px);
+}
+
+.aiji-lightbox__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding-bottom: 4px;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  translate: 0 -50%;
+  transition: background 0.2s ease, scale 0.2s ease;
+}
+
+.aiji-lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.34);
+  scale: 1.08;
+}
+
+.aiji-lightbox__nav--prev {
+  left: clamp(8px, 3vw, 30px);
+}
+
+.aiji-lightbox__nav--next {
+  right: clamp(8px, 3vw, 30px);
+}
+
+.aiji-lightbox__counter {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
 }

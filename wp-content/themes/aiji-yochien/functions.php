@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.8.0';
+const AIJI_THEME_VERSION = '1.13.0';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -158,3 +158,378 @@ function aiji_activate(): void {
 	update_option( 'aiji_theme_setup_done', 1 );
 }
 add_action( 'after_switch_theme', 'aiji_activate' );
+
+/* =========================================
+   管理画面カスタマイズ（投稿者向けダッシュボード）
+   ========================================= */
+
+/** 「投稿」を「お知らせ」表記に変更 */
+function aiji_rename_post_labels(): void {
+	$post_type = get_post_type_object( 'post' );
+	if ( ! $post_type ) {
+		return;
+	}
+	$labels                = $post_type->labels;
+	$labels->name          = 'お知らせ';
+	$labels->singular_name = 'お知らせ';
+	$labels->menu_name     = 'お知らせ';
+	$labels->name_admin_bar = 'お知らせ';
+	$labels->add_new       = '新規追加';
+	$labels->add_new_item  = 'お知らせを追加';
+	$labels->edit_item     = 'お知らせを編集';
+	$labels->new_item      = '新しいお知らせ';
+	$labels->view_item     = 'お知らせを表示';
+	$labels->search_items  = 'お知らせを検索';
+	$labels->not_found     = 'お知らせが見つかりません';
+	$labels->all_items     = 'お知らせ一覧';
+	$post_type->menu_icon  = 'dashicons-megaphone';
+}
+add_action( 'init', 'aiji_rename_post_labels' );
+
+/** 新規投稿URLの ?aiji_cat=スラッグ でカテゴリーを自動セット */
+function aiji_preset_category( int $post_id, WP_Post $post ): void {
+	if ( 'auto-draft' !== $post->post_status || 'post' !== $post->post_type || empty( $_GET['aiji_cat'] ) ) {
+		return;
+	}
+	$term = get_term_by( 'slug', sanitize_key( wp_unslash( $_GET['aiji_cat'] ) ), 'category' );
+	if ( $term instanceof WP_Term ) {
+		wp_set_post_categories( $post_id, array( $term->term_id ) );
+	}
+}
+add_action( 'wp_insert_post', 'aiji_preset_category', 10, 2 );
+
+/** ダッシュボードに「かんたん投稿」ウィジェットを追加 */
+function aiji_dashboard_widget(): void {
+	wp_add_dashboard_widget( 'aiji_quick_post', '📣 お知らせをかんたん投稿', 'aiji_dashboard_widget_render' );
+
+	// かんたん投稿を最上部へ移動
+	global $wp_meta_boxes;
+	$widget = $wp_meta_boxes['dashboard']['normal']['core']['aiji_quick_post'];
+	unset( $wp_meta_boxes['dashboard']['normal']['core']['aiji_quick_post'] );
+	$wp_meta_boxes['dashboard']['normal']['high']['aiji_quick_post'] = $widget;
+}
+add_action( 'wp_dashboard_setup', 'aiji_dashboard_widget' );
+
+/** かんたん投稿ウィジェットの中身 */
+function aiji_dashboard_widget_render(): void {
+	$buttons = array(
+		array( 'news-info', '📢 お知らせを書く', '#70ad42' ),
+		array( 'event', '🎈 行事レポートを書く', '#e9a60f' ),
+		array( 'daily', '🌸 園の様子を書く', '#ed6f79' ),
+	);
+	echo '<style>
+		.aiji-qp-buttons { display: grid; gap: 10px; margin: 4px 0 14px; }
+		.aiji-qp-buttons a { display: block; padding: 14px 18px; border-radius: 10px; color: #fff !important; font-size: 15px; font-weight: 700; text-decoration: none; text-align: center; }
+		.aiji-qp-buttons a:hover { opacity: 0.88; }
+		.aiji-qp-steps { margin: 0; padding: 12px 14px; border-radius: 8px; background: #f6f7f7; line-height: 1.9; }
+	</style>';
+	echo '<div class="aiji-qp-buttons">';
+	foreach ( $buttons as [ $slug, $label, $color ] ) {
+		$url = admin_url( 'post-new.php?aiji_cat=' . $slug );
+		echo '<a href="' . esc_url( $url ) . '" style="background:' . esc_attr( $color ) . ';">' . esc_html( $label ) . '</a>';
+	}
+	echo '<a href="' . esc_url( admin_url( 'admin.php?page=aiji-gallery' ) ) . '" style="background:#5ba0d5;">📷 フォトギャラリーに写真を追加</a>';
+	echo '</div>';
+	echo '<p class="aiji-qp-steps">
+		<strong>書き方（3ステップ）</strong><br>
+		1. タイトルと本文を入力（写真は「＋」→「画像」で何枚でも追加OK）<br>
+		2. 右上の「公開」を押す<br>
+		3. トップの「重要なお知らせ」に載せたいときは、右側の「概要」パネルで「ブログのトップに固定」にチェック
+	</p>';
+	echo '<p class="aiji-qp-steps" style="margin-top:10px;">
+		<strong>📷 写真のあげ方（記事は不要です）</strong><br>
+		上の「フォトギャラリーに写真を追加」を押して、
+		<strong>「＋ 行事を追加」→ 行事名を入力 →「＋ 写真を追加」→「保存する」</strong>だけ。<br>
+		年間行事ページに行事ごとのカードが並び、クリックでその行事の写真をまとめて見られます。
+	</p>';
+	echo '<p><a href="' . esc_url( admin_url( 'edit.php' ) ) . '">→ これまでのお知らせ一覧を見る</a></p>';
+}
+
+/** 投稿一覧のカテゴリー列をサイトと同じ色バッジに */
+function aiji_admin_columns( array $columns ): array {
+	$new = array();
+	foreach ( $columns as $key => $label ) {
+		if ( 'categories' === $key ) {
+			$new['aiji_cat_badge'] = 'カテゴリー';
+			continue;
+		}
+		$new[ $key ] = $label;
+	}
+	return $new;
+}
+add_filter( 'manage_post_posts_columns', 'aiji_admin_columns' );
+
+function aiji_admin_columns_render( string $column, int $post_id ): void {
+	if ( 'aiji_cat_badge' !== $column ) {
+		return;
+	}
+	$colors = array(
+		'news-info' => '#70ad42',
+		'daily'     => '#ed6f79',
+		'event'     => '#e9a60f',
+	);
+	foreach ( get_the_category( $post_id ) as $cat ) {
+		$color = $colors[ $cat->slug ] ?? '#5ba0d5';
+		echo '<span style="display:inline-block;margin:1px 4px 1px 0;padding:2px 10px;border-radius:999px;color:#fff;background:' . esc_attr( $color ) . ';font-size:11px;font-weight:700;">' . esc_html( $cat->name ) . '</span>';
+	}
+	if ( is_sticky( $post_id ) ) {
+		echo '<span style="display:inline-block;margin:1px 0;padding:2px 10px;border-radius:999px;color:#fff;background:#ee7887;font-size:11px;font-weight:700;">★ 重要（トップ固定）</span>';
+	}
+}
+add_action( 'manage_post_posts_custom_column', 'aiji_admin_columns_render', 10, 2 );
+
+/** 使わない管理メニュー・ダッシュボードウィジェットを非表示 */
+function aiji_cleanup_admin_menu(): void {
+	remove_menu_page( 'edit-comments.php' );
+}
+add_action( 'admin_menu', 'aiji_cleanup_admin_menu' );
+
+function aiji_cleanup_dashboard(): void {
+	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );       // WordPressニュース
+	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );   // クイックドラフト
+	remove_meta_box( 'dashboard_site_health', 'dashboard', 'normal' ); // サイトヘルス
+	remove_action( 'welcome_panel', 'wp_welcome_panel' );              // ようこそパネル
+}
+add_action( 'wp_dashboard_setup', 'aiji_cleanup_dashboard', 20 );
+
+/**
+ * 月別行事サムネイル。assets/images/photo-{月英名}.jpg（.jpeg/.png）が
+ * 置かれていればそれを優先し、なければフォールバック画像を返す。
+ * 例: photo-june.jpg を置くと6月カードのサムネイルが自動で差し替わる。
+ */
+function aiji_month_thumb( string $month_en, string $fallback ): string {
+	foreach ( array( 'jpg', 'jpeg', 'png' ) as $ext ) {
+		$rel = 'images/photo-' . $month_en . '.' . $ext;
+		if ( file_exists( get_template_directory() . '/assets/' . $rel ) ) {
+			return aiji_asset( $rel );
+		}
+	}
+	return aiji_asset( $fallback );
+}
+
+/**
+ * 行事フォトギャラリーのグループ一覧。
+ * 管理画面「フォトギャラリー」で保存した「行事名＋写真セット」
+ * （option: aiji_gallery_groups = [ [ 'title' => 行事名, 'ids' => 添付ID配列 ], ... ]）を返す。
+ */
+function aiji_gallery_groups(): array {
+	$out = array();
+	foreach ( (array) get_option( 'aiji_gallery_groups', array() ) as $group ) {
+		$title  = isset( $group['title'] ) ? (string) $group['title'] : '';
+		$images = array();
+		foreach ( (array) ( $group['ids'] ?? array() ) as $id ) {
+			$src = wp_get_attachment_image_url( absint( $id ), 'large' );
+			if ( ! $src ) {
+				continue;
+			}
+			$alt      = get_post_meta( absint( $id ), '_wp_attachment_image_alt', true );
+			$images[] = array(
+				'src' => $src,
+				'alt' => $alt ? $alt : ( $title ? $title : '行事の写真' ),
+			);
+		}
+		if ( ! $images ) {
+			continue;
+		}
+		$out[] = array(
+			'title'  => $title,
+			'images' => $images,
+		);
+	}
+	return $out;
+}
+
+/* =========================================
+   フォトギャラリー管理画面（写真を選んで保存するだけ）
+   ========================================= */
+
+function aiji_gallery_admin_menu(): void {
+	add_menu_page(
+		'フォトギャラリー',
+		'フォトギャラリー',
+		'upload_files',
+		'aiji-gallery',
+		'aiji_gallery_admin_page',
+		'dashicons-format-gallery',
+		21
+	);
+}
+add_action( 'admin_menu', 'aiji_gallery_admin_menu' );
+
+function aiji_gallery_admin_assets( string $hook ): void {
+	if ( 'toplevel_page_aiji-gallery' === $hook ) {
+		wp_enqueue_media();
+	}
+}
+add_action( 'admin_enqueue_scripts', 'aiji_gallery_admin_assets' );
+
+/** フォトギャラリー管理画面の描画（行事ごとに写真をまとめる） */
+function aiji_gallery_admin_page(): void {
+	$groups = (array) get_option( 'aiji_gallery_groups', array() );
+	?>
+	<div class="wrap">
+		<h1>📷 フォトギャラリー</h1>
+		<?php if ( isset( $_GET['updated'] ) ) : ?>
+			<div class="notice notice-success is-dismissible"><p>ギャラリーを保存しました。年間行事ページに反映されています。</p></div>
+		<?php endif; ?>
+		<p style="font-size:14px;line-height:1.9;">
+			<strong>行事ごとに写真をまとめて</strong>、年間行事ページの「行事フォトギャラリー」に載せられます。記事を書く必要はありません。<br>
+			使い方: <strong>「＋ 行事を追加」→ 行事名を入力 →「＋ 写真を追加」→ 最後に「保存する」</strong>
+		</p>
+		<style>
+			.aiji-gallery-group { max-width: 900px; margin: 0 0 18px; padding: 16px 18px; border: 1px solid #dcdcde; border-radius: 10px; background: #fff; }
+			.aiji-gallery-group__head { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
+			.aiji-gallery-group__head input { flex: 1; max-width: 420px; }
+			.aiji-group-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-bottom: 12px; }
+			.aiji-gallery-thumb { position: relative; }
+			.aiji-gallery-thumb img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
+			.aiji-thumb-remove { position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; border: 0; border-radius: 50%; background: rgba(0, 0, 0, 0.65); color: #fff; font-size: 15px; line-height: 1; cursor: pointer; }
+		</style>
+		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" id="aiji-gallery-form">
+			<?php wp_nonce_field( 'aiji_save_gallery' ); ?>
+			<input type="hidden" name="action" value="aiji_save_gallery">
+			<input type="hidden" name="aiji_gallery_groups" id="aiji-gallery-groups-input" value="">
+			<div id="aiji-groups">
+				<?php foreach ( $groups as $group ) : ?>
+				<div class="aiji-gallery-group">
+					<div class="aiji-gallery-group__head">
+						<input type="text" class="aiji-group-title regular-text" placeholder="行事名（例: 運動会）" value="<?php echo esc_attr( $group['title'] ?? '' ); ?>">
+						<button type="button" class="button-link-delete aiji-group-delete">この行事を削除</button>
+					</div>
+					<div class="aiji-group-grid">
+						<?php foreach ( (array) ( $group['ids'] ?? array() ) as $id ) :
+							$thumb = wp_get_attachment_image_url( absint( $id ), 'medium' );
+							if ( ! $thumb ) {
+								continue;
+							}
+							?>
+							<div class="aiji-gallery-thumb" data-id="<?php echo esc_attr( absint( $id ) ); ?>">
+								<img src="<?php echo esc_url( $thumb ); ?>" alt="">
+								<button type="button" class="aiji-thumb-remove" aria-label="この写真を外す">×</button>
+							</div>
+						<?php endforeach; ?>
+					</div>
+					<button type="button" class="button aiji-group-add">＋ 写真を追加</button>
+				</div>
+				<?php endforeach; ?>
+			</div>
+			<p>
+				<button type="button" class="button button-hero" id="aiji-group-new">＋ 行事を追加</button>
+				<button type="submit" class="button button-primary button-hero">保存する</button>
+			</p>
+			<p class="description">× で写真を外す・「この行事を削除」で行事ごと外せます（写真自体は削除されません）。最後に「保存する」を押してください。</p>
+		</form>
+	</div>
+	<script>
+	jQuery(function ($) {
+		var groupsWrap = $("#aiji-groups");
+		var frame = null;
+		var currentGrid = null;
+
+		var thumbHtml = function (id, url) {
+			return '<div class="aiji-gallery-thumb" data-id="' + id + '">' +
+				'<img src="' + url + '" alt="">' +
+				'<button type="button" class="aiji-thumb-remove" aria-label="この写真を外す">×</button>' +
+				"</div>";
+		};
+		var groupHtml =
+			'<div class="aiji-gallery-group">' +
+			'<div class="aiji-gallery-group__head">' +
+			'<input type="text" class="aiji-group-title regular-text" placeholder="行事名（例: 運動会）" value="">' +
+			'<button type="button" class="button-link-delete aiji-group-delete">この行事を削除</button>' +
+			"</div>" +
+			'<div class="aiji-group-grid"></div>' +
+			'<button type="button" class="button aiji-group-add">＋ 写真を追加</button>' +
+			"</div>";
+
+		$("#aiji-group-new").on("click", function () {
+			groupsWrap.append(groupHtml);
+			groupsWrap.find(".aiji-group-title").last().trigger("focus");
+		});
+
+		groupsWrap.on("click", ".aiji-group-add", function () {
+			currentGrid = $(this).closest(".aiji-gallery-group").find(".aiji-group-grid");
+			if (!frame) {
+				frame = wp.media({
+					title: "この行事に載せる写真を選ぶ",
+					button: { text: "この写真を追加" },
+					library: { type: "image" },
+					multiple: "add"
+				});
+				frame.on("select", function () {
+					frame.state().get("selection").each(function (attachment) {
+						var id = attachment.get("id");
+						if (currentGrid.find('.aiji-gallery-thumb[data-id="' + id + '"]').length) {
+							return;
+						}
+						var sizes = attachment.get("sizes") || {};
+						var url = (sizes.medium || sizes.full || {}).url || attachment.get("url");
+						currentGrid.append(thumbHtml(id, url));
+					});
+				});
+			}
+			frame.open();
+		});
+
+		groupsWrap.on("click", ".aiji-thumb-remove", function () {
+			$(this).closest(".aiji-gallery-thumb").remove();
+		});
+
+		groupsWrap.on("click", ".aiji-group-delete", function () {
+			if (window.confirm("この行事をギャラリーから削除しますか？（写真自体は残ります）")) {
+				$(this).closest(".aiji-gallery-group").remove();
+			}
+		});
+
+		// 保存時にDOMからグループ構成をJSON化して送る
+		$("#aiji-gallery-form").on("submit", function () {
+			var groups = [];
+			groupsWrap.find(".aiji-gallery-group").each(function () {
+				var ids = $(this).find(".aiji-gallery-thumb").map(function () {
+					return $(this).data("id");
+				}).get();
+				if (!ids.length) {
+					return;
+				}
+				groups.push({ title: $(this).find(".aiji-group-title").val() || "", ids: ids });
+			});
+			$("#aiji-gallery-groups-input").val(JSON.stringify(groups));
+		});
+	});
+	</script>
+	<?php
+}
+
+/** フォトギャラリーの保存処理 */
+function aiji_gallery_save(): void {
+	if ( ! current_user_can( 'upload_files' ) ) {
+		wp_die( 'この操作を行う権限がありません。' );
+	}
+	check_admin_referer( 'aiji_save_gallery' );
+
+	$raw    = isset( $_POST['aiji_gallery_groups'] ) ? wp_unslash( $_POST['aiji_gallery_groups'] ) : '';
+	$data   = json_decode( $raw, true );
+	$groups = array();
+	if ( is_array( $data ) ) {
+		foreach ( $data as $group ) {
+			$ids = array_values(
+				array_filter(
+					array_map( 'absint', (array) ( $group['ids'] ?? array() ) ),
+					'wp_attachment_is_image'
+				)
+			);
+			if ( ! $ids ) {
+				continue;
+			}
+			$groups[] = array(
+				'title' => sanitize_text_field( $group['title'] ?? '' ),
+				'ids'   => $ids,
+			);
+		}
+	}
+	update_option( 'aiji_gallery_groups', $groups );
+
+	wp_safe_redirect( admin_url( 'admin.php?page=aiji-gallery&updated=1' ) );
+	exit;
+}
+add_action( 'admin_post_aiji_save_gallery', 'aiji_gallery_save' );

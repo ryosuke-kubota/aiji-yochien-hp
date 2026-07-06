@@ -36,18 +36,54 @@ get_header();
           <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
         </div>
         <div class="month-grid">
-          <article class="month-card"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-guide-documents.png' ); ?>" alt="" aria-hidden="true"><h3>4月</h3><ul><li>入園式</li></ul></article>
-          <article class="month-card"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-guide-consult.png' ); ?>" alt="" aria-hidden="true"><h3>5月</h3><ul><li>健康診断</li><li>プラネタリウム</li></ul></article>
-          <article class="month-card"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-annual-season.png' ); ?>" alt="" aria-hidden="true"><h3>6月</h3><ul><li>保育参観</li><li>じゃがいも掘り</li></ul></article>
-          <article class="month-card"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-lesson-swimming.png' ); ?>" alt="" aria-hidden="true"><h3>7月</h3><ul><li>プール開き</li><li>七夕まつり</li><li>盆踊り・夏期保育</li></ul></article>
-          <article class="month-card" id="summer"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="" aria-hidden="true"><h3>8月</h3><ul><li>夏期保育</li><li>お泊まり保育</li></ul></article>
-          <article class="month-card"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-annual-calendar.png' ); ?>" alt="" aria-hidden="true"><h3>9月</h3><ul><li>2学期スタート</li></ul></article>
-          <article class="month-card" id="autumn"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-lesson-gym.png' ); ?>" alt="" aria-hidden="true"><h3>10月</h3><ul><li>運動会</li><li>お芋掘り</li><li>秋の遠足</li></ul></article>
-          <article class="month-card"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-about-craft.png' ); ?>" alt="" aria-hidden="true"><h3>11月</h3><ul><li>作品展</li></ul></article>
-          <article class="month-card" id="winter"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-lesson-music.png' ); ?>" alt="" aria-hidden="true"><h3>12月</h3><ul><li>クリスマス会</li><li>おもちつき</li></ul></article>
-          <article class="month-card"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-lesson-manners.png' ); ?>" alt="" aria-hidden="true"><h3>1月</h3><ul><li>3学期スタート</li><li>お正月あそび</li></ul></article>
-          <article class="month-card"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-about-playground.png' ); ?>" alt="" aria-hidden="true"><h3>2月</h3><ul><li>豆まき</li><li>おゆうぎ会</li></ul></article>
-          <article class="month-card"><img class="month-card__icon" src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true"><h3>3月</h3><ul><li>お別れ遠足</li><li>卒園式</li></ul></article>
+          <article class="month-card month-card--thumb">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'april', 'images/news-campus.png' ); ?>" alt="入園式を迎えた園舎" loading="lazy"></figure>
+            <div class="month-card__body"><h3>4月</h3><ul><li>入園式</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'may', 'images/card-icon-guide-consult.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <div class="month-card__body"><h3>5月</h3><ul><li>健康診断</li><li>プラネタリウム</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'june', 'images/card-parenting.png' ); ?>" alt="保育参観の様子" loading="lazy"></figure>
+            <div class="month-card__body"><h3>6月</h3><ul><li>保育参観</li><li>じゃがいも掘り</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'july', 'images/philosophy-bubbles-circle.png' ); ?>" alt="水あそびの様子" loading="lazy"></figure>
+            <div class="month-card__body"><h3>7月</h3><ul><li>プール開き</li><li>七夕まつり</li><li>盆踊り・夏期保育</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb" id="summer">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'august', 'images/card-icon-about-building.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <div class="month-card__body"><h3>8月</h3><ul><li>夏期保育</li><li>お泊まり保育</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'september', 'images/card-icon-annual-calendar.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <div class="month-card__body"><h3>9月</h3><ul><li>2学期スタート</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb" id="autumn">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'october', 'images/hero-children-running.png' ); ?>" alt="運動会で走る子どもたち" loading="lazy"></figure>
+            <div class="month-card__body"><h3>10月</h3><ul><li>運動会</li><li>お芋掘り</li><li>秋の遠足</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'november', 'images/philosophy-craft-circle.png' ); ?>" alt="作品展の制作活動" loading="lazy"></figure>
+            <div class="month-card__body"><h3>11月</h3><ul><li>作品展</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb" id="winter">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'december', 'images/card-icon-lesson-music.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <div class="month-card__body"><h3>12月</h3><ul><li>クリスマス会</li><li>おもちつき</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'january', 'images/card-icon-lesson-manners.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <div class="month-card__body"><h3>1月</h3><ul><li>3学期スタート</li><li>お正月あそび</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'february', 'images/card-icon-about-playground.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <div class="month-card__body"><h3>2月</h3><ul><li>豆まき</li><li>おゆうぎ会</li></ul></div>
+          </article>
+          <article class="month-card month-card--thumb">
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'march', 'images/card-admission.png' ); ?>" alt="お別れ遠足の様子" loading="lazy"></figure>
+            <div class="month-card__body"><h3>3月</h3><ul><li>お別れ遠足</li><li>卒園式</li></ul></div>
+          </article>
         </div>
         <p class="month-grid__note">このほか、お誕生日会と身体測定を毎月行っています。</p>
       </section>
@@ -60,6 +96,27 @@ get_header();
           </div>
           <p>行事の様子を写真でご紹介します。写真をクリックすると大きく表示されます。</p>
         </div>
+        <?php
+        // 管理画面「フォトギャラリー」で保存した行事ごとの写真セットを表示
+        $aiji_gallery_groups = aiji_gallery_groups();
+        ?>
+        <?php if ( $aiji_gallery_groups ) : ?>
+        <div class="event-gallery">
+          <?php foreach ( $aiji_gallery_groups as $aiji_group ) : ?>
+          <figure class="event-gallery__item"
+            data-gallery="<?php echo esc_attr( wp_json_encode( $aiji_group['images'] ) ); ?>">
+            <img src="<?php echo esc_url( $aiji_group['images'][0]['src'] ); ?>" alt="<?php echo esc_attr( $aiji_group['images'][0]['alt'] ); ?>" loading="lazy">
+            <?php if ( count( $aiji_group['images'] ) > 1 ) : ?>
+            <span class="event-gallery__count">📷 <?php echo (int) count( $aiji_group['images'] ); ?>枚</span>
+            <?php endif; ?>
+            <?php if ( '' !== $aiji_group['title'] ) : ?>
+            <figcaption><?php echo esc_html( $aiji_group['title'] ); ?></figcaption>
+            <?php endif; ?>
+          </figure>
+          <?php endforeach; ?>
+        </div>
+        <p class="event-gallery__hint">写真をクリックすると、その行事の写真をまとめてスライドでご覧いただけます。</p>
+        <?php else : ?>
         <div class="event-gallery">
           <figure class="event-gallery__item">
             <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="運動会で走る子どもたち" loading="lazy">
@@ -86,6 +143,7 @@ get_header();
             <figcaption>入園式</figcaption>
           </figure>
         </div>
+        <?php endif; ?>
       </section>
 
       <section class="page-section split-section" id="nature">
