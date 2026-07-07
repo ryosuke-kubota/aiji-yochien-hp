@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.13.0';
+const AIJI_THEME_VERSION = '1.15.0';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -293,18 +293,26 @@ function aiji_cleanup_dashboard(): void {
 add_action( 'wp_dashboard_setup', 'aiji_cleanup_dashboard', 20 );
 
 /**
- * 月別行事サムネイル。assets/images/photo-{月英名}.jpg（.jpeg/.png）が
- * 置かれていればそれを優先し、なければフォールバック画像を返す。
- * 例: photo-june.jpg を置くと6月カードのサムネイルが自動で差し替わる。
+ * 差し替え写真の検索。assets/images/photo-{名前}.jpg（.jpeg/.png）が
+ * 置かれていればそのURLを、なければ null を返す。
+ * 例: photo-june.jpg → 6月の行事カード / photo-lesson-english.jpg → 英語レッスンカード
  */
-function aiji_month_thumb( string $month_en, string $fallback ): string {
+function aiji_photo( string $name ): ?string {
 	foreach ( array( 'jpg', 'jpeg', 'png' ) as $ext ) {
-		$rel = 'images/photo-' . $month_en . '.' . $ext;
+		$rel = 'images/photo-' . $name . '.' . $ext;
 		if ( file_exists( get_template_directory() . '/assets/' . $rel ) ) {
 			return aiji_asset( $rel );
 		}
 	}
-	return aiji_asset( $fallback );
+	return null;
+}
+
+/**
+ * 月別行事サムネイル。photo-{月英名}.jpg があればそれを優先し、
+ * なければフォールバック画像を返す。
+ */
+function aiji_month_thumb( string $month_en, string $fallback ): string {
+	return aiji_photo( $month_en ) ?? aiji_asset( $fallback );
 }
 
 /**

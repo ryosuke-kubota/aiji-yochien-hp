@@ -43,8 +43,8 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
             <a class="button button--ghost" href="<?php echo aiji_page_url( 'about' ); ?>">園について知る<span aria-hidden="true">›</span></a>
           </div>
         </div>
-        <div class="hero__visual" aria-label="園庭で走る園児たちの写真">
-          <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="">
+        <div class="hero__visual" aria-label="園庭で遊ぶ園児たちと愛児幼稚園の園舎の写真">
+          <img src="<?php echo aiji_asset( 'images/hero-main.jpg' ); ?>" alt="">
         </div>
         <img class="deco deco--bird" src="<?php echo aiji_asset( 'images/deco-bird-card.png' ); ?>" alt="" aria-hidden="true">
         <img class="deco deco-dot deco-dot--cream" src="<?php echo aiji_asset( 'images/deco-dot-yellow.png' ); ?>" alt="" aria-hidden="true">
@@ -76,7 +76,7 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
             <img class="heading-sprout" src="<?php echo aiji_asset( 'images/icon-sprout.png' ); ?>" alt="" aria-hidden="true">
           </div>
           <figure class="blob-photo blob-photo--small">
-            <img src="<?php echo aiji_asset( 'images/news-campus.png' ); ?>" alt="園舎と園庭の写真">
+            <img src="<?php echo aiji_asset( 'images/kousha.jpg' ); ?>" alt="愛児幼稚園の園舎">
           </figure>
         </div>
         <div class="news-list" aria-label="お知らせ一覧">
@@ -226,8 +226,26 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
       </section>
 
       <section class="closing section-anchor" id="life">
-        <h2>子どもたちの笑顔が、未来をつくる。</h2>
-        <p>愛児幼稚園は、これからも子どもたちの成長を見守り続けます。</p>
+        <div class="closing__panel">
+          <img class="closing__deco closing__deco--flower" src="<?php echo aiji_asset( 'images/deco-flower.png' ); ?>" alt="" aria-hidden="true">
+          <img class="closing__deco closing__deco--bird" src="<?php echo aiji_asset( 'images/deco-bird-card.png' ); ?>" alt="" aria-hidden="true">
+          <img class="closing__deco closing__deco--leaf" src="<?php echo aiji_asset( 'images/deco-leaf-sprig.png' ); ?>" alt="" aria-hidden="true">
+          <p class="closing__eyebrow">園見学・未就園児体験 随時受付中</p>
+          <h2>子どもたちの笑顔が、未来をつくる。</h2>
+          <p class="closing__lead">
+            愛児幼稚園は、これからも子どもたちの成長を見守り続けます。<br>
+            園の雰囲気は、実際に見ていただくのがいちばん。お気軽にお越しください。
+          </p>
+          <div class="closing__actions">
+            <a class="button button--primary" href="<?php echo aiji_page_url( 'guide' ); ?>#tour">園見学・体験のお申し込み<span aria-hidden="true">›</span></a>
+            <a class="button button--pink" href="<?php echo aiji_page_url( 'guide' ); ?>#contact">お問い合わせ<span aria-hidden="true">›</span></a>
+          </div>
+          <p class="closing__tel">
+            <span class="closing__tel-label">お電話でのお問い合わせ</span>
+            <a href="tel:0666910502">06-6691-0502</a>
+            <span class="closing__tel-note">受付時間 10:00〜17:00</span>
+          </p>
+        </div>
       </section>
     </main>
 

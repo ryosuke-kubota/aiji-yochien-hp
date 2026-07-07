@@ -29,6 +29,7 @@ get_header();
         <a href="#flow">入園までの流れ</a>
         <a href="#info">募集概要</a>
         <a href="#fees">保育料・諸費用</a>
+        <a href="#uniform">制服について</a>
         <a href="#contact">お問い合わせ</a>
       </nav>
 
@@ -126,6 +127,29 @@ get_header();
           <dt>園バス代</dt><dd>月額4,000円（希望者）</dd>
           <dt>遠足費・行事費</dt><dd>遠足は人数割（最大約3,000円）。行事ごとに事前にご案内します。</dd>
         </dl>
+      </section>
+
+      <section class="page-section soft-panel cream-panel" id="uniform">
+        <div class="page-section__head">
+          <div class="section-heading section-heading--left">
+            <h2>制服について</h2>
+            <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
+          </div>
+          <p>
+            制服関係は、必要な物のみご購入いただけばOK。購入の催促はいたしません。
+            ごきょうだいや卒園児のお下がりも、どうぞお使いください。
+          </p>
+        </div>
+        <div class="uniform-grid">
+          <figure class="uniform-card">
+            <img src="<?php echo aiji_asset( 'images/photo-uniform-winter.jpg' ); ?>" alt="標準服（冬服）を着た園児" loading="lazy">
+            <figcaption>標準服（冬服）</figcaption>
+          </figure>
+          <figure class="uniform-card">
+            <img src="<?php echo aiji_asset( 'images/photo-uniform-summer.jpg' ); ?>" alt="夏服を着た園児" loading="lazy">
+            <figcaption>夏服</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section class="page-cta" id="contact">

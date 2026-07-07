@@ -1051,35 +1051,342 @@ main {
 }
 
 .closing {
-  margin-top: 88px;
-  padding: 56px 20px 44px;
+  margin-top: 96px;
+}
+
+.closing__panel {
+  position: relative;
+  padding: clamp(48px, 6vw, 72px) clamp(20px, 5vw, 64px) clamp(44px, 5vw, 58px);
+  border-radius: 34px;
+  background:
+    radial-gradient(rgba(140, 199, 87, 0.13) 2.4px, transparent 2.9px),
+    linear-gradient(180deg, #fffbf1, var(--color-cream));
+  background-size: 28px 28px, 100% 100%;
+  box-shadow: var(--shadow-soft);
   text-align: center;
 }
 
-.closing h2 {
-  margin: 0 0 8px;
-  font-size: 25px;
+.closing__deco {
+  position: absolute;
+  width: 64px;
+}
+
+.closing__deco--flower {
+  top: -22px;
+  left: clamp(18px, 6vw, 76px);
+  rotate: -12deg;
+}
+
+.closing__deco--bird {
+  top: -30px;
+  right: clamp(22px, 7vw, 92px);
+  width: 74px;
+  rotate: 12deg;
+}
+
+.closing__deco--leaf {
+  bottom: 26px;
+  left: clamp(12px, 4vw, 48px);
+  width: 56px;
+  rotate: -18deg;
+  opacity: 0.85;
+}
+
+.closing__eyebrow {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 7px 22px;
+  border-radius: 999px;
+  color: var(--color-green-deep);
+  background: #fff;
+  box-shadow: 0 6px 14px rgba(96, 83, 66, 0.08);
+  font-size: 13px;
   font-weight: 900;
 }
 
-.closing p {
+.closing h2 {
+  margin: 0 0 10px;
+  font-size: clamp(24px, 3vw, 33px);
+  font-weight: 900;
+}
+
+.closing__lead {
   margin: 0;
   font-weight: 700;
 }
 
+.closing__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.closing__actions .button {
+  min-height: 58px;
+  padding: 0 34px;
+  font-size: 15px;
+}
+
+.closing__tel {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 26px 0 0;
+}
+
+.closing__tel-label,
+.closing__tel-note {
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.closing__tel-note {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.closing__tel a {
+  color: var(--color-ink);
+  font-size: clamp(26px, 3vw, 32px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.closing__tel a:hover {
+  color: var(--color-green-deep);
+}
+
+/* =========================================
+   フッター
+   ========================================= */
+
 .site-footer {
   position: relative;
-  min-height: 105px;
-  margin-top: 4px;
+  margin-top: 96px;
   overflow: hidden;
 }
 
-.site-footer img {
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: minmax(300px, 1.15fr) minmax(0, 1fr) minmax(280px, auto);
+  gap: clamp(28px, 4.5vw, 72px);
+  align-items: start;
+  width: min(var(--container), calc(100% - var(--page-gutter)));
+  margin-inline: auto;
+}
+
+.site-footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.site-footer__logo img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.site-footer__eyebrow {
+  display: block;
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.site-footer__name {
+  display: block;
+  font-size: 23px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.site-footer__address {
+  margin: 16px 0 12px;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.site-footer__tel,
+.site-footer__mail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 4px;
+}
+
+.site-footer__tel-label {
+  min-width: 44px;
+  padding: 1px 0;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--color-green);
+  text-align: center;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.7;
+}
+
+.site-footer__tel a {
+  color: var(--color-ink);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.site-footer__mail a {
+  color: var(--color-ink);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-footer__tel a:hover,
+.site-footer__mail a:hover {
+  color: var(--color-green-deep);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.site-footer__nav-title,
+.site-footer__cta-title {
+  margin: 6px 0 14px;
+  color: var(--color-green-deep);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.site-footer__nav ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(130px, 1fr));
+  gap: 8px 26px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-ink);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer__nav a::before {
+  content: "›";
+  color: var(--color-green);
+  font-weight: 900;
+}
+
+.site-footer__nav a:hover {
+  color: var(--color-green-deep);
+  text-decoration: underline;
+  text-decoration-color: rgba(140, 199, 87, 0.6);
+  text-underline-offset: 4px;
+}
+
+.site-footer__cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.site-footer__cta .button {
+  justify-content: center;
+}
+
+.site-footer__cta-note {
+  margin: 0;
+  color: var(--color-muted);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.site-footer__scenery {
+  display: block;
   width: 100%;
-  height: 112px;
-  min-height: 0;
+  height: clamp(150px, 19vw, 250px);
+  margin-top: clamp(8px, 2vw, 24px);
   object-fit: cover;
   object-position: center bottom;
+}
+
+.site-footer__copyright {
+  margin: 0;
+  padding: 13px 20px 16px;
+  color: #fff;
+  background: var(--color-green-deep);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 1100px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .site-footer__cta {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .site-footer__cta-title {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .site-footer__cta-note {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .site-footer__cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .site-footer__cta-note {
+    text-align: center;
+  }
+
+  .closing__panel {
+    border-radius: 26px;
+  }
+
+  .closing__actions .button {
+    width: 100%;
+  }
+
+  .closing__deco--leaf {
+    display: none;
+  }
 }
 
 .to-top {
@@ -1407,6 +1714,19 @@ main {
   width: 100%;
   height: 260px;
   object-fit: cover;
+}
+
+/* 縦位置写真（理事長ポートレート等）は顔が切れないよう縦比率で表示 */
+.photo-card--portrait {
+  align-self: start;
+  width: min(100%, 380px);
+  margin-inline: auto;
+}
+
+.photo-card--portrait img {
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-position: top;
 }
 
 .value-grid {
@@ -2510,28 +2830,8 @@ main {
 }
 
 /* =========================================
-   園情報表示（フッター・署名・イチオシタグ）
+   園情報表示（署名・イチオシタグ）
    ========================================= */
-
-.site-footer__info {
-  position: relative;
-  z-index: 1;
-  padding: 20px 20px 8px;
-  text-align: center;
-}
-
-.site-footer__name {
-  margin: 0 0 2px;
-  font-size: 15px;
-  font-weight: 900;
-}
-
-.site-footer__address {
-  margin: 0;
-  color: var(--color-muted);
-  font-size: 13px;
-  font-weight: 700;
-}
 
 .about-signature {
   text-align: right;
@@ -2965,6 +3265,7 @@ main {
 
 .event-card--icon {
   grid-template-columns: 1fr;
+  align-content: center;
   justify-items: center;
   text-align: center;
 }
@@ -2982,6 +3283,28 @@ main {
 
 .event-card--icon .button {
   justify-self: center;
+}
+
+/* 実写真つきのサポートカード（写真上・見出し中央） */
+.event-card--photo {
+  grid-template-columns: 1fr;
+  align-content: start;
+  text-align: center;
+}
+
+.event-card--photo img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.event-card--photo h3 {
+  font-weight: 900;
+}
+
+.event-card--photo p {
+  text-align: left;
 }
 
 /* 年間行事ページのヒーローフレーム */
@@ -3119,4 +3442,42 @@ main {
   text-align: center;
   font-size: 13px;
   font-weight: 800;
+}
+
+/* =========================================
+   制服について（入園のご案内）
+   ========================================= */
+
+.uniform-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  max-width: 980px;
+}
+
+.uniform-card {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-panel);
+  background: #fff;
+  box-shadow: var(--shadow-card);
+}
+
+.uniform-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.uniform-card figcaption {
+  padding: 12px 16px 14px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+@media (max-width: 720px) {
+  .uniform-grid {
+    grid-template-columns: 1fr;
+  }
 }

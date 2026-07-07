@@ -22,7 +22,7 @@ get_header();
           <a class="button button--primary" href="<?php echo aiji_page_url( 'guide' ); ?>">見学・入園について<span aria-hidden="true">›</span></a>
         </div>
         <figure class="subpage-hero__visual subpage-hero__visual--about">
-          <img src="<?php echo aiji_asset( 'images/news-campus.png' ); ?>" alt="園舎と園庭のイメージ">
+          <img src="<?php echo aiji_asset( 'images/hero-main.jpg' ); ?>" alt="愛児幼稚園の園舎と園庭で遊ぶ園児たち">
           <img class="subpage-hero__deco" src="<?php echo aiji_asset( 'images/deco-flower.png' ); ?>" alt="" aria-hidden="true">
         </figure>
       </section>
@@ -51,8 +51,12 @@ get_header();
           </p>
           <p class="about-signature">理事長　白樫 章行</p>
         </div>
-        <figure class="photo-card">
-          <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="園庭で遊ぶ子どもたち">
+        <?php
+        // assets/images/photo-chairman.jpg を置くと理事長の写真に自動で切り替わる
+        $aiji_chairman_photo = aiji_photo( 'chairman' );
+        ?>
+        <figure class="photo-card<?php echo $aiji_chairman_photo ? ' photo-card--portrait' : ''; ?>">
+          <img src="<?php echo $aiji_chairman_photo ? $aiji_chairman_photo : aiji_asset( 'images/hero-children-running.png' ); ?>" alt="<?php echo $aiji_chairman_photo ? '理事長 白樫章行' : '園庭で遊ぶ子どもたち'; ?>">
         </figure>
       </section>
 
@@ -115,7 +119,7 @@ get_header();
         </div>
         <div class="facility-grid">
           <article class="facility-card">
-            <img src="<?php echo aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="園舎のイメージ">
+            <img src="<?php echo aiji_asset( 'images/kousha.jpg' ); ?>" alt="愛児幼稚園の園舎">
             <h3>園舎・保育室</h3>
             <p>各教室に冷暖房・空間除菌脱臭機を完備。制作や音楽活動など、年齢に合わせた活動が広がります。</p>
           </article>
