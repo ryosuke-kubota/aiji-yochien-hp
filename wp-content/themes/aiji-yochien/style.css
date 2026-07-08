@@ -3942,7 +3942,7 @@ main {
 
   /* --- 6. CTAカード群: 画像を大きく、入園カードを主役に --- */
   .link-cards {
-    gap: 14px;
+    gap: 24px;
   }
 
   .link-card {
