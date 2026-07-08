@@ -1903,6 +1903,7 @@ main {
 .schedule-track {
   display: grid;
   gap: 16px;
+  margin-top: 16px;
 }
 
 .schedule-step {
@@ -1945,6 +1946,7 @@ main {
   counter-reset: guide;
   display: grid;
   gap: 16px;
+  margin-top: 16px;
 }
 
 .guide-flow__item {

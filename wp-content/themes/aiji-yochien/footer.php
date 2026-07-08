@@ -12,7 +12,6 @@ $aiji_footer_nav = array(
 	array( 'url' => aiji_page_url( 'schedule' ), 'label' => '入園のご案内' ),
 	array( 'url' => aiji_page_url( 'guide' ), 'label' => '未就園児の方へ' ),
 	array( 'url' => aiji_page_url( 'news' ), 'label' => 'お知らせ' ),
-	array( 'url' => home_url( '/#support' ), 'label' => '子育て支援' ),
 	array( 'url' => aiji_page_url( 'about' ) . '#recruit', 'label' => '採用情報' ),
 );
 ?>

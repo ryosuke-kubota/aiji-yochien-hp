@@ -28,7 +28,6 @@ get_header();
       <nav class="page-tabs" aria-label="ページ内メニュー">
         <a href="#calendar">月別行事</a>
         <a href="#gallery">ギャラリー</a>
-        <a href="#nature">愛児農園</a>
       </nav>
 
       <section class="page-section soft-panel cream-panel" id="calendar">
@@ -145,22 +144,6 @@ get_header();
           </figure>
         </div>
         <?php endif; ?>
-      </section>
-
-      <section class="page-section split-section" id="nature">
-        <div class="soft-panel text-stack">
-          <div class="section-heading section-heading--left">
-            <h2>愛児農園</h2>
-            <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
-          </div>
-          <p>
-            愛児農園では、じゃが芋・さつま芋・玉ねぎ・大根作りに挑戦します。
-            じゃがいも掘りやお芋掘りなど収穫の体験が、食べものへの感謝や食育につながっています。
-          </p>
-        </div>
-        <figure class="photo-card">
-          <img src="<?php echo aiji_asset( 'images/news-campus.png' ); ?>" alt="園庭と園舎のイメージ">
-        </figure>
       </section>
 
       <section class="page-cta">

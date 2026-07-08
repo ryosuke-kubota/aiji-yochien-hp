@@ -40,7 +40,6 @@ $aiji_nav_items = array(
           <?php foreach ( $aiji_nav_items as $item ) : ?>
             <a href="<?php echo aiji_page_url( $item['slug'] ); ?>"<?php echo is_page( $item['slug'] ) ? ' aria-current="page"' : ''; ?>><?php echo esc_html( $item['label'] ); ?></a>
           <?php endforeach; ?>
-          <a href="<?php echo esc_url( home_url( '/#support' ) ); ?>">子育て支援</a>
           <a href="<?php echo aiji_page_url( 'about' ); ?>#recruit">採用情報</a>
         </nav>
 

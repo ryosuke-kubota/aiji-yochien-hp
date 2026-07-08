@@ -204,23 +204,23 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
             <p>入園の流れや募集要項など、詳しい情報はこちらから。</p>
             <a class="button button--small button--pink" href="<?php echo aiji_page_url( 'schedule' ); ?>">詳しく見る<span aria-hidden="true">›</span></a>
           </div>
-          <img src="<?php echo aiji_asset( 'images/card-admission.png' ); ?>" alt="未就園児の方へのイメージ写真">
+          <img src="<?php echo aiji_photo( 'hero-schedule' ) ?: aiji_asset( 'images/card-prekindergarten.png' ); ?>" alt="入園式のようす">
         </article>
         <article class="link-card link-card--yellow section-anchor" id="pre">
           <div class="link-card__copy">
             <h2>未就園児の方へ</h2>
-            <p>親子で参加できる活動やクラスのご案内はこちら。</p>
-            <a class="button button--small button--yellow" href="<?php echo aiji_page_url( 'guide' ); ?>#tour">詳しく見る<span aria-hidden="true">›</span></a>
+            <p>2歳児クラスや、親子で参加できる活動のご案内はこちら。</p>
+            <a class="button button--small button--yellow" href="<?php echo aiji_page_url( 'guide' ); ?>">詳しく見る<span aria-hidden="true">›</span></a>
           </div>
-          <img src="<?php echo aiji_asset( 'images/card-prekindergarten.png' ); ?>" alt="未就園児クラスのイメージ写真">
+          <img src="<?php echo aiji_asset( 'images/card-admission.png' ); ?>" alt="未就園児の方へのイメージ写真">
         </article>
-        <article class="link-card link-card--blue section-anchor" id="support">
+        <article class="link-card link-card--blue section-anchor" id="events-link">
           <div class="link-card__copy">
-            <h2>子育て支援</h2>
-            <p>子育て中の方への支援やイベント情報はこちら。</p>
-            <a class="button button--small button--blue" href="<?php echo aiji_page_url( 'guide' ); ?>#contact">詳しく見る<span aria-hidden="true">›</span></a>
+            <h2>年間行事</h2>
+            <p>入園式から卒園式まで、1年の行事を写真とあわせてご紹介。</p>
+            <a class="button button--small button--blue" href="<?php echo aiji_page_url( 'events' ); ?>">詳しく見る<span aria-hidden="true">›</span></a>
           </div>
-          <img src="<?php echo aiji_asset( 'images/card-parenting.png' ); ?>" alt="子育て支援のイメージ写真">
+          <img src="<?php echo aiji_photo( 'hero-events' ) ?: aiji_asset( 'images/hero-children-running.png' ); ?>" alt="運動会のようす">
         </article>
         <img class="deco-card-bird" src="<?php echo aiji_asset( 'images/deco-bird-card.png' ); ?>" alt="" aria-hidden="true">
       </section>
