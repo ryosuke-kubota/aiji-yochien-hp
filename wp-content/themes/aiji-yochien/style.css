@@ -1596,7 +1596,7 @@ main {
   box-shadow: var(--shadow-soft);
 }
 
-/* ページごとに異なる丸みのあるフレーム */
+/* ページごとに歪みの違うブロブ（有機的な丸）フレーム */
 .subpage-hero__visual--about {
   border-radius: 54% 46% 58% 42% / 46% 56% 44% 54%;
 }
@@ -1609,12 +1609,28 @@ main {
   border-radius: 42% 58% 46% 54% / 58% 40% 62% 42%;
 }
 
+.subpage-hero__visual--events {
+  border-radius: 60% 40% 48% 52% / 44% 60% 40% 56%;
+}
+
 .subpage-hero__visual--schedule {
   border-radius: 56% 44% 40% 60% / 60% 54% 46% 40%;
 }
 
 .subpage-hero__visual--guide {
   border-radius: 46% 54% 62% 38% / 42% 54% 46% 60%;
+}
+
+.subpage-hero__visual--recruit {
+  border-radius: 42% 58% 62% 38% / 56% 38% 62% 44%;
+}
+
+.subpage-hero__visual--tour {
+  border-radius: 58% 42% 36% 64% / 48% 64% 36% 52%;
+}
+
+.subpage-hero__visual--contact {
+  border-radius: 36% 64% 56% 44% / 62% 46% 54% 38%;
 }
 
 .subpage-hero__visual img {
@@ -3507,11 +3523,6 @@ main {
 
 .event-card--photo p {
   text-align: left;
-}
-
-/* 年間行事ページのヒーローフレーム */
-.subpage-hero__visual--events {
-  border-radius: 60% 40% 48% 52% / 44% 60% 40% 56%;
 }
 
 /* ナビ8項目対応: 狭めのPC幅でヘッダーが折り返さないように */
