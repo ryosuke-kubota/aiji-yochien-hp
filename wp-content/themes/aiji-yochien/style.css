@@ -1442,6 +1442,8 @@ main {
   }
 }
 
+/* ページトップへ戻る: スクロール後に現れるミニマルな白い円ボタン。
+   周囲のリングがページの読み進み具合を表す（更新はscript.js） */
 .to-top {
   position: fixed;
   right: 24px;
@@ -1449,22 +1451,55 @@ main {
   z-index: 15;
   display: grid;
   place-items: center;
-  width: 78px;
-  height: 78px;
+  width: 60px;
+  height: 60px;
+  padding: 0;
   border: 0;
   border-radius: 50%;
-  color: var(--color-ink);
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: var(--shadow-card);
-  font-size: 11px;
-  font-weight: 900;
-  line-height: 1.35;
+  color: var(--color-green-deep);
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(96, 83, 66, 0.18);
   cursor: pointer;
+  opacity: 0;
+  translate: 0 14px;
+  pointer-events: none;
 }
 
-.to-top span {
-  font-size: 20px;
-  line-height: 1;
+.to-top.is-shown {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
+}
+
+.to-top__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  rotate: -90deg;
+}
+
+.to-top__ring circle {
+  fill: none;
+  stroke-width: 3;
+}
+
+.to-top__ring-bg {
+  stroke: var(--color-green-soft);
+}
+
+.to-top__ring-bar {
+  stroke: var(--color-green);
+  stroke-linecap: round;
+  stroke-dasharray: 131.95;
+  stroke-dashoffset: 131.95;
+  transition: stroke-dashoffset 0.15s linear;
+}
+
+.to-top__icon {
+  width: 22px;
+  height: 22px;
+  transition: translate 0.25s ease;
 }
 
 .section-anchor {
@@ -2653,8 +2688,8 @@ main {
   .to-top {
     right: 14px;
     bottom: 14px;
-    width: 66px;
-    height: 66px;
+    width: 54px;
+    height: 54px;
   }
 }
 
@@ -3030,11 +3065,18 @@ main {
 }
 
 .to-top {
-  transition: translate 0.25s ease, box-shadow 0.25s ease;
+  transition: opacity 0.3s ease, translate 0.3s ease, box-shadow 0.25s ease;
 }
 
-.to-top:hover {
+.to-top.is-shown:hover,
+.to-top.is-shown:focus-visible {
   translate: 0 -4px;
+  box-shadow: 0 16px 32px rgba(96, 83, 66, 0.24);
+}
+
+.to-top.is-shown:hover .to-top__icon,
+.to-top.is-shown:focus-visible .to-top__icon {
+  translate: 0 -2px;
 }
 
 /* --- クロージング見出し: スクロール連動ズーム（対応ブラウザのみ） --- */
@@ -3935,14 +3977,13 @@ main {
   .to-top {
     right: 12px;
     bottom: calc(16px + env(safe-area-inset-bottom));
-    width: 52px;
-    height: 52px;
-    font-size: 9px;
-    line-height: 1.25;
+    width: 50px;
+    height: 50px;
   }
 
-  .to-top span {
-    font-size: 15px;
+  .to-top__icon {
+    width: 18px;
+    height: 18px;
   }
 
   /* --- 8. フッター: グループ間の余白と可読性 --- */

@@ -60,8 +60,11 @@ $aiji_footer_nav = array(
       <p class="site-footer__copyright">© <?php echo esc_html( date_i18n( 'Y' ) ); ?> 学校法人 稲垣学園 認定こども園 愛児幼稚園</p>
 
       <button class="to-top" type="button" data-to-top aria-label="ページのトップへ戻る">
-        <span aria-hidden="true">↑</span>
-        ページの<br>トップへ
+        <svg class="to-top__ring" viewBox="0 0 48 48" aria-hidden="true">
+          <circle class="to-top__ring-bg" cx="24" cy="24" r="21"></circle>
+          <circle class="to-top__ring-bar" cx="24" cy="24" r="21" data-to-top-ring></circle>
+        </svg>
+        <svg class="to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 12 8l6 6"/></svg>
       </button>
     </footer>
     <?php wp_footer(); ?>

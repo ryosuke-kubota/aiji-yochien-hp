@@ -59,6 +59,22 @@ toTop?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+// ある程度スクロールしたらトップへ戻るボタンを表示し、リングに読み進み具合を反映する
+const TO_TOP_SHOW_Y = 480;
+const toTopRing = document.querySelector("[data-to-top-ring]");
+const TO_TOP_RING_LENGTH = 2 * Math.PI * 21; // circle r=21 の周長。CSSのstroke-dasharrayと揃える
+const updateToTop = () => {
+  if (!toTop) return;
+  toTop.classList.toggle("is-shown", window.scrollY > TO_TOP_SHOW_Y);
+  if (toTopRing) {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 0;
+    toTopRing.style.strokeDashoffset = String(TO_TOP_RING_LENGTH * (1 - progress));
+  }
+};
+updateToTop();
+window.addEventListener("scroll", updateToTop, { passive: true });
+
 // ===== アニメーション =====
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
