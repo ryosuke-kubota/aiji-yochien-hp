@@ -237,8 +237,8 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
             園の雰囲気は、実際に見ていただくのがいちばん。お気軽にお越しください。
           </p>
           <div class="closing__actions">
-            <a class="button button--primary" href="<?php echo aiji_page_url( 'guide' ); ?>#tour">園見学・体験のお申し込み<span aria-hidden="true">›</span></a>
-            <a class="button button--pink" href="<?php echo aiji_page_url( 'guide' ); ?>#contact">お問い合わせ<span aria-hidden="true">›</span></a>
+            <a class="button button--primary" href="<?php echo aiji_page_url( 'tour' ); ?>">園見学・体験のお申し込み<span aria-hidden="true">›</span></a>
+            <a class="button button--pink" href="<?php echo aiji_page_url( 'contact' ); ?>">お問い合わせ<span aria-hidden="true">›</span></a>
           </div>
           <p class="closing__tel">
             <span class="closing__tel-label">お電話でのお問い合わせ</span>

@@ -12,7 +12,7 @@ $aiji_footer_nav = array(
 	array( 'url' => aiji_page_url( 'schedule' ), 'label' => '入園のご案内' ),
 	array( 'url' => aiji_page_url( 'guide' ), 'label' => '未就園児の方へ' ),
 	array( 'url' => aiji_page_url( 'news' ), 'label' => 'お知らせ' ),
-	array( 'url' => aiji_page_url( 'about' ) . '#recruit', 'label' => '採用情報' ),
+	array( 'url' => aiji_page_url( 'recruit' ), 'label' => '採用情報' ),
 );
 ?>
     <footer class="site-footer">
@@ -50,8 +50,8 @@ $aiji_footer_nav = array(
 
         <div class="site-footer__cta">
           <p class="site-footer__cta-title">見学・体験 随時受付中</p>
-          <a class="button button--primary" href="<?php echo aiji_page_url( 'guide' ); ?>#tour">園見学・体験のお申し込み<span aria-hidden="true">›</span></a>
-          <a class="button button--pink" href="<?php echo aiji_page_url( 'guide' ); ?>#contact">お問い合わせ<span aria-hidden="true">›</span></a>
+          <a class="button button--primary" href="<?php echo aiji_page_url( 'tour' ); ?>">園見学・体験のお申し込み<span aria-hidden="true">›</span></a>
+          <a class="button button--pink" href="<?php echo aiji_page_url( 'contact' ); ?>">お問い合わせ<span aria-hidden="true">›</span></a>
           <p class="site-footer__cta-note">お電話でのお問い合わせは 10:00〜17:00</p>
         </div>
       </div>

@@ -16,7 +16,7 @@ get_header();
             願書配布は9月1日から、願書受付は10月1日から。
             2歳児から受け入れています。募集要項と入園までの流れをご案内します。
           </p>
-          <a class="button button--primary" href="<?php echo aiji_page_url( 'guide' ); ?>#tour">見学会で雰囲気を見る<span aria-hidden="true">›</span></a>
+          <a class="button button--primary" href="<?php echo aiji_page_url( 'tour' ); ?>">見学会で雰囲気を見る<span aria-hidden="true">›</span></a>
         </div>
         <figure class="subpage-hero__visual subpage-hero__visual--schedule">
           <?php // assets/images/photo-hero-schedule.jpg を置くと自動で差し替わる ?>
@@ -65,7 +65,7 @@ get_header();
             <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true">
             <h3>園見学・個別相談</h3>
             <p>入園や転入、預かり保育、通園方法のご相談は随時承ります。</p>
-            <a class="button button--small button--ghost" href="<?php echo aiji_page_url( 'guide' ); ?>#tour">見学の案内を見る<span aria-hidden="true">›</span></a>
+            <a class="button button--small button--ghost" href="<?php echo aiji_page_url( 'tour' ); ?>">見学の案内を見る<span aria-hidden="true">›</span></a>
           </article>
         </div>
       </section>

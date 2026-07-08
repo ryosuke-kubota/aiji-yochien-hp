@@ -3959,3 +3959,232 @@ main {
     font-size: 11.5px;
   }
 }
+
+/* =========================================
+   採用エントリーフォーム
+   ========================================= */
+.entry-notice {
+  margin-bottom: 22px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.entry-notice--ok {
+  background: var(--color-green-soft);
+  border: 2px solid var(--color-green);
+  color: var(--color-green-deep);
+}
+
+.entry-notice--ng {
+  background: var(--color-pink-soft);
+  border: 2px solid var(--color-pink);
+  color: var(--color-pink-deep);
+}
+
+.entry-form {
+  margin-top: 8px;
+}
+
+/* ハニーポット: ボット対策の欄。視覚・支援技術の両方から隠す */
+.entry-form__hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.entry-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 26px;
+}
+
+.entry-field {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.entry-field--wide {
+  grid-column: 1 / -1;
+}
+
+.entry-field label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.entry-required {
+  flex-shrink: 0;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--color-pink);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.entry-field input,
+.entry-field select,
+.entry-field textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 2px solid var(--color-line);
+  border-radius: 14px;
+  background: #fff;
+  font: inherit;
+  color: var(--color-ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.entry-field input::placeholder,
+.entry-field textarea::placeholder {
+  color: #b8aca3;
+}
+
+.entry-field input:focus-visible,
+.entry-field select:focus-visible,
+.entry-field textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-green);
+  box-shadow: 0 0 0 4px var(--color-green-soft);
+}
+
+.entry-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%238cc757' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px;
+}
+
+.entry-field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.entry-form__agree {
+  margin: 26px 0 0;
+}
+
+.entry-form__agree label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  cursor: pointer;
+}
+
+.entry-form__agree input {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  accent-color: var(--color-green);
+}
+
+.entry-form__agree .entry-required {
+  margin-left: 6px;
+  vertical-align: 2px;
+}
+
+.entry-form__submit {
+  margin: 26px 0 0;
+  text-align: center;
+}
+
+.entry-form__submit .button {
+  min-width: min(320px, 100%);
+  min-height: 54px;
+}
+
+@media (max-width: 720px) {
+  .entry-form__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .entry-form__submit .button {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   お問い合わせページ 電話パネル
+   ========================================= */
+.tel-panel {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 34px 22px;
+  border-radius: var(--radius-panel);
+  background: var(--color-green-soft);
+  text-align: center;
+  margin-top: 16px;
+}
+
+.tel-panel__lead {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.tel-panel__number {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--color-green-deep);
+  font-size: clamp(32px, 5vw, 46px);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tel-panel__number svg {
+  width: clamp(26px, 3.6vw, 36px);
+  height: clamp(26px, 3.6vw, 36px);
+  flex-shrink: 0;
+}
+
+.tel-panel__number:hover,
+.tel-panel__number:focus-visible {
+  color: var(--color-ink);
+}
+
+.tel-panel__note {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.tel-panel__hint {
+  margin: 4px 0 0;
+  color: var(--color-muted);
+  font-size: 12.5px;
+}
+
+@media (max-width: 720px) {
+  .tel-panel {
+    padding: 26px 16px;
+  }
+
+  .tel-panel__number {
+    gap: 8px;
+    font-size: clamp(24px, 7vw, 32px);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+}

@@ -160,9 +160,9 @@ get_header();
       <section class="page-cta" id="recruit">
         <div>
           <h2>採用情報</h2>
-          <p>愛児幼稚園では現在、幼稚園教諭を募集しています。詳細はお電話にてお問い合わせください。<br>TEL 06-6691-0502</p>
+          <p>愛児幼稚園では現在、幼稚園教諭を募集しています。募集要項と応募フォームは採用情報ページをご覧ください。<br>お電話でのご相談も歓迎です。TEL 06-6691-0502</p>
         </div>
-        <a class="button button--primary" href="tel:0666910502">電話で問い合わせる<span aria-hidden="true">›</span></a>
+        <a class="button button--primary" href="<?php echo aiji_page_url( 'recruit' ); ?>">採用情報・応募フォームへ<span aria-hidden="true">›</span></a>
       </section>
     </main>
 

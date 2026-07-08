@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.22.1';
+const AIJI_THEME_VERSION = '1.24.2';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -86,6 +86,9 @@ function aiji_activate(): void {
 		'schedule' => '入園のご案内',
 		'guide'    => '未就園児の方へ',
 		'news'     => 'お知らせ',
+		'recruit'  => '採用情報',
+		'tour'     => '園見学・体験',
+		'contact'  => 'お問い合わせ',
 	);
 	$page_ids = array();
 	foreach ( $pages as $slug => $title ) {
@@ -541,3 +544,254 @@ function aiji_gallery_save(): void {
 	exit;
 }
 add_action( 'admin_post_aiji_save_gallery', 'aiji_gallery_save' );
+
+/* =========================================
+   採用エントリーフォーム
+   ========================================= */
+
+/** 応募内容の保存先。管理画面「採用応募」からのみ閲覧でき、手動での新規作成は不可 */
+function aiji_entry_post_type(): void {
+	register_post_type(
+		'aiji_entry',
+		array(
+			'labels'        => array(
+				'name'          => '採用応募',
+				'singular_name' => '採用応募',
+				'menu_name'     => '採用応募',
+				'all_items'     => '応募一覧',
+				'edit_item'     => '応募内容',
+				'search_items'  => '応募を検索',
+			),
+			'public'        => false,
+			'show_ui'       => true,
+			'menu_position' => 26,
+			'menu_icon'     => 'dashicons-id-alt',
+			'supports'      => array( 'title', 'editor' ),
+			'capabilities'  => array( 'create_posts' => 'do_not_allow' ),
+			'map_meta_cap'  => true,
+		)
+	);
+}
+add_action( 'init', 'aiji_entry_post_type' );
+
+/** 採用ページで選べる希望職種の一覧 */
+function aiji_entry_jobs(): array {
+	return array( '幼稚園教諭', '保育補助', '預かり保育スタッフ', 'その他' );
+}
+
+/** 採用エントリーフォームの送信処理（未ログインの応募者が使う） */
+function aiji_entry_submit(): void {
+	$back = aiji_page_url( 'recruit' );
+
+	// ハニーポット: 人間には見えない欄に入力があればボットとみなし、何も保存せず成功画面へ
+	if ( ! empty( $_POST['aiji_website'] ) ) {
+		wp_safe_redirect( add_query_arg( 'entry', 'sent', $back ) . '#entry' );
+		exit;
+	}
+
+	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['_wpnonce'] ), 'aiji_recruit_entry' ) ) {
+		wp_safe_redirect( add_query_arg( 'entry', 'expired', $back ) . '#entry' );
+		exit;
+	}
+
+	// 連投防止: 同一IPからの送信は60秒に1回まで
+	$ip_key = 'aiji_entry_' . md5( $_SERVER['REMOTE_ADDR'] ?? '' );
+	if ( get_transient( $ip_key ) ) {
+		wp_safe_redirect( add_query_arg( 'entry', 'wait', $back ) . '#entry' );
+		exit;
+	}
+
+	$name    = sanitize_text_field( wp_unslash( $_POST['aiji_name'] ?? '' ) );
+	$kana    = sanitize_text_field( wp_unslash( $_POST['aiji_kana'] ?? '' ) );
+	$phone   = sanitize_text_field( wp_unslash( $_POST['aiji_phone'] ?? '' ) );
+	$email   = sanitize_email( wp_unslash( $_POST['aiji_email'] ?? '' ) );
+	$job     = sanitize_text_field( wp_unslash( $_POST['aiji_job'] ?? '' ) );
+	$message = sanitize_textarea_field( wp_unslash( $_POST['aiji_message'] ?? '' ) );
+	$agree   = ! empty( $_POST['aiji_agree'] );
+
+	$is_valid = '' !== $name
+		&& preg_match( '/^[0-9+\-() ]{10,15}$/', $phone )
+		&& is_email( $email )
+		&& in_array( $job, aiji_entry_jobs(), true )
+		&& mb_strlen( $message ) <= 2000
+		&& $agree;
+	if ( ! $is_valid ) {
+		wp_safe_redirect( add_query_arg( 'entry', 'invalid', $back ) . '#entry' );
+		exit;
+	}
+
+	$body    = sprintf(
+		"お名前: %s\nふりがな: %s\n電話番号: %s\nメールアドレス: %s\n希望職種: %s\n\n【自己PR・ご質問など】\n%s",
+		$name,
+		$kana,
+		$phone,
+		$email,
+		$job,
+		'' !== $message ? $message : '（記入なし）'
+	);
+	$post_id = wp_insert_post(
+		array(
+			'post_type'    => 'aiji_entry',
+			'post_status'  => 'private',
+			'post_title'   => sprintf( '%s（%s）', $name, $job ),
+			'post_content' => $body,
+		),
+		true
+	);
+	if ( is_wp_error( $post_id ) ) {
+		wp_safe_redirect( add_query_arg( 'entry', 'error', $back ) . '#entry' );
+		exit;
+	}
+
+	set_transient( $ip_key, 1, MINUTE_IN_SECONDS );
+
+	// 管理者へ通知メール。送信できない環境でも応募は管理画面「採用応募」に残る
+	wp_mail(
+		get_option( 'admin_email' ),
+		'【採用応募】' . $name . ' 様（' . $job . '）',
+		$body . "\n\n応募一覧: " . admin_url( 'edit.php?post_type=aiji_entry' )
+	);
+
+	wp_safe_redirect( add_query_arg( 'entry', 'sent', $back ) . '#entry' );
+	exit;
+}
+add_action( 'admin_post_aiji_recruit_entry', 'aiji_entry_submit' );
+add_action( 'admin_post_nopriv_aiji_recruit_entry', 'aiji_entry_submit' );
+
+/* =========================================
+   園見学・体験／お問い合わせフォーム
+   ========================================= */
+
+/** フォーム種別ごとの設定。topics が選択肢のホワイトリスト、page が送信後の戻り先 */
+function aiji_inquiry_types(): array {
+	return array(
+		'tour'    => array(
+			'label'  => '園見学・体験',
+			'topics' => array( '園見学', '未就園児体験', '園庭開放', '個別相談' ),
+			'page'   => 'tour',
+		),
+		'contact' => array(
+			'label'  => 'お問い合わせ',
+			'topics' => array( '入園について', '未就園児クラス・園見学について', '預かり保育について', '採用について', 'その他' ),
+			'page'   => 'contact',
+		),
+	);
+}
+
+/** 見学申し込み・お問い合わせの保存先。管理画面「お問い合わせ」からのみ閲覧でき、手動での新規作成は不可 */
+function aiji_inquiry_post_type(): void {
+	register_post_type(
+		'aiji_inquiry',
+		array(
+			'labels'        => array(
+				'name'          => 'お問い合わせ',
+				'singular_name' => 'お問い合わせ',
+				'menu_name'     => 'お問い合わせ',
+				'all_items'     => '受信一覧',
+				'edit_item'     => 'お問い合わせ内容',
+				'search_items'  => 'お問い合わせを検索',
+			),
+			'public'        => false,
+			'show_ui'       => true,
+			'menu_position' => 27,
+			'menu_icon'     => 'dashicons-email-alt',
+			'supports'      => array( 'title', 'editor' ),
+			'capabilities'  => array( 'create_posts' => 'do_not_allow' ),
+			'map_meta_cap'  => true,
+		)
+	);
+}
+add_action( 'init', 'aiji_inquiry_post_type' );
+
+/** 園見学・体験／お問い合わせフォームの送信処理（未ログインの訪問者が使う） */
+function aiji_inquiry_submit(): void {
+	$types = aiji_inquiry_types();
+	$type  = sanitize_key( $_POST['aiji_type'] ?? '' );
+	if ( ! isset( $types[ $type ] ) ) {
+		wp_safe_redirect( home_url( '/' ) );
+		exit;
+	}
+	$conf = $types[ $type ];
+	$back = aiji_page_url( $conf['page'] );
+
+	// ハニーポット: 人間には見えない欄に入力があればボットとみなし、何も保存せず成功画面へ
+	if ( ! empty( $_POST['aiji_website'] ) ) {
+		wp_safe_redirect( add_query_arg( 'entry', 'sent', $back ) . '#form' );
+		exit;
+	}
+
+	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['_wpnonce'] ), 'aiji_inquiry_form' ) ) {
+		wp_safe_redirect( add_query_arg( 'entry', 'expired', $back ) . '#form' );
+		exit;
+	}
+
+	// 連投防止: 同一IPからの送信は60秒に1回まで（見学・問い合わせ共通）
+	$ip_key = 'aiji_inquiry_' . md5( $_SERVER['REMOTE_ADDR'] ?? '' );
+	if ( get_transient( $ip_key ) ) {
+		wp_safe_redirect( add_query_arg( 'entry', 'wait', $back ) . '#form' );
+		exit;
+	}
+
+	$name    = sanitize_text_field( wp_unslash( $_POST['aiji_name'] ?? '' ) );
+	$kana    = sanitize_text_field( wp_unslash( $_POST['aiji_kana'] ?? '' ) );
+	$phone   = sanitize_text_field( wp_unslash( $_POST['aiji_phone'] ?? '' ) );
+	$email   = sanitize_email( wp_unslash( $_POST['aiji_email'] ?? '' ) );
+	$topic   = sanitize_text_field( wp_unslash( $_POST['aiji_topic'] ?? '' ) );
+	$date    = sanitize_text_field( wp_unslash( $_POST['aiji_date'] ?? '' ) );
+	$message = sanitize_textarea_field( wp_unslash( $_POST['aiji_message'] ?? '' ) );
+	$agree   = ! empty( $_POST['aiji_agree'] );
+
+	// お問い合わせは本文必須、園見学・体験は任意
+	$is_valid = '' !== $name
+		&& preg_match( '/^[0-9+\-() ]{10,15}$/', $phone )
+		&& is_email( $email )
+		&& in_array( $topic, $conf['topics'], true )
+		&& mb_strlen( $date ) <= 100
+		&& mb_strlen( $message ) <= 2000
+		&& ( 'contact' !== $type || '' !== $message )
+		&& $agree;
+	if ( ! $is_valid ) {
+		wp_safe_redirect( add_query_arg( 'entry', 'invalid', $back ) . '#form' );
+		exit;
+	}
+
+	$lines = array(
+		'種別: ' . $conf['label'],
+		'お名前: ' . $name,
+		'ふりがな: ' . $kana,
+		'電話番号: ' . $phone,
+		'メールアドレス: ' . $email,
+		'内容: ' . $topic,
+	);
+	if ( '' !== $date ) {
+		$lines[] = 'ご希望の日時: ' . $date;
+	}
+	$body    = implode( "\n", $lines ) . "\n\n【メッセージ】\n" . ( '' !== $message ? $message : '（記入なし）' );
+	$post_id = wp_insert_post(
+		array(
+			'post_type'    => 'aiji_inquiry',
+			'post_status'  => 'private',
+			'post_title'   => sprintf( '%s（%s: %s）', $name, $conf['label'], $topic ),
+			'post_content' => $body,
+		),
+		true
+	);
+	if ( is_wp_error( $post_id ) ) {
+		wp_safe_redirect( add_query_arg( 'entry', 'error', $back ) . '#form' );
+		exit;
+	}
+
+	set_transient( $ip_key, 1, MINUTE_IN_SECONDS );
+
+	// 管理者へ通知メール。送信できない環境でも内容は管理画面「お問い合わせ」に残る
+	wp_mail(
+		get_option( 'admin_email' ),
+		'【' . $conf['label'] . '】' . $name . ' 様より（' . $topic . '）',
+		$body . "\n\n受信一覧: " . admin_url( 'edit.php?post_type=aiji_inquiry' )
+	);
+
+	wp_safe_redirect( add_query_arg( 'entry', 'sent', $back ) . '#form' );
+	exit;
+}
+add_action( 'admin_post_aiji_inquiry_form', 'aiji_inquiry_submit' );
+add_action( 'admin_post_nopriv_aiji_inquiry_form', 'aiji_inquiry_submit' );
