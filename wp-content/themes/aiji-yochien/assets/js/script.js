@@ -150,9 +150,9 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
     ".guide-flow",
     ".event-gallery"
   ];
-  const STAGGER_STEP_MS = 90;
-  const STAGGER_MAX_MS = 540;
-  const REVEAL_DURATION_MS = 900;
+  const STAGGER_STEP_MS = 130;
+  const STAGGER_MAX_MS = 780;
+  const REVEAL_DURATION_MS = 1200;
 
   const targets = new Map();
   revealPlans.forEach(({ selector, variant }) => {
