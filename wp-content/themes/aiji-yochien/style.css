@@ -38,10 +38,24 @@ Text Domain: aiji-yochien
   --section-space: 64px;
   --hero-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 780 384' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M118 10 C 260 -6 560 -4 780 6 L 780 346 C 700 380 620 344 528 358 C 440 372 372 332 284 350 C 204 366 138 362 108 320 C 84 286 92 246 100 210 C 108 172 82 128 90 84 C 96 44 92 16 118 10 Z'/%3E%3C/svg%3E");
   --news-photo-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M150 6 C246 6 294 36 294 100 C294 164 246 194 150 194 C54 194 6 164 6 100 C6 36 54 6 150 6 Z'/%3E%3C/svg%3E");
+  --hero-mask-sp: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 330' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M0 40 C58 8 118 34 188 18 C252 4 316 30 390 14 V294 C352 320 308 298 262 309 C214 320 176 300 128 311 C86 320 38 314 0 290 Z'/%3E%3C/svg%3E");
+  --news-photo-mask-sp: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M42 7 C110 2 190 2 258 7 C282 9 291 20 293 44 C295 72 295 128 293 156 C291 180 282 191 258 193 C190 198 110 198 42 193 C18 191 9 180 7 156 C5 128 5 72 7 44 C9 20 18 9 42 7 Z'/%3E%3C/svg%3E");
+  --hero-mask-sp-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 260' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M0 0 H390 V230 C336 250 282 236 210 243 C138 250 66 244 0 232 Z'/%3E%3C/svg%3E");
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* スマホでだけ改行させたい箇所に使う */
+.sp-br {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .sp-br {
+    display: inline;
+  }
 }
 
 html {
@@ -50,6 +64,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip; /* 縁からはみ出す装飾イラストで横スクロールが生まれないように */
   color: var(--color-ink);
   background: var(--color-paper);
   font-family: var(--font-sans);
@@ -206,6 +221,20 @@ select {
   margin: 4px auto;
   border-radius: 999px;
   background: #fff;
+  transition: translate 0.25s ease, rotate 0.25s ease, opacity 0.2s ease;
+}
+
+/* PCではラッパーを透過させ、ナビとピルをヘッダーグリッドの直接の子として扱う */
+.site-menu {
+  display: contents;
+}
+
+.menu-overlay {
+  display: none;
+}
+
+body.menu-open {
+  overflow: hidden;
 }
 
 main {
@@ -1803,6 +1832,7 @@ main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 18px;
+  margin-top: 16px;
 }
 
 .facility-card,
@@ -1976,7 +2006,7 @@ main {
   font-weight: 700;
 }
 
-@media (max-width: 900px) and (min-width: 761px) {
+@media (max-width: 900px) and (min-width: 861px) {
   .site-header {
     gap: 12px;
     padding-inline: 8px;
@@ -2060,7 +2090,7 @@ main {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
   .site-header {
     grid-template-columns: auto auto;
   }
@@ -2070,38 +2100,106 @@ main {
     justify-self: end;
   }
 
-  .site-nav,
-  .header-actions {
-    display: none;
+  /* backdrop-filterがあるとfixedのドロワーがヘッダー内に閉じ込められるため、
+     モバイルは不透明背景に切り替える */
+  .site-header {
+    background: var(--color-paper);
+    backdrop-filter: none;
   }
 
-  .site-header.is-open .site-nav,
-  .site-header.is-open .header-actions {
-    display: grid;
-    grid-column: 1 / -1;
-    justify-items: start;
-    width: 100%;
-    padding: 20px;
-    border-radius: var(--radius-panel);
+  /* 右からスライドインするサイドメニュー */
+  .site-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    width: min(78vw, 320px);
+    padding: 88px 26px 30px;
     background: #fff;
-    box-shadow: var(--shadow-card);
+    box-shadow: -16px 0 44px rgba(96, 83, 66, 0.18);
+    overflow-y: auto;
+    visibility: hidden;
+    transform: translateX(105%);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0.35s;
   }
 
-  .site-header.is-open .site-nav {
-    gap: 10px;
+  .site-header.is-open .site-menu {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .site-header.is-open .header-actions {
-    grid-template-columns: repeat(2, minmax(150px, 1fr));
-    margin-top: -18px;
+  .site-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    font-size: 15px;
+    white-space: normal;
+  }
+
+  .site-nav a {
+    padding: 12px 2px;
+    border-bottom: 1px dashed var(--color-line);
+  }
+
+  .header-actions {
+    display: grid;
+    gap: 12px;
+  }
+
+  .header-actions .header-pill {
+    justify-content: center;
+  }
+
+  /* メニューの背後を暗くするオーバーレイ */
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    display: block;
+    background: rgba(49, 41, 35, 0.42);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  }
+
+  .site-header.is-open .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+  }
+
+  /* トグルは開閉時に「≡ → ✕」へ変形しメニューより手前に */
+  .nav-toggle {
+    position: relative;
+    z-index: 70;
+  }
+
+  .site-header.is-open .nav-toggle span:nth-child(1) {
+    translate: 0 6px;
+    rotate: 45deg;
+  }
+
+  .site-header.is-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header.is-open .nav-toggle span:nth-child(3) {
+    translate: 0 -6px;
+    rotate: -45deg;
   }
 
   .hero {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 38px;
     min-height: 0;
-    padding-top: 20px;
+    padding-top: clamp(34px, 6vw, 52px);
   }
 
   .hero::before {
@@ -2113,12 +2211,30 @@ main {
     left: auto;
     top: auto;
     width: auto;
-    padding-left: 0;
+    padding: 6px 0 2px;
+    text-align: center;
+  }
+
+  /* 画面幅に合わせて見出しを大きく（全幅を使う） */
+  .hero__kicker {
+    margin-bottom: 6px;
+    font-size: clamp(26px, 8.4vw, 36px);
+  }
+
+  .hero h1 {
+    margin-bottom: 22px;
+    font-size: clamp(33px, 11.2vw, 50px);
+  }
+
+  .hero__lead {
+    margin-bottom: 24px;
+    font-size: clamp(14px, 4vw, 16px);
   }
 
   .hero__buttons {
     gap: 16px;
-    width: min(245px, 100%);
+    width: min(260px, 100%);
+    margin-inline: auto;
   }
 
   .hero__buttons .button {
@@ -2128,12 +2244,32 @@ main {
     gap: 16px;
   }
 
+  /* 写真は画面いっぱいに広げ、下辺が波打つスマホ専用マスクに */
   .hero__visual {
     position: relative;
-    left: auto;
+    left: 50%;
     right: auto;
     top: auto;
+    width: 100vw;
+    height: clamp(320px, 55vw, 440px);
     margin-right: 0;
+    margin-left: -50vw;
+    -webkit-mask-image: var(--hero-mask-sp);
+    mask-image: var(--hero-mask-sp);
+  }
+
+  /* 積み上げレイアウトではPC用座標の装飾が写真に重なるため調整 */
+  .deco-dot--cream {
+    display: none;
+  }
+
+  .deco-flower--hero {
+    top: 10px;
+    right: 10px;
+    bottom: auto;
+    left: auto;
+    width: 46px;
+    height: 46px;
   }
 
   .important,
@@ -2173,13 +2309,20 @@ main {
     padding: 0 18px 18px;
   }
 
+  /* お知らせの写真は四角に近いやわらかフレームに */
+  .news-panel__media .blob-photo {
+    -webkit-mask-image: var(--news-photo-mask-sp);
+    mask-image: var(--news-photo-mask-sp);
+  }
+
   .important__body {
     padding: 0;
   }
 
   .important__label {
     min-height: 72px;
-    border-radius: var(--radius-panel) var(--radius-panel) 999px 999px;
+    margin: 0 -18px; /* コンテナの左右paddingを打ち消して帯を全幅に */
+    border-radius: 22px 22px 26px 26px;
   }
 
   .important__more {
@@ -2319,11 +2462,6 @@ main {
     padding: 24px 20px;
   }
 
-  .hero__visual {
-    height: 330px;
-    border-radius: 36px 36px 58px 58px;
-  }
-
   .deco--bird,
   .deco-dot,
   .deco-leaf {
@@ -2332,7 +2470,7 @@ main {
 
   .important {
     grid-template-columns: 1fr;
-    padding: 18px;
+    padding: 0 18px 18px;
   }
 
   .important__label {
@@ -2370,17 +2508,70 @@ main {
     padding: 0;
   }
 
+  /* コンテンツを横幅いっぱいに・テキストを読みやすく */
+  .story-band .philosophy {
+    padding: 40px 8px 0;
+  }
+
+  /* 1カラム時にグリッドが中身の最小幅で膨らまないように */
+  .philosophy__copy,
+  .philosophy__photos {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .section-lead {
+    font-size: clamp(19px, 6.1vw, 24px);
+  }
+
+  .philosophy__copy p:not(.section-lead) {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  /* 丸写真は重ねず横並びに */
+  .philosophy__photos {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+    min-height: 0;
+    margin-top: 10px;
+  }
+
+  .round-photo--large,
+  .round-photo--small {
+    position: static;
+    flex-shrink: 0;
+  }
+
   .round-photo--large {
-    left: 0;
-    width: 260px;
-    height: 260px;
+    width: min(56vw, 250px);
+    height: min(56vw, 250px);
   }
 
   .round-photo--small {
-    right: 0;
-    bottom: 10px;
-    width: 136px;
-    height: 136px;
+    width: min(34vw, 150px);
+    height: min(34vw, 150px);
+    margin-top: 26vw;
+  }
+
+  /* ボタンはタップしやすい大きさに */
+  .philosophy__copy .button {
+    min-width: min(300px, 100%);
+    min-height: 52px;
+    margin-top: 14px;
+    font-size: 13px;
+  }
+
+  /* 横並びレイアウトでは写真に重なるため非表示 */
+  .philosophy__photos .deco-sprinkles {
+    display: none;
+  }
+
+  /* 特長カードを横幅いっぱいに（1カラム化は既存ルール） */
+  .story-band .features {
+    padding: 28px 8px 12px;
   }
 
   .features {
@@ -2416,6 +2607,15 @@ main {
   .feature-card {
     min-height: 138px;
     padding: 18px 20px 14px;
+  }
+
+  .feature-card h3 {
+    margin-bottom: 8px;
+    font-size: 19px;
+  }
+
+  .feature-card p {
+    font-size: 13px;
   }
 
   .link-card {
@@ -3479,5 +3679,281 @@ main {
 @media (max-width: 720px) {
   .uniform-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   モバイル デザインQA調整
+   （後勝ちで既存モバイル値を上書き。PCへの影響なし）
+   ========================================= */
+
+@media (max-width: 720px) {
+  /* --- 1. ヘッダー: ロゴ・園名を少し大きく、トグルまわりに余白 --- */
+  .site-header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .brand__mark {
+    flex-basis: 46px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .brand__eyebrow {
+    font-size: 10px;
+  }
+
+  .brand__name {
+    font-size: 24px;
+  }
+
+  .nav-toggle {
+    margin-right: 2px;
+  }
+
+  /* --- 2. ヒーロー: 縦リズムを整え、写真は次セクションが覗く高さに --- */
+  .hero {
+    gap: 30px;
+  }
+
+  .hero__kicker {
+    margin-bottom: 4px;
+    font-size: clamp(22px, 6.6vw, 27px);
+  }
+
+  .hero h1 {
+    margin-bottom: 14px;
+    font-size: clamp(30px, 8.8vw, 34px);
+  }
+
+  .hero__lead {
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  .hero__buttons {
+    gap: 12px;
+    width: min(310px, 100%);
+  }
+
+  .hero__buttons .button {
+    min-height: 48px;
+    font-size: 14px;
+  }
+
+  /* 写真は角丸の安定フレーム（マスクなし・フルブリードと斜めカットをやめる） */
+  .hero__visual {
+    left: auto;
+    width: 100%;
+    height: clamp(220px, 58vw, 260px);
+    margin-left: 0;
+    border-radius: 32px;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero__visual img {
+    object-position: 50% 45%;
+  }
+
+  /* --- 3. お知らせ: 本文の可読性と一覧の2段組み --- */
+  .important__body p {
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+
+  .important__body .important__title {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .news-row {
+    grid-template-columns: auto minmax(0, 1fr) 18px;
+    grid-template-areas:
+      "time tag arrow"
+      "title title arrow";
+    row-gap: 2px;
+    padding: 10px 0;
+    min-height: 0;
+  }
+
+  .news-row time {
+    grid-area: time;
+    font-size: 12.5px;
+  }
+
+  .news-row .tag {
+    grid-area: tag;
+    justify-self: start;
+  }
+
+  .news-row > span:not(.tag) {
+    grid-area: title;
+    overflow: visible;
+    white-space: normal;
+    text-overflow: clip;
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+
+  .news-row b {
+    grid-area: arrow;
+  }
+
+  /* --- 4. 想い・特長: 写真サイズとカード密度 --- */
+  .philosophy__photos {
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .round-photo--large {
+    width: min(52vw, 230px);
+    height: min(52vw, 230px);
+  }
+
+  .round-photo--small {
+    width: min(31vw, 136px);
+    height: min(31vw, 136px);
+    margin-top: 24vw;
+  }
+
+  .feature-grid {
+    gap: 14px;
+  }
+
+  .feature-card {
+    min-height: 0;
+    padding: 18px 18px 16px;
+  }
+
+  .feature-card__icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 8px;
+  }
+
+  .feature-card h3 {
+    margin-bottom: 6px;
+    font-size: 18px;
+  }
+
+  .feature-card p {
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+
+  /* --- 5. イチオシレッスンカード: 画像・見出し・本文・ボタンの縦リズム --- */
+  .pickup-card__photo img {
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  .pickup-card__body {
+    display: grid;
+    gap: 10px;
+    padding: 18px 20px 22px;
+  }
+
+  .pickup-card__body h3 {
+    margin: 0;
+    font-size: 19px;
+  }
+
+  .pickup-card__body p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .pickup-card__body .button {
+    justify-self: start;
+    min-height: 44px;
+  }
+
+  /* --- 6. CTAカード群: 画像を大きく、入園カードを主役に --- */
+  .link-cards {
+    gap: 14px;
+  }
+
+  .link-card {
+    grid-template-columns: 1fr 128px;
+    align-items: center;
+    padding: 20px 16px 20px 20px;
+  }
+
+  .link-card img {
+    width: 128px;
+    height: 128px;
+    border-radius: 12px;
+  }
+
+  .link-card h2 {
+    margin-bottom: 8px;
+    font-size: 20px;
+  }
+
+  .link-card p {
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+
+  .link-card .button--small {
+    min-height: 40px;
+    font-size: 12px;
+  }
+
+  .link-card--pink {
+    box-shadow: 0 16px 34px rgba(238, 120, 135, 0.22);
+  }
+
+  .link-card--pink h2 {
+    font-size: 22px;
+  }
+
+  /* --- 7. ページトップボタン: 小型化＋セーフエリア対応 --- */
+  .to-top {
+    right: 12px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    width: 52px;
+    height: 52px;
+    font-size: 9px;
+    line-height: 1.25;
+  }
+
+  .to-top span {
+    font-size: 15px;
+  }
+
+  /* --- 8. フッター: グループ間の余白と可読性 --- */
+  .site-footer__inner {
+    gap: 36px;
+  }
+
+  .site-footer__address {
+    font-size: 12.5px;
+    line-height: 1.9;
+  }
+
+  .site-footer__tel a {
+    font-size: 24px;
+  }
+
+  .site-footer__nav ul {
+    gap: 12px 22px;
+  }
+
+  .site-footer__nav a {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .site-footer__cta .button {
+    min-height: 48px;
+  }
+
+  .site-footer__copyright {
+    font-size: 11.5px;
   }
 }

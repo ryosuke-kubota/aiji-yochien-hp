@@ -19,7 +19,7 @@ get_header();
           <a class="button button--yellow" href="<?php echo aiji_page_url( 'schedule' ); ?>">入園のご案内も見る<span aria-hidden="true">›</span></a>
         </div>
         <figure class="subpage-hero__visual subpage-hero__visual--annual">
-          <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="園庭で走る子どもたちのイメージ">
+          <img src="<?php echo aiji_asset( 'images/hero-main.jpg' ); ?>" alt="園庭で走る子どもたちのイメージ">
           <img class="subpage-hero__deco" src="<?php echo aiji_asset( 'images/deco-bird-card.png' ); ?>" alt="" aria-hidden="true">
         </figure>
       </section>
@@ -32,39 +32,40 @@ get_header();
 
       <section class="page-section soft-panel cream-panel" id="daily">
         <div class="section-heading section-heading--left">
-          <h2>幼児クラスの1日</h2>
+          <h2>1日の流れ</h2>
           <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
         </div>
         <div class="schedule-track">
+          <?php // assets/images/photo-day-{名前}.jpg を置くと各時間帯の写真が自動で差し替わる ?>
           <article class="schedule-step">
             <div class="schedule-time">7:30</div>
             <div><h3>早朝保育</h3><p>早い時間の登園にも対応。先生や友だちとゆったり過ごします。</p></div>
-            <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="登園のイメージ">
+            <img src="<?php echo aiji_photo( 'day-morning' ) ?: aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="早朝保育のようす">
           </article>
           <article class="schedule-step">
             <div class="schedule-time">8:30</div>
             <div><h3>登園・自由あそび</h3><p>朝の支度を整えたら、9:30まで好きな遊びをじっくり楽しみます。</p></div>
-            <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="自由あそびのイメージ">
+            <img src="<?php echo aiji_photo( 'day-arrival' ) ?: aiji_asset( 'images/hero-children-running.png' ); ?>" alt="登園・自由あそびのようす">
           </article>
           <article class="schedule-step">
             <div class="schedule-time">10:00</div>
             <div><h3>設定保育</h3><p>英語・体育・音楽などのレッスンや制作を、年齢に合わせて行います。</p></div>
-            <img src="<?php echo aiji_asset( 'images/philosophy-craft-circle.png' ); ?>" alt="レッスンのイメージ">
+            <img src="<?php echo aiji_photo( 'day-lesson' ) ?: aiji_asset( 'images/philosophy-craft-circle.png' ); ?>" alt="設定保育のようす">
           </article>
           <article class="schedule-step">
             <div class="schedule-time">12:00</div>
             <div><h3>お弁当</h3><p>みんなで楽しく食べながら、食事のマナーも身につけます。</p></div>
-            <img src="<?php echo aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="お弁当のイメージ">
+            <img src="<?php echo aiji_photo( 'day-lunch' ) ?: aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="お弁当の時間のようす">
           </article>
           <article class="schedule-step">
             <div class="schedule-time">13:00</div>
             <div><h3>自由あそび・保育</h3><p>外遊びや絵本など、落ち着いた時間と遊びの時間を組み合わせます。</p></div>
-            <img src="<?php echo aiji_asset( 'images/philosophy-bubbles-circle.png' ); ?>" alt="外遊びのイメージ">
+            <img src="<?php echo aiji_photo( 'day-play' ) ?: aiji_asset( 'images/philosophy-bubbles-circle.png' ); ?>" alt="自由あそびのようす">
           </article>
           <article class="schedule-step">
             <div class="schedule-time">14:30</div>
             <div><h3>降園・延長保育</h3><p>月・火・木・金は14:30、水曜は13:30降園。延長保育は18:30までです。</p></div>
-            <img src="<?php echo aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="園舎のイメージ">
+            <img src="<?php echo aiji_photo( 'day-return' ) ?: aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="降園のようす">
           </article>
         </div>
       </section>

@@ -21,16 +21,29 @@ const announcements = [
 
 let announcementIndex = 0;
 
+// サイドメニューの開閉（オーバーレイクリック・Escでも閉じる）
+const menuOverlay = document.querySelector("[data-menu-overlay]");
+
+const setMenu = (isOpen) => {
+  header.classList.toggle("is-open", isOpen);
+  document.body.classList.toggle("menu-open", isOpen);
+  navToggle?.setAttribute("aria-expanded", String(isOpen));
+};
+
 navToggle?.addEventListener("click", () => {
-  const isOpen = header.classList.toggle("is-open");
-  navToggle.setAttribute("aria-expanded", String(isOpen));
+  setMenu(!header.classList.contains("is-open"));
 });
 
-document.querySelectorAll("[data-nav] a").forEach((link) => {
-  link.addEventListener("click", () => {
-    header.classList.remove("is-open");
-    navToggle?.setAttribute("aria-expanded", "false");
-  });
+menuOverlay?.addEventListener("click", () => setMenu(false));
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && header.classList.contains("is-open")) {
+    setMenu(false);
+  }
+});
+
+document.querySelectorAll("[data-menu] a").forEach((link) => {
+  link.addEventListener("click", () => setMenu(false));
 });
 
 announcementNext?.addEventListener("click", () => {

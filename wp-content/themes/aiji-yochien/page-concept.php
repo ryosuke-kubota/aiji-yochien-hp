@@ -28,7 +28,6 @@ get_header();
       <nav class="page-tabs" aria-label="ページ内メニュー">
         <a href="#summary">特色</a>
         <a href="#regular">カリキュラム</a>
-        <a href="#after">子育てサポート</a>
         <a href="#lunch">お昼・食育</a>
       </nav>
 
@@ -83,46 +82,6 @@ get_header();
             <img src="<?php echo $aiji_lesson_photo ? $aiji_lesson_photo : aiji_asset( 'images/' . $aiji_lesson['icon'] ); ?>" alt="<?php echo esc_attr( $aiji_lesson['title'] ); ?>のようす" loading="lazy">
             <h3><?php echo esc_html( $aiji_lesson['title'] ); ?><?php if ( $aiji_lesson['tag'] ) : ?><span class="tag <?php echo esc_attr( $aiji_lesson['tag'] ); ?>">イチオシ</span><?php endif; ?></h3>
             <p><?php echo esc_html( $aiji_lesson['body'] ); ?></p>
-          </article>
-          <?php endforeach; ?>
-        </div>
-      </section>
-
-      <section class="page-section" id="after">
-        <div class="page-section__head">
-          <div class="section-heading section-heading--left">
-            <h2>子育てサポート</h2>
-            <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
-          </div>
-          <p>長時間保育と送迎バスをはじめ、細やかなサポートで毎日の通園と子育てをしっかり支えます。</p>
-        </div>
-        <?php
-        // assets/images/photo-{photo}.jpg を置くと、アイコンから実写真に自動で切り替わる
-        $aiji_supports = array(
-          array( 'photo' => 'support-daycare', 'icon' => 'card-icon-annual-calendar.png', 'title' => '預かり保育', 'body' => '早朝保育7:30から、延長保育は18:30まで。当日のお電話でも利用できます。' ),
-          array( 'photo' => 'support-bus', 'icon' => 'card-icon-guide-tour.png', 'title' => '送迎バス', 'body' => '希望者は園バスで送迎。効率的なルートでご負担を少なくしています。' ),
-          array( 'photo' => 'support-hospital', 'icon' => 'card-icon-guide-consult.png', 'title' => '病院搬送サービス', 'body' => '園内でケガをした場合は園から病院へお連れし、完治するまで通院もお連れします。' ),
-          array( 'photo' => 'support-snack', 'icon' => 'card-icon-lunch.png', 'title' => '手作りおやつ', 'body' => '預かり保育では季節のものを取り入れた手作りおやつを提供。食育にもつながります。' ),
-          array( 'photo' => 'support-siblings', 'icon' => 'card-icon-lesson-manners.png', 'title' => 'きょうだい入園割引', 'body' => '兄弟・姉妹が在園児または卒園児の場合、入園準備金から1万円を減免します。' ),
-          array( 'photo' => 'support-desks', 'icon' => 'card-icon-about-building.png', 'title' => '衛生・安全設備', 'body' => '各教室に空間除菌脱臭機と冷暖房を完備。1人1つの机で、ゆとりのある間隔で過ごせます。' ),
-          array( 'photo' => 'support-class', 'icon' => 'icon-heart.png', 'title' => '目の届く児童数', 'body' => 'どの先生にも安心して話せるよう、一人ひとりに寄り添って接しています。入園当初に不安なお子さまも、少しずつ慣れていけるよう見守ります。' ),
-          array( 'photo' => 'support-events', 'icon' => 'card-icon-annual-season.png', 'title' => '親子参加型の行事', 'body' => '運動会は親子競技や保護者の出番、賞品もご用意。盆踊りやお餅つきなど、園庭で親子のひとときを楽しめる行事が豊富です。' ),
-          array( 'photo' => 'support-water', 'icon' => 'card-icon-lesson-swimming.png', 'title' => '浄水器でおいしいお水', 'body' => 'JIS規格5物質などを除去する浄水器を設置。赤ちゃんのミルクや薬の服用にも使える、安心のお水を提供しています。' ),
-          array( 'photo' => 'support-bed', 'icon' => 'icon-house.png', 'title' => '午睡用の簡易ベッド', 'body' => '床から10cmほど高く、埃を吸いにくい衛生的な簡易ベッドを使用。重いお布団の持参は不要です（バスタオル2枚のみ）。' ),
-        );
-        ?>
-        <div class="event-grid">
-          <?php foreach ( $aiji_supports as $aiji_support ) :
-            $aiji_support_photo = aiji_photo( $aiji_support['photo'] );
-            ?>
-          <article class="event-card <?php echo $aiji_support_photo ? 'event-card--photo' : 'event-card--icon'; ?>">
-            <?php if ( $aiji_support_photo ) : ?>
-            <img src="<?php echo $aiji_support_photo; ?>" alt="<?php echo esc_attr( $aiji_support['title'] ); ?>のようす" loading="lazy">
-            <?php else : ?>
-            <img src="<?php echo aiji_asset( 'images/' . $aiji_support['icon'] ); ?>" alt="" aria-hidden="true">
-            <?php endif; ?>
-            <h3><?php echo esc_html( $aiji_support['title'] ); ?></h3>
-            <p><?php echo esc_html( $aiji_support['body'] ); ?></p>
           </article>
           <?php endforeach; ?>
         </div>

@@ -167,14 +167,14 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
 
       <section class="pickup section-anchor" id="lessons">
         <div class="section-heading section-heading--center">
-          <h2>愛児幼稚園のイチオシレッスン</h2>
+          <h2>愛児幼稚園の<br class="sp-br">イチオシレッスン</h2>
           <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
         </div>
         <p class="pickup__lead">他の園にはない、当園自慢の2つのレッスン。遊びのなかで学んで考える力を育てます。</p>
         <div class="pickup-grid">
           <article class="pickup-card pickup-card--english">
             <figure class="pickup-card__photo">
-              <img src="<?php echo aiji_asset( 'images/card-prekindergarten.png' ); ?>" alt="英語レッスンを楽しむ園児">
+              <img src="<?php echo aiji_photo( 'lesson-english' ) ?: aiji_asset( 'images/card-prekindergarten.png' ); ?>" alt="英語レッスンを楽しむ園児">
               <span class="pickup-card__badge tag tag--blue">イチオシ</span>
             </figure>
             <div class="pickup-card__body">
@@ -185,7 +185,7 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
           </article>
           <article class="pickup-card pickup-card--gym">
             <figure class="pickup-card__photo">
-              <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="体育レッスンで走る園児たち">
+              <img src="<?php echo aiji_photo( 'lesson-gym' ) ?: aiji_asset( 'images/hero-children-running.png' ); ?>" alt="体育レッスンで走る園児たち">
               <span class="pickup-card__badge tag tag--green">イチオシ</span>
             </figure>
             <div class="pickup-card__body">

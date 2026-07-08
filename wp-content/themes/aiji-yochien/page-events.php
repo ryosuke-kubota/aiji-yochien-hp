@@ -19,7 +19,8 @@ get_header();
           <a class="button button--yellow" href="<?php echo aiji_page_url( 'annual' ); ?>">園での生活（1日の流れ）を見る<span aria-hidden="true">›</span></a>
         </div>
         <figure class="subpage-hero__visual subpage-hero__visual--events">
-          <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="運動会で走る子どもたちのイメージ">
+          <?php // assets/images/photo-hero-events.jpg を置くと自動で差し替わる ?>
+          <img src="<?php echo aiji_photo( 'hero-events' ) ?: aiji_asset( 'images/hero-children-running.png' ); ?>" alt="運動会のようす">
           <img class="subpage-hero__deco" src="<?php echo aiji_asset( 'images/deco-bird-card.png' ); ?>" alt="" aria-hidden="true">
         </figure>
       </section>
