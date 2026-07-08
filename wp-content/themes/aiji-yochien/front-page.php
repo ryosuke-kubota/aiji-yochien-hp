@@ -34,6 +34,7 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
         <div class="hero__copy">
           <p class="hero__kicker"><span class="hero__kicker-soft">やさしさ</span>　<span class="hero__kicker-strong">つよさ</span></p>
           <h1>かがやく未来へ</h1>
+          <p class="hero__sub">AIJI KINDERGARTEN / OSAKA SUMIYOSHI</p>
           <p class="hero__lead">
             子どもたち一人ひとりの個性を大切にし、<br>
             心も体も健やかに育つ環境をつくります。
@@ -46,10 +47,21 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
         <div class="hero__visual" aria-label="園庭で遊ぶ園児たちと愛児幼稚園の園舎の写真">
           <img src="<?php echo aiji_asset( 'images/hero-main.jpg' ); ?>" alt="">
         </div>
-        <img class="deco deco--bird" src="<?php echo aiji_asset( 'images/deco-bird-card.png' ); ?>" alt="" aria-hidden="true">
-        <img class="deco deco-dot deco-dot--cream" src="<?php echo aiji_asset( 'images/deco-dot-yellow.png' ); ?>" alt="" aria-hidden="true">
-        <img class="deco deco-leaf" src="<?php echo aiji_asset( 'images/deco-leaf-sprig.png' ); ?>" alt="" aria-hidden="true">
-        <img class="deco deco-flower deco-flower--hero" src="<?php echo aiji_asset( 'images/deco-flower.png' ); ?>" alt="" aria-hidden="true">
+        <?php // hero写真を「下辺だけ手描き風に波打つ全幅シート」に切り抜くクリップパス。<animate> が波をゆっくりうねらせ続ける ?>
+        <svg class="hero__clip-defs" width="0" height="0" aria-hidden="true" focusable="false">
+          <defs>
+            <clipPath id="aiji-hero-clip" clipPathUnits="objectBoundingBox">
+              <path d="M0,0L1,0L1,.900C.958,.908 .833,.953 .750,.950C.667,.947 .583,.882 .500,.880C.417,.878 .333,.937 .250,.940C.167,.943 .042,.907 .000,.900Z">
+                <animate
+                  attributeName="d"
+                  dur="32s"
+                  repeatCount="indefinite"
+                  values="M0,0L1,0L1,.900C.958,.908 .833,.953 .750,.950C.667,.947 .583,.882 .500,.880C.417,.878 .333,.937 .250,.940C.167,.943 .042,.907 .000,.900Z;M0,0L1,0L1,.930C.958,.923 .833,.888 .750,.890C.667,.892 .583,.938 .500,.940C.417,.942 .333,.903 .250,.900C.167,.897 .042,.917 .000,.920Z;M0,0L1,0L1,.880C.958,.888 .833,.927 .750,.930C.667,.933 .583,.895 .500,.900C.417,.905 .333,.962 .250,.960C.167,.958 .042,.902 .000,.890Z;M0,0L1,0L1,.900C.958,.908 .833,.953 .750,.950C.667,.947 .583,.882 .500,.880C.417,.878 .333,.937 .250,.940C.167,.943 .042,.907 .000,.900Z"
+                />
+              </path>
+            </clipPath>
+          </defs>
+        </svg>
       </section>
 
       <?php if ( $aiji_important ) : ?>

@@ -62,6 +62,11 @@ toTop?.addEventListener("click", () => {
 // ===== アニメーション =====
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// heroクリップパスのSMILモーフはCSSでは止められないため、ここで除去する
+if (prefersReducedMotion) {
+  document.querySelectorAll("#aiji-hero-clip animate").forEach((el) => el.remove());
+}
+
 // トップのヒーロー見出しを1文字ずつ弾ませて登場させる
 const heroCopy = document.querySelector(".hero__copy");
 if (!prefersReducedMotion && heroCopy) {
