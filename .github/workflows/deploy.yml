@@ -49,7 +49,7 @@ jobs:
           # ※ドメインを変えるときは、このパスの「ドメイン部分」だけ書き換える。
           #   エックスサーバーは FTP ルートから「/ドメイン/public_html/…」の形。
           #   例）新ドメイン取得後: /aiji-youchien.jp/public_html/wp-content/themes/aiji-yochien/
-          server-dir: /yasaiio.xsrv.jp/public_html/wp-content/themes/aiji-yochien/
+          server-dir: /yasaiio.xsrv.jp/public_html/aiji-youchien.jp/wp-content/themes/aiji-youchien/
           # 転送しないもの
           exclude: |
             **/.git*
