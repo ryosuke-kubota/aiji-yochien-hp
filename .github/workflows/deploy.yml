@@ -1,0 +1,57 @@
+name: Deploy theme to Xserver
+
+# main に push されたら、テーマ（wp-content/themes/aiji-yochien/）を
+# エックスサーバーへ FTPS で自動デプロイする。
+# 本番の WordPress 設定・データベース・アップロード画像には触れない。
+
+on:
+  push:
+    branches: [main]
+    # テーマ配下かこのワークフロー自身が変わったときだけ実行する
+    paths:
+      - 'wp-content/themes/aiji-yochien/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch: # 手動実行も可能にする
+
+# デプロイの同時実行を防ぐ（前のデプロイが終わってから次を流す）
+concurrency:
+  group: deploy-xserver
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+
+      - name: PHP をセットアップ
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: PHP 構文チェック（壊れたPHPをデプロイしない）
+        run: |
+          find wp-content/themes/aiji-yochien -name '*.php' -print0 \
+            | xargs -0 -n1 -P4 php -l
+
+      - name: エックスサーバーへ FTPS デプロイ
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          # 転送元: テーマフォルダのみ（末尾スラッシュ必須）
+          local-dir: ./wp-content/themes/aiji-yochien/
+          # 転送先: 本番テーマの場所（末尾スラッシュ必須）
+          # ※パスが違う場合はここだけ書き換える。
+          #   エックスサーバーは FTP ルートから「/ドメイン/public_html/…」の形。
+          server-dir: /aijiyouchien.webosaka.work/public_html/wp-content/themes/aiji-yochien/
+          # 転送しないもの
+          exclude: |
+            **/.git*
+            **/.DS_Store
+            **/node_modules/**
+            **/*.map
