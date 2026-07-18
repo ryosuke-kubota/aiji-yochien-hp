@@ -75,7 +75,7 @@ get_header();
           </div>
           <p>ご希望の内容と日時をお知らせください。担当者より日程のご連絡をいたします。</p>
         </div>
-        <?php get_template_part( 'template-parts/inquiry-form', null, array( 'type' => 'tour' ) ); ?>
+        <?php aiji_cf7_form( '園見学・体験' ); ?>
       </section>
 
       <section class="page-cta">

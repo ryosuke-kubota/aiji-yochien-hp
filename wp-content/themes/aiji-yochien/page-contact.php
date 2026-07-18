@@ -55,7 +55,7 @@ get_header();
           </div>
           <p>2〜3日たっても返信がない場合は、お手数ですがお電話にてご連絡ください。</p>
         </div>
-        <?php get_template_part( 'template-parts/inquiry-form', null, array( 'type' => 'contact' ) ); ?>
+        <?php aiji_cf7_form( 'お問い合わせ' ); ?>
       </section>
 
       <section class="page-cta">

@@ -2843,12 +2843,12 @@ main {
 /* --- スクロールでふわっと表示（JSが .js-reveal を付与） --- */
 .js-reveal {
   opacity: 0;
-  translate: 0 68px;
-  scale: 0.94;
+  translate: 0 34px;
+  scale: 0.97;
   transition:
-    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    translate 1s cubic-bezier(0.22, 1.15, 0.34, 1),
-    scale 1s cubic-bezier(0.22, 1.15, 0.34, 1);
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    translate 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    scale 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .js-reveal.is-visible {
@@ -2913,22 +2913,22 @@ main {
 
 /* --- リビールの方向バリエーション --- */
 .js-reveal--left {
-  translate: -84px 0;
+  translate: -48px 0;
   scale: 1;
 }
 
 .js-reveal--right {
-  translate: 84px 0;
+  translate: 48px 0;
   scale: 1;
 }
 
 .js-reveal--zoom {
-  translate: 0 24px;
-  scale: 0.8;
+  translate: 0 16px;
+  scale: 0.92;
   transition:
-    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    translate 1s cubic-bezier(0.22, 1.15, 0.34, 1),
-    scale 1s cubic-bezier(0.22, 1.15, 0.34, 1);
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    translate 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    scale 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .js-reveal.is-visible {
@@ -4254,4 +4254,58 @@ main {
     letter-spacing: 0.03em;
     white-space: nowrap;
   }
+}
+
+/* =========================================
+   Contact Form 7（お問い合わせ・園見学・体験）
+   ========================================= */
+
+/* 入力欄ラッパーを entry-field のグリッドに乗せる（幅いっぱいに） */
+.entry-field .wpcf7-form-control-wrap {
+  display: block;
+}
+
+/* 送信結果・エラーメッセージを entry-notice 風に */
+.wpcf7 form .wpcf7-response-output {
+  margin: 22px 0 0;
+  padding: 16px 20px;
+  border: 2px solid var(--color-line);
+  border-radius: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+  border-color: var(--color-green);
+  background: var(--color-green-soft);
+  color: var(--color-green-deep);
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.payment-required .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output,
+.wpcf7 form.aborted .wpcf7-response-output {
+  border-color: var(--color-pink);
+  background: var(--color-pink-soft);
+  color: var(--color-pink-deep);
+}
+
+/* 個別項目のエラー表示 */
+.wpcf7-not-valid-tip {
+  margin-top: 6px;
+  color: var(--color-pink-deep);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.entry-field input.wpcf7-not-valid,
+.entry-field select.wpcf7-not-valid,
+.entry-field textarea.wpcf7-not-valid {
+  border-color: var(--color-pink);
+}
+
+/* 送信中スピナー */
+.wpcf7-spinner {
+  margin: 0 0 0 12px;
 }
