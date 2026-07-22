@@ -10,7 +10,6 @@ get_header();
       <nav class="breadcrumb" aria-label="パンくず"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">ホーム</a><span>›</span><span>未就園児の方へ</span></nav>
       <section class="subpage-hero">
         <div class="subpage-hero__copy">
-          <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/icon-bag.png' ); ?>" alt="" aria-hidden="true">Pre-Kindergarten</p>
           <h1>未就園児の方へ</h1>
           <p class="subpage-hero__lead">
             愛児幼稚園は2歳児から受け入れています。

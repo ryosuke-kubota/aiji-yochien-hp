@@ -10,7 +10,6 @@ get_header();
       <nav class="breadcrumb" aria-label="パンくず"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">ホーム</a><span>›</span><span>年間行事</span></nav>
       <section class="subpage-hero">
         <div class="subpage-hero__copy">
-          <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/deco-flower.png' ); ?>" alt="" aria-hidden="true">Annual Events</p>
           <h1>年間行事</h1>
           <p class="subpage-hero__lead">
             入園式、遠足、運動会、季節の行事、卒園式。

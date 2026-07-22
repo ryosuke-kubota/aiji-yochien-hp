@@ -13,7 +13,6 @@ get_header();
 
       <section class="subpage-hero">
         <div class="subpage-hero__copy">
-          <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/icon-house.png' ); ?>" alt="" aria-hidden="true">About</p>
           <h1>園の紹介</h1>
           <p class="subpage-hero__lead">
             子どもたち一人ひとりの毎日を見守り、家庭や地域とともに育てる園でありたい。

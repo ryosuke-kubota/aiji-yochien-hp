@@ -10,7 +10,6 @@ get_header();
       <nav class="breadcrumb" aria-label="パンくず"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">ホーム</a><span>›</span><span>教育について</span></nav>
       <section class="subpage-hero">
         <div class="subpage-hero__copy">
-          <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/icon-sprout.png' ); ?>" alt="" aria-hidden="true">Concept</p>
           <h1>教育について</h1>
           <p class="subpage-hero__lead">
             遊びのなかで学んで考える幼児教育。

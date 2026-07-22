@@ -10,7 +10,6 @@ get_header();
       <nav class="breadcrumb" aria-label="パンくず"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">ホーム</a><span>›</span><span>園見学・体験</span></nav>
       <section class="subpage-hero">
         <div class="subpage-hero__copy">
-          <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/icon-bag.png' ); ?>" alt="" aria-hidden="true">Visit &amp; Trial</p>
           <h1>園見学・体験</h1>
           <p class="subpage-hero__lead">
             園の雰囲気は、実際に見ていただくのがいちばん。

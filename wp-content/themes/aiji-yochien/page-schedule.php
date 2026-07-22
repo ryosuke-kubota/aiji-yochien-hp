@@ -10,7 +10,6 @@ get_header();
       <nav class="breadcrumb" aria-label="パンくず"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">ホーム</a><span>›</span><span>入園のご案内</span></nav>
       <section class="subpage-hero">
         <div class="subpage-hero__copy">
-          <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/icon-book.png' ); ?>" alt="" aria-hidden="true">Admission Guide</p>
           <h1>入園のご案内</h1>
           <p class="subpage-hero__lead">
             願書配布は9月1日から、願書受付は10月1日から。

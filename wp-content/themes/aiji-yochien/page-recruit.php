@@ -19,7 +19,6 @@ $aiji_entry_notices = array(
       <nav class="breadcrumb" aria-label="パンくず"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">ホーム</a><span>›</span><span>採用情報</span></nav>
       <section class="subpage-hero">
         <div class="subpage-hero__copy">
-          <p class="eyebrow"><img src="<?php echo aiji_asset( 'images/deco-flower.png' ); ?>" alt="" aria-hidden="true">Recruit</p>
           <h1>採用情報</h1>
           <p class="subpage-hero__lead">
             愛児幼稚園では、いっしょに子どもたちの成長を見守ってくださる仲間を募集しています。
