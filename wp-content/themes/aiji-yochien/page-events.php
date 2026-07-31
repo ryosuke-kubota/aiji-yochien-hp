@@ -116,32 +116,7 @@ get_header();
         </div>
         <p class="event-gallery__hint">写真をクリックすると、その行事の写真をまとめてスライドでご覧いただけます。</p>
         <?php else : ?>
-        <div class="event-gallery">
-          <figure class="event-gallery__item">
-            <img src="<?php echo aiji_asset( 'images/hero-children-running.png' ); ?>" alt="運動会で走る子どもたち" loading="lazy">
-            <figcaption>運動会</figcaption>
-          </figure>
-          <figure class="event-gallery__item">
-            <img src="<?php echo aiji_asset( 'images/philosophy-bubbles-circle.png' ); ?>" alt="プール開き・水あそびの様子" loading="lazy">
-            <figcaption>プール開き・水あそび</figcaption>
-          </figure>
-          <figure class="event-gallery__item">
-            <img src="<?php echo aiji_asset( 'images/philosophy-craft-circle.png' ); ?>" alt="作品展の制作活動" loading="lazy">
-            <figcaption>作品展</figcaption>
-          </figure>
-          <figure class="event-gallery__item">
-            <img src="<?php echo aiji_asset( 'images/card-admission.png' ); ?>" alt="秋の遠足の様子" loading="lazy">
-            <figcaption>秋の遠足</figcaption>
-          </figure>
-          <figure class="event-gallery__item">
-            <img src="<?php echo aiji_asset( 'images/card-parenting.png' ); ?>" alt="保育参観・親子行事の様子" loading="lazy">
-            <figcaption>保育参観</figcaption>
-          </figure>
-          <figure class="event-gallery__item">
-            <img src="<?php echo aiji_asset( 'images/news-campus.png' ); ?>" alt="入園式を迎えた園舎" loading="lazy">
-            <figcaption>入園式</figcaption>
-          </figure>
-        </div>
+        <p class="event-gallery__empty">写真は準備中です。行事の写真が揃いましたら、こちらでご紹介します。</p>
         <?php endif; ?>
       </section>
 
