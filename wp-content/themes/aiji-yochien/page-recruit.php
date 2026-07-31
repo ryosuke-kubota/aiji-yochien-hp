@@ -4,15 +4,6 @@
  */
 
 get_header();
-
-$aiji_entry_state = isset( $_GET['entry'] ) ? sanitize_key( $_GET['entry'] ) : '';
-$aiji_entry_notices = array(
-	'sent'    => array( 'ok', 'ご応募ありがとうございます。内容を確認のうえ、担当者よりご連絡いたします。' ),
-	'invalid' => array( 'ng', '入力内容に不備がありました。お手数ですが、必須項目をご確認のうえもう一度送信してください。' ),
-	'expired' => array( 'ng', 'ページの有効期限が切れていました。お手数ですが、もう一度送信してください。' ),
-	'wait'    => array( 'ng', '送信の間隔が短すぎます。1分ほどおいてからもう一度お試しください。' ),
-	'error'   => array( 'ng', '送信に失敗しました。お手数ですが、時間をおいて再度お試しいただくか、お電話（06-6691-0502）にてご連絡ください。' ),
-);
 ?>
 
     <main class="subpage-main">
@@ -60,61 +51,7 @@ $aiji_entry_notices = array(
           <p>下記のフォームからご応募ください。内容を確認のうえ、担当者よりご連絡いたします。</p>
         </div>
 
-        <?php if ( isset( $aiji_entry_notices[ $aiji_entry_state ] ) ) : ?>
-        <p class="entry-notice entry-notice--<?php echo esc_attr( $aiji_entry_notices[ $aiji_entry_state ][0] ); ?>" role="status">
-          <?php echo esc_html( $aiji_entry_notices[ $aiji_entry_state ][1] ); ?>
-        </p>
-        <?php endif; ?>
-
-        <?php if ( 'sent' !== $aiji_entry_state ) : ?>
-        <form class="entry-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-          <input type="hidden" name="action" value="aiji_recruit_entry">
-          <?php wp_nonce_field( 'aiji_recruit_entry' ); ?>
-          <p class="entry-form__hp" aria-hidden="true"><label>この欄には入力しないでください<input type="text" name="aiji_website" tabindex="-1" autocomplete="off"></label></p>
-
-          <div class="entry-form__grid">
-            <p class="entry-field">
-              <label for="aiji-name">お名前<span class="entry-required">必須</span></label>
-              <input id="aiji-name" name="aiji_name" type="text" required autocomplete="name" placeholder="例）愛児 花子">
-            </p>
-            <p class="entry-field">
-              <label for="aiji-kana">ふりがな</label>
-              <input id="aiji-kana" name="aiji_kana" type="text" autocomplete="off" placeholder="例）あいじ はなこ">
-            </p>
-            <p class="entry-field">
-              <label for="aiji-phone">電話番号<span class="entry-required">必須</span></label>
-              <input id="aiji-phone" name="aiji_phone" type="tel" required autocomplete="tel" pattern="[0-9+\-() ]{10,15}" placeholder="例）090-1234-5678">
-            </p>
-            <p class="entry-field">
-              <label for="aiji-email">メールアドレス<span class="entry-required">必須</span></label>
-              <input id="aiji-email" name="aiji_email" type="email" required autocomplete="email" placeholder="例）hanako@example.com">
-            </p>
-            <p class="entry-field entry-field--wide">
-              <label for="aiji-job">希望職種<span class="entry-required">必須</span></label>
-              <select id="aiji-job" name="aiji_job" required>
-                <option value="">選択してください</option>
-                <?php foreach ( aiji_entry_jobs() as $aiji_job ) : ?>
-                <option value="<?php echo esc_attr( $aiji_job ); ?>"><?php echo esc_html( $aiji_job ); ?></option>
-                <?php endforeach; ?>
-              </select>
-            </p>
-            <p class="entry-field entry-field--wide">
-              <label for="aiji-message">自己PR・ご質問など</label>
-              <textarea id="aiji-message" name="aiji_message" rows="6" maxlength="2000" placeholder="保有資格や経験、園見学のご希望などがあればご記入ください。"></textarea>
-            </p>
-          </div>
-
-          <p class="entry-form__agree">
-            <label>
-              <input type="checkbox" name="aiji_agree" value="1" required>
-              <span>ご入力いただいた個人情報を、採用選考に関するご連絡の目的にのみ使用することに同意します。<span class="entry-required">必須</span></span>
-            </label>
-          </p>
-          <p class="entry-form__submit">
-            <button class="button button--primary" type="submit">応募内容を送信する<span aria-hidden="true">›</span></button>
-          </p>
-        </form>
-        <?php endif; ?>
+        <?php aiji_cf7_form( '採用応募' ); ?>
       </section>
 
       <section class="page-cta">

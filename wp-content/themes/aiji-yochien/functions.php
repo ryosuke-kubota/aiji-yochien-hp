@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.34.2';
+const AIJI_THEME_VERSION = '1.35.1';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -161,6 +161,42 @@ function aiji_activate(): void {
 	update_option( 'aiji_theme_setup_done', 1 );
 }
 add_action( 'after_switch_theme', 'aiji_activate' );
+
+/* =========================================
+   園スタッフ権限（お知らせ・フォトギャラリー投稿用）
+   ========================================= */
+
+/**
+ * 園スタッフ用のロール「園スタッフ」を作成する。
+ * お知らせ（園の様子・行事レポートを含む投稿）の作成・編集・公開・削除と、
+ * 画像アップロード（メディア）・フォトギャラリー管理だけを許可する。
+ * テーマ・プラグイン・サイト設定・ユーザー管理・固定ページ編集には触れられない。
+ * 付与する権限を変えたら $version を上げると作り直される（init で冪等に実行）。
+ */
+function aiji_register_staff_role(): void {
+	$version = '1';
+	if ( get_option( 'aiji_staff_role_version' ) === $version ) {
+		return;
+	}
+	remove_role( 'aiji_staff' );
+	add_role(
+		'aiji_staff',
+		'園スタッフ',
+		array(
+			'read'                   => true,
+			'upload_files'           => true, // メディア追加・フォトギャラリー管理
+			'edit_posts'             => true,
+			'edit_others_posts'      => true,
+			'edit_published_posts'   => true,
+			'publish_posts'          => true,
+			'delete_posts'           => true,
+			'delete_others_posts'    => true,
+			'delete_published_posts' => true,
+		)
+	);
+	update_option( 'aiji_staff_role_version', $version );
+}
+add_action( 'init', 'aiji_register_staff_role' );
 
 /* =========================================
    管理画面カスタマイズ（投稿者向けダッシュボード）
@@ -544,119 +580,6 @@ function aiji_gallery_save(): void {
 	exit;
 }
 add_action( 'admin_post_aiji_save_gallery', 'aiji_gallery_save' );
-
-/* =========================================
-   採用エントリーフォーム
-   ========================================= */
-
-/** 応募内容の保存先。管理画面「採用応募」からのみ閲覧でき、手動での新規作成は不可 */
-function aiji_entry_post_type(): void {
-	register_post_type(
-		'aiji_entry',
-		array(
-			'labels'        => array(
-				'name'          => '採用応募',
-				'singular_name' => '採用応募',
-				'menu_name'     => '採用応募',
-				'all_items'     => '応募一覧',
-				'edit_item'     => '応募内容',
-				'search_items'  => '応募を検索',
-			),
-			'public'        => false,
-			'show_ui'       => true,
-			'menu_position' => 26,
-			'menu_icon'     => 'dashicons-id-alt',
-			'supports'      => array( 'title', 'editor' ),
-			'capabilities'  => array( 'create_posts' => 'do_not_allow' ),
-			'map_meta_cap'  => true,
-		)
-	);
-}
-add_action( 'init', 'aiji_entry_post_type' );
-
-/** 採用ページで選べる希望職種の一覧 */
-function aiji_entry_jobs(): array {
-	return array( '幼稚園教諭', '保育補助', '預かり保育スタッフ', 'その他' );
-}
-
-/** 採用エントリーフォームの送信処理（未ログインの応募者が使う） */
-function aiji_entry_submit(): void {
-	$back = aiji_page_url( 'recruit' );
-
-	// ハニーポット: 人間には見えない欄に入力があればボットとみなし、何も保存せず成功画面へ
-	if ( ! empty( $_POST['aiji_website'] ) ) {
-		wp_safe_redirect( add_query_arg( 'entry', 'sent', $back ) . '#entry' );
-		exit;
-	}
-
-	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['_wpnonce'] ), 'aiji_recruit_entry' ) ) {
-		wp_safe_redirect( add_query_arg( 'entry', 'expired', $back ) . '#entry' );
-		exit;
-	}
-
-	// 連投防止: 同一IPからの送信は60秒に1回まで
-	$ip_key = 'aiji_entry_' . md5( $_SERVER['REMOTE_ADDR'] ?? '' );
-	if ( get_transient( $ip_key ) ) {
-		wp_safe_redirect( add_query_arg( 'entry', 'wait', $back ) . '#entry' );
-		exit;
-	}
-
-	$name    = sanitize_text_field( wp_unslash( $_POST['aiji_name'] ?? '' ) );
-	$kana    = sanitize_text_field( wp_unslash( $_POST['aiji_kana'] ?? '' ) );
-	$phone   = sanitize_text_field( wp_unslash( $_POST['aiji_phone'] ?? '' ) );
-	$email   = sanitize_email( wp_unslash( $_POST['aiji_email'] ?? '' ) );
-	$job     = sanitize_text_field( wp_unslash( $_POST['aiji_job'] ?? '' ) );
-	$message = sanitize_textarea_field( wp_unslash( $_POST['aiji_message'] ?? '' ) );
-	$agree   = ! empty( $_POST['aiji_agree'] );
-
-	$is_valid = '' !== $name
-		&& preg_match( '/^[0-9+\-() ]{10,15}$/', $phone )
-		&& is_email( $email )
-		&& in_array( $job, aiji_entry_jobs(), true )
-		&& mb_strlen( $message ) <= 2000
-		&& $agree;
-	if ( ! $is_valid ) {
-		wp_safe_redirect( add_query_arg( 'entry', 'invalid', $back ) . '#entry' );
-		exit;
-	}
-
-	$body    = sprintf(
-		"お名前: %s\nふりがな: %s\n電話番号: %s\nメールアドレス: %s\n希望職種: %s\n\n【自己PR・ご質問など】\n%s",
-		$name,
-		$kana,
-		$phone,
-		$email,
-		$job,
-		'' !== $message ? $message : '（記入なし）'
-	);
-	$post_id = wp_insert_post(
-		array(
-			'post_type'    => 'aiji_entry',
-			'post_status'  => 'private',
-			'post_title'   => sprintf( '%s（%s）', $name, $job ),
-			'post_content' => $body,
-		),
-		true
-	);
-	if ( is_wp_error( $post_id ) ) {
-		wp_safe_redirect( add_query_arg( 'entry', 'error', $back ) . '#entry' );
-		exit;
-	}
-
-	set_transient( $ip_key, 1, MINUTE_IN_SECONDS );
-
-	// 管理者へ通知メール。送信できない環境でも応募は管理画面「採用応募」に残る
-	wp_mail(
-		get_option( 'admin_email' ),
-		'【採用応募】' . $name . ' 様（' . $job . '）',
-		$body . "\n\n応募一覧: " . admin_url( 'edit.php?post_type=aiji_entry' )
-	);
-
-	wp_safe_redirect( add_query_arg( 'entry', 'sent', $back ) . '#entry' );
-	exit;
-}
-add_action( 'admin_post_aiji_recruit_entry', 'aiji_entry_submit' );
-add_action( 'admin_post_nopriv_aiji_recruit_entry', 'aiji_entry_submit' );
 
 /* =========================================
    Contact Form 7 フォーム出力
