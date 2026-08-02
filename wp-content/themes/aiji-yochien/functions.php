@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.35.1';
+const AIJI_THEME_VERSION = '1.36.0';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -611,3 +611,24 @@ function aiji_cf7_form( string $title ): void {
 	}
 	echo do_shortcode( sprintf( '[contact-form-7 id="%d" title="%s"]', (int) $forms[0]->ID, esc_attr( $title ) ) );
 }
+
+/**
+ * 同意チェック（[acceptance]）を「送信ボタンの無効化」ではなく「検証エラー」として扱う。
+ * 既定では未チェックの間ボタンが disabled になり、押しても無反応で理由も表示されないため、
+ * 送信できない原因が利用者に伝わらない。検証方式にすると理由がその場に表示される。
+ *
+ * CF7 の追加設定 acceptance_as_validation を実行時に付与する。
+ * こうすることで、本番でフォームを作り直しても個別設定なしに同じ挙動になる。
+ *
+ * @param array $properties CF7フォームのプロパティ
+ * @return array
+ */
+function aiji_cf7_acceptance_as_validation( array $properties ): array {
+	$settings = isset( $properties['additional_settings'] ) ? (string) $properties['additional_settings'] : '';
+	if ( false !== strpos( $settings, 'acceptance_as_validation' ) ) {
+		return $properties;
+	}
+	$properties['additional_settings'] = trim( $settings . "\nacceptance_as_validation: on" );
+	return $properties;
+}
+add_filter( 'wpcf7_contact_form_properties', 'aiji_cf7_acceptance_as_validation' );
