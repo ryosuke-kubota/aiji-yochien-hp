@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.42.0';
+const AIJI_THEME_VERSION = '1.44.0';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -354,6 +354,9 @@ function aiji_month_thumb( string $month_en, string $fallback ): string {
 	return aiji_photo( $month_en ) ?? aiji_asset( $fallback );
 }
 
+/** 1つの行事に載せられる写真の枚数上限 */
+const AIJI_GALLERY_MAX_PHOTOS = 10;
+
 /**
  * 行事フォトギャラリーのグループ一覧。
  * 管理画面「フォトギャラリー」で保存した「行事名＋写真セット」
@@ -364,7 +367,9 @@ function aiji_gallery_groups(): array {
 	foreach ( (array) get_option( 'aiji_gallery_groups', array() ) as $group ) {
 		$title  = isset( $group['title'] ) ? (string) $group['title'] : '';
 		$images = array();
-		foreach ( (array) ( $group['ids'] ?? array() ) as $id ) {
+		// 上限を超えて保存済みのデータがあっても、表示は上限までにそろえる
+		$ids = array_slice( (array) ( $group['ids'] ?? array() ), 0, AIJI_GALLERY_MAX_PHOTOS );
+		foreach ( $ids as $id ) {
 			$src = wp_get_attachment_image_url( absint( $id ), 'large' );
 			if ( ! $src ) {
 				continue;
@@ -421,7 +426,8 @@ function aiji_gallery_admin_page(): void {
 		<?php endif; ?>
 		<p style="font-size:14px;line-height:1.9;">
 			<strong>行事ごとに写真をまとめて</strong>、年間行事ページの「行事フォトギャラリー」に載せられます。記事を書く必要はありません。<br>
-			使い方: <strong>「＋ 行事を追加」→ 行事名を入力 →「＋ 写真を追加」→ 最後に「保存する」</strong>
+			使い方: <strong>「＋ 行事を追加」→ 行事名を入力 →「＋ 写真を追加」→ 最後に「保存する」</strong><br>
+			<strong>1つの行事につき写真は<?php echo (int) AIJI_GALLERY_MAX_PHOTOS; ?>枚まで</strong>です（ページが重くならないようにするため）。
 		</p>
 		<style>
 			.aiji-gallery-group { max-width: 900px; margin: 0 0 18px; padding: 16px 18px; border: 1px solid #dcdcde; border-radius: 10px; background: #fff; }
@@ -472,6 +478,7 @@ function aiji_gallery_admin_page(): void {
 		var groupsWrap = $("#aiji-groups");
 		var frame = null;
 		var currentGrid = null;
+		var MAX_PHOTOS = <?php echo (int) AIJI_GALLERY_MAX_PHOTOS; ?>;
 
 		var thumbHtml = function (id, url) {
 			return '<div class="aiji-gallery-thumb" data-id="' + id + '">' +
@@ -504,15 +511,26 @@ function aiji_gallery_admin_page(): void {
 					multiple: "add"
 				});
 				frame.on("select", function () {
+					var skipped = 0;
 					frame.state().get("selection").each(function (attachment) {
 						var id = attachment.get("id");
 						if (currentGrid.find('.aiji-gallery-thumb[data-id="' + id + '"]').length) {
+							return;
+						}
+						if (currentGrid.find(".aiji-gallery-thumb").length >= MAX_PHOTOS) {
+							skipped += 1;
 							return;
 						}
 						var sizes = attachment.get("sizes") || {};
 						var url = (sizes.medium || sizes.full || {}).url || attachment.get("url");
 						currentGrid.append(thumbHtml(id, url));
 					});
+					if (skipped > 0) {
+						window.alert(
+							"1つの行事に載せられる写真は" + MAX_PHOTOS + "枚までです。\n" +
+							"上限を超えた" + skipped + "枚は追加していません。"
+						);
+					}
 				});
 			}
 			frame.open();
@@ -568,9 +586,10 @@ function aiji_gallery_save(): void {
 			if ( ! $ids ) {
 				continue;
 			}
+			// ブラウザ側の制限をすり抜けた場合に備え、保存時にも上限で切る
 			$groups[] = array(
 				'title' => sanitize_text_field( $group['title'] ?? '' ),
-				'ids'   => $ids,
+				'ids'   => array_slice( $ids, 0, AIJI_GALLERY_MAX_PHOTOS ),
 			);
 		}
 	}
