@@ -2965,8 +2965,9 @@ main {
   /* 窓の外（下）に完全に隠しておく */
   translate: 0 115%;
   transition: translate 0.7s cubic-bezier(0.2, 0.8, 0.25, 1);
-  /* 左の文字から順に、少しずつ遅れて上がってくる */
-  transition-delay: calc(var(--char-i) * 0.05s);
+  /* 左の文字から順に、少しずつ遅れて上がってくる。
+     --rise-offset は、フェードするブロックの中にある見出しだけJSが設定する。 */
+  transition-delay: calc(var(--rise-offset, 0s) + var(--char-i) * 0.05s);
 }
 
 .heading-rise.is-risen .heading-char__in {

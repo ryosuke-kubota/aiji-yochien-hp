@@ -130,7 +130,9 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
       variant: ""
     },
     {
-      selector: ".philosophy__copy, .subpage-hero__copy, .text-stack, .page-section__head",
+      // page-section__head はブロックごと動かすと中の見出しが二重に動くため、
+      // 見出し以外（説明文）だけをフェードの対象にする
+      selector: ".philosophy__copy, .subpage-hero__copy, .text-stack, .page-section__head > p",
       variant: "left"
     },
     {
@@ -204,8 +206,8 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
   });
 }
 
-// トップの見出しを、1文字ずつふわっとせり上がらせる
-if (!prefersReducedMotion && document.body.classList.contains("home")) {
+// セクション見出しを、1文字ずつふわっとせり上がらせる（全ページ共通）
+if (!prefersReducedMotion) {
   const riseTargets = document.querySelectorAll(".section-heading h2");
   if (riseTargets.length) {
     const riseObserver = new IntersectionObserver(
@@ -235,6 +237,11 @@ if (!prefersReducedMotion && document.body.classList.contains("home")) {
       heading
         .closest(".section-heading")
         ?.classList.remove("js-reveal", "js-reveal--left", "js-reveal--right", "js-reveal--zoom");
+      // 本文や写真を含む大きなブロックの中にある見出しは、そのブロックのフェードを残す。
+      // 代わりに文字が上がり始めるのを少し遅らせ、ブロック → 文字の順に見えるようにする。
+      if (heading.closest(".js-reveal")) {
+        heading.style.setProperty("--rise-offset", "0.35s");
+      }
       heading.classList.add("heading-rise");
       riseObserver.observe(heading);
     });
