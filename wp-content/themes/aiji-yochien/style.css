@@ -62,6 +62,19 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 押せるものは「二度押しで拡大」を無効にする。
+   指1本での不意な拡大を防ぎつつ、二本指での拡大は残す（読みづらい人が拡大できるように）。 */
+a,
+button,
+label,
+summary,
+input,
+select,
+textarea,
+.event-gallery__item {
+  touch-action: manipulation;
+}
+
 body {
   margin: 0;
   overflow-x: clip; /* 縁からはみ出す装飾イラストで横スクロールが生まれないように */
@@ -3755,6 +3768,40 @@ main {
   font-weight: 800;
 }
 
+/* --- スマホ: 写真の切り替えをしやすくする --- */
+@media (max-width: 720px) {
+  /* 写真に重ならないよう、送りボタンを下に並べて大きくする */
+  .aiji-lightbox {
+    padding: 16px 12px calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .aiji-lightbox__nav {
+    top: auto;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 62px;
+    height: 62px;
+    background: rgba(255, 255, 255, 0.28);
+    translate: 0;
+  }
+
+  .aiji-lightbox__nav--prev {
+    left: 26px;
+  }
+
+  .aiji-lightbox__nav--next {
+    right: 26px;
+  }
+
+  /* 横に払う操作を写真の切り替えに使うため、縦スクロールだけ残す */
+  .aiji-lightbox__figure {
+    touch-action: pan-y;
+  }
+
+  .aiji-lightbox__figure img {
+    max-height: 62vh;
+  }
+}
+
 /* =========================================
    制服について（入園のご案内）
    ========================================= */
@@ -4222,10 +4269,12 @@ main {
     gap: 6px;
   }
 
+  /* iOSは16px未満の入力欄にふれると画面を自動で拡大するため、16pxを下回らせない */
   .entry-field input,
   .entry-field select,
   .entry-field textarea {
     padding: 11px 14px;
+    font-size: 16px;
   }
 
   .entry-field textarea {

@@ -341,6 +341,43 @@ if (galleryItems.length > 0) {
   nextButton.addEventListener("click", showNext);
   prevButton.addEventListener("click", showPrev);
   closeButton.addEventListener("click", closeLightbox);
+
+  // スマホでは指を横に払っても写真を切り替えられるようにする
+  const SWIPE_THRESHOLD_PX = 45;
+  let swipeStartX = 0;
+  let swipeStartY = 0;
+  let isSwiping = false;
+
+  lightbox.addEventListener(
+    "touchstart",
+    (event) => {
+      // 指が2本以上のとき（拡大操作）は写真を切り替えない
+      isSwiping = event.touches.length === 1 && photos.length > 1;
+      if (!isSwiping) return;
+      swipeStartX = event.touches[0].clientX;
+      swipeStartY = event.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  lightbox.addEventListener(
+    "touchend",
+    (event) => {
+      if (!isSwiping) return;
+      isSwiping = false;
+      const touch = event.changedTouches[0];
+      const moveX = touch.clientX - swipeStartX;
+      const moveY = touch.clientY - swipeStartY;
+      // 動きが小さいときや、縦方向のほうが大きいときは切り替えない
+      if (Math.abs(moveX) < SWIPE_THRESHOLD_PX || Math.abs(moveX) < Math.abs(moveY)) return;
+      if (moveX < 0) {
+        showNext();
+      } else {
+        showPrev();
+      }
+    },
+    { passive: true }
+  );
   lightbox.addEventListener("click", (event) => {
     if (event.target === lightbox) closeLightbox();
   });
