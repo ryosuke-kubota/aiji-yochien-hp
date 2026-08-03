@@ -83,36 +83,41 @@ if (prefersReducedMotion) {
   document.querySelectorAll("#aiji-hero-clip animate").forEach((el) => el.remove());
 }
 
+// テキストを1文字ずつ span で包み、--char-i に通し番号を入れる。
+// 文字単位で時間差をつけて動かすために使う。戻り値は次に使える通し番号。
+const splitChars = (el, className, startIndex = 0) => {
+  let index = startIndex;
+  Array.from(el.childNodes).forEach((node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const fragment = document.createDocumentFragment();
+      Array.from(node.textContent).forEach((ch) => {
+        if (ch.trim() === "") {
+          fragment.appendChild(document.createTextNode(ch));
+          return;
+        }
+        const span = document.createElement("span");
+        span.className = className;
+        span.style.setProperty("--char-i", index);
+        span.textContent = ch;
+        fragment.appendChild(span);
+        index += 1;
+      });
+      node.replaceWith(fragment);
+    } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== "BR") {
+      index = splitChars(node, className, index);
+    }
+  });
+  return index;
+};
+
 // トップのヒーロー見出しを1文字ずつ弾ませて登場させる
 const heroCopy = document.querySelector(".hero__copy");
 if (!prefersReducedMotion && heroCopy) {
   let charIndex = 0;
-  const splitChars = (el) => {
-    Array.from(el.childNodes).forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        const fragment = document.createDocumentFragment();
-        Array.from(node.textContent).forEach((ch) => {
-          if (ch.trim() === "") {
-            fragment.appendChild(document.createTextNode(ch));
-            return;
-          }
-          const span = document.createElement("span");
-          span.className = "hero__char";
-          span.style.setProperty("--char-i", charIndex);
-          span.textContent = ch;
-          fragment.appendChild(span);
-          charIndex += 1;
-        });
-        node.replaceWith(fragment);
-      } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== "BR") {
-        splitChars(node);
-      }
-    });
-  };
   const kicker = heroCopy.querySelector(".hero__kicker");
   const heading = heroCopy.querySelector("h1");
-  if (kicker) splitChars(kicker);
-  if (heading) splitChars(heading);
+  if (kicker) charIndex = splitChars(kicker, "hero__char", charIndex);
+  if (heading) charIndex = splitChars(heading, "hero__char", charIndex);
   heroCopy.closest(".hero")?.classList.add("hero--chars");
 }
 
@@ -150,9 +155,11 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
     ".guide-flow",
     ".event-gallery"
   ];
-  const STAGGER_STEP_MS = 70;
-  const STAGGER_MAX_MS = 340;
-  const REVEAL_DURATION_MS = 720;
+  // ゆったり順番に出したいのでカード間の間隔を広めに取る
+  const STAGGER_STEP_MS = 110;
+  const STAGGER_MAX_MS = 520;
+  // CSSのトランジション（最長1.25s）が終わってから後片付けする
+  const REVEAL_DURATION_MS = 1400;
 
   const targets = new Map();
   revealPlans.forEach(({ selector, variant }) => {
@@ -183,7 +190,9 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
         }, REVEAL_DURATION_MS + delay);
       });
     },
-    { threshold: 0.12, rootMargin: "0px 0px -36px" }
+    // 高さの違う要素でも「上端が画面下から80px入った時点」で揃って動き出すようにする。
+    // 割合(threshold)で見ると背の高いセクションほど動き出しが遅れ、急に出る印象になる。
+    { threshold: 0, rootMargin: "0px 0px -80px 0px" }
   );
 
   targets.forEach(({ variant }, el) => {
@@ -193,6 +202,43 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
     }
     observer.observe(el);
   });
+}
+
+// トップの見出しを、1文字ずつふわっとせり上がらせる
+if (!prefersReducedMotion && document.body.classList.contains("home")) {
+  const riseTargets = document.querySelectorAll(".section-heading h2");
+  if (riseTargets.length) {
+    const riseObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-risen");
+          riseObserver.unobserve(entry.target);
+        });
+      },
+      // 見出しが少し見えてから動き始める
+      { threshold: 0, rootMargin: "0px 0px -90px 0px" }
+    );
+    riseTargets.forEach((heading) => {
+      // 見出しごとに0から数え直し、どの見出しも左端から順に上がるようにする
+      splitChars(heading, "heading-char");
+      // 文字を「隠れた床」から出すため、1文字ずつ内側にもう1枚包む。
+      // 外側が窓（はみ出しを隠す）、内側が動く役割。
+      heading.querySelectorAll(".heading-char").forEach((box) => {
+        const inner = document.createElement("span");
+        inner.className = "heading-char__in";
+        inner.textContent = box.textContent;
+        box.textContent = "";
+        box.appendChild(inner);
+      });
+      // 親のフェードインと重なると文字の動きが埋もれるので、見出しブロックは動かさない
+      heading
+        .closest(".section-heading")
+        ?.classList.remove("js-reveal", "js-reveal--left", "js-reveal--right", "js-reveal--zoom");
+      heading.classList.add("heading-rise");
+      riseObserver.observe(heading);
+    });
+  }
 }
 
 // 行事フォトギャラリーのライトボックス（行事ごとの写真セットをスライダーで閲覧）

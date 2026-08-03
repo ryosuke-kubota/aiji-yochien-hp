@@ -2842,13 +2842,26 @@ main {
 
 /* --- スクロールでふわっと表示（JSが .js-reveal を付与） --- */
 .js-reveal {
+  /* ゆるやかに立ち上がってゆっくり止まるカーブ。
+     以前の ease-out-expo は最初の2割の時間で8割動くため「急に出る」印象になっていた。 */
+  --reveal-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --reveal-move: 1.05s;
+  --reveal-fade: 1.25s; /* 動きより遅れて色が乗ると、ふわっと浮かび上がって見える */
   opacity: 0;
-  translate: 0 34px;
-  scale: 0.97;
+  translate: 0 26px;
+  scale: 0.99;
+}
+
+/* transition だけクラス名を重ねて詳細度を上げている。
+   後方のカード用 transition（.link-card など）と詳細度が並ぶと後勝ちで上書きされ、
+   opacity にトランジションが効かず一瞬で表示されてしまうため。
+   translate / scale は方向バリエーションが上書きできるよう、上の単一クラスのままにする。 */
+.js-reveal.js-reveal {
   transition:
-    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    translate 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-    scale 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity var(--reveal-fade) var(--reveal-ease),
+    translate var(--reveal-move) var(--reveal-ease),
+    scale var(--reveal-move) var(--reveal-ease);
+  will-change: opacity, translate, scale;
 }
 
 .js-reveal.is-visible {
@@ -2913,28 +2926,51 @@ main {
 
 /* --- リビールの方向バリエーション --- */
 .js-reveal--left {
-  translate: -48px 0;
+  translate: -38px 0;
   scale: 1;
 }
 
 .js-reveal--right {
-  translate: 48px 0;
+  translate: 38px 0;
   scale: 1;
 }
 
+/* transition は .js-reveal のものをそのまま継承する */
 .js-reveal--zoom {
-  translate: 0 16px;
-  scale: 0.92;
-  transition:
-    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    translate 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-    scale 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  translate: 0 14px;
+  scale: 0.95;
 }
 
 .js-reveal.is-visible {
   opacity: 1;
   translate: 0 0;
   scale: 1;
+}
+
+/* --- トップ: 見出しを1文字ずつ、隠れた床からせり上がらせる ---
+   周囲のフェードインと区別がつくよう、透明度は一切変えずに
+   「窓の下から文字が現れる」動きだけで見せる。 */
+.heading-rise .heading-char {
+  display: inline-block;
+  overflow: hidden;
+  /* overflow を効かせると inline-block はベースラインがずれるため下端で揃える */
+  vertical-align: bottom;
+  /* 濁点や記号が切れないよう上下に余白を持たせ、同じ分だけ負のマージンで打ち消す */
+  padding: 0.14em 0 0.08em;
+  margin: -0.14em 0 -0.08em;
+}
+
+.heading-rise .heading-char__in {
+  display: inline-block;
+  /* 窓の外（下）に完全に隠しておく */
+  translate: 0 115%;
+  transition: translate 0.7s cubic-bezier(0.2, 0.8, 0.25, 1);
+  /* 左の文字から順に、少しずつ遅れて上がってくる */
+  transition-delay: calc(var(--char-i) * 0.05s);
+}
+
+.heading-rise.is-risen .heading-char__in {
+  translate: 0 0;
 }
 
 /* --- トップ: ヒーロー見出しの1文字ずつ弾む登場 --- */
