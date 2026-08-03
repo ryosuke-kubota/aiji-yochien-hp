@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.44.0';
+const AIJI_THEME_VERSION = '1.45.0';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -32,7 +32,19 @@ add_action( 'wp_head', 'aiji_favicon' );
 
 /** テーマ内アセットURL */
 function aiji_asset( string $path ): string {
-	return esc_url( get_template_directory_uri() . '/assets/' . ltrim( $path, '/' ) );
+	static $resolved = array();
+
+	$rel = ltrim( $path, '/' );
+	if ( ! isset( $resolved[ $rel ] ) ) {
+		// 同じ名前の .webp があればそちらを使う（大幅に軽い）。
+		// 変換していない画像は、これまでどおり元のファイルを読む。
+		$webp = preg_replace( '/\.(png|jpe?g)$/i', '.webp', $rel );
+		$resolved[ $rel ] = ( $webp !== $rel && file_exists( get_template_directory() . '/assets/' . $webp ) )
+			? $webp
+			: $rel;
+	}
+
+	return esc_url( get_template_directory_uri() . '/assets/' . $resolved[ $rel ] );
 }
 
 /** スラッグから固定ページURLを取得（未作成ならホームへ） */
@@ -374,10 +386,14 @@ function aiji_gallery_groups(): array {
 			if ( ! $src ) {
 				continue;
 			}
-			$alt      = get_post_meta( absint( $id ), '_wp_attachment_image_alt', true );
+			$alt = get_post_meta( absint( $id ), '_wp_attachment_image_alt', true );
+			// 一覧のサムネイルは小さく表示されるので軽い版を使い、
+			// 拡大表示（src）だけ大きい版を読む。
+			$thumb    = wp_get_attachment_image_url( absint( $id ), 'medium_large' );
 			$images[] = array(
-				'src' => $src,
-				'alt' => $alt ? $alt : ( $title ? $title : '行事の写真' ),
+				'src'   => $src,
+				'thumb' => $thumb ? $thumb : $src,
+				'alt'   => $alt ? $alt : ( $title ? $title : '行事の写真' ),
 			);
 		}
 		if ( ! $images ) {

@@ -104,7 +104,7 @@ get_header();
           <?php foreach ( $aiji_gallery_groups as $aiji_group ) : ?>
           <figure class="event-gallery__item"
             data-gallery="<?php echo esc_attr( wp_json_encode( $aiji_group['images'] ) ); ?>">
-            <img src="<?php echo esc_url( $aiji_group['images'][0]['src'] ); ?>" alt="<?php echo esc_attr( $aiji_group['images'][0]['alt'] ); ?>" loading="lazy">
+            <img src="<?php echo esc_url( $aiji_group['images'][0]['thumb'] ?? $aiji_group['images'][0]['src'] ); ?>" alt="<?php echo esc_attr( $aiji_group['images'][0]['alt'] ); ?>" loading="lazy">
             <?php if ( count( $aiji_group['images'] ) > 1 ) : ?>
             <span class="event-gallery__count">📷 <?php echo (int) count( $aiji_group['images'] ); ?>枚</span>
             <?php endif; ?>
