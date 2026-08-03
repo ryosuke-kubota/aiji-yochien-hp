@@ -4214,7 +4214,26 @@ main {
 @media (max-width: 720px) {
   .entry-form__grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 14px;
+  }
+
+  /* 1列になるぶん縦に長くなるので、項目内の余白も少し詰める */
+  .entry-field {
+    gap: 6px;
+  }
+
+  .entry-field input,
+  .entry-field select,
+  .entry-field textarea {
+    padding: 11px 14px;
+  }
+
+  .entry-field textarea {
+    min-height: 120px;
+  }
+
+  .entry-form__agree {
+    margin-top: 20px;
   }
 
   .entry-form__submit .button {

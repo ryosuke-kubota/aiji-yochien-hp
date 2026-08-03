@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.41.0';
+const AIJI_THEME_VERSION = '1.42.0';
 
 /** テーマサポート */
 function aiji_setup(): void {
@@ -632,3 +632,21 @@ function aiji_cf7_acceptance_as_validation( array $properties ): array {
 	return $properties;
 }
 add_filter( 'wpcf7_contact_form_properties', 'aiji_cf7_acceptance_as_validation' );
+
+/**
+ * フォームHTMLへの <p> / <br> の自動挿入を止める。
+ * フォームは entry-field などのマークアップを自分で書いているため、
+ * 自動挿入された <br> がグリッドの行として数えられ、項目の上下に余計な空きができる。
+ * メール本文（for => mail）の整形には影響させない。
+ *
+ * @param bool         $enabled 自動整形を行うか
+ * @param array|string $options 用途（array( 'for' => 'mail' ) など）
+ * @return bool
+ */
+function aiji_cf7_disable_autop( bool $enabled, $options = '' ): bool {
+	if ( is_array( $options ) && isset( $options['for'] ) && 'mail' === $options['for'] ) {
+		return $enabled;
+	}
+	return false;
+}
+add_filter( 'wpcf7_autop_or_not', 'aiji_cf7_disable_autop', 10, 2 );
