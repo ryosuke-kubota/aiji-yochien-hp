@@ -80,7 +80,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 // heroクリップパスのSMILモーフはCSSでは止められないため、ここで除去する
 if (prefersReducedMotion) {
-  document.querySelectorAll("#aiji-hero-clip animate").forEach((el) => el.remove());
+  document.querySelectorAll(".hero__clip-defs animate").forEach((el) => el.remove());
 }
 
 // テキストを1文字ずつ span で包み、--char-i に通し番号を入れる。
