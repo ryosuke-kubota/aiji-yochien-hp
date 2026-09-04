@@ -20,14 +20,19 @@ Text Domain: aiji-yochien
   --color-cream: #fff8eb;
   --color-green: #8cc757;
   --color-green-deep: #70ad42;
-  --color-green-soft: #eef8e8;
+  --color-green-soft: #e2f3d2;
   --color-pink: #ee7887;
   --color-pink-deep: #ed6f79;
-  --color-pink-soft: #fff0f2;
+  --color-pink-soft: #fce2e7;
   --color-blue: #5ba0d5;
-  --color-blue-soft: #edf7ff;
+  --color-blue-soft: #dcedfb;
   --color-yellow: #f4b72f;
-  --color-yellow-soft: #fff8dd;
+  --color-yellow-soft: #fcefc0;
+  /* 淡い背景の上でも読める、見出しテキスト用の濃色 */
+  --color-green-ink: #468f22;
+  --color-pink-ink: #dd3a58;
+  --color-blue-ink: #2b74a8;
+  --color-yellow-ink: #a96f00;
   --shadow-soft: 0 18px 50px rgba(94, 69, 46, 0.08);
   --shadow-card: 0 12px 28px rgba(96, 83, 66, 0.08);
   --radius-card: 8px;
@@ -4427,4 +4432,136 @@ main {
   color: var(--color-muted);
   font-weight: 700;
   text-align: center;
+}
+
+/* =========================================
+   カラフル化: セクションごとに淡い背景と見出し色を割り当てる
+   --tint-ink / --tint-soft を各セクションが宣言し、
+   下の共通ルールがそれを拾う（未指定なら従来の色のまま）。
+   ========================================= */
+
+/* 見出しはセクションの色を継ぐ */
+.section-heading h2 {
+  color: var(--tint-ink, var(--color-ink));
+}
+
+/* --- 下層ページ: セクションを 緑 → 青 → 黄 → ピンク の順に彩る --- */
+.subpage-main section.page-section:nth-of-type(4n + 2) {
+  --tint-ink: var(--color-green-ink);
+  --tint-soft: var(--color-green-soft);
+}
+
+.subpage-main section.page-section:nth-of-type(4n + 3) {
+  --tint-ink: var(--color-blue-ink);
+  --tint-soft: var(--color-blue-soft);
+}
+
+.subpage-main section.page-section:nth-of-type(4n) {
+  --tint-ink: var(--color-yellow-ink);
+  --tint-soft: var(--color-yellow-soft);
+}
+
+.subpage-main section.page-section:nth-of-type(4n + 1) {
+  --tint-ink: var(--color-pink-ink);
+  --tint-soft: var(--color-pink-soft);
+}
+
+/* パネル型のセクションは、白からセクション色へ流れる淡いグラデーションを敷く */
+.subpage-main .page-section.soft-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, var(--tint-soft, var(--color-cream)) 88%);
+}
+
+/* --- トップページ: セクションごとに手で色を割り当てる --- */
+.news-panel {
+  --tint-ink: var(--color-blue-ink);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, var(--color-blue-soft) 88%);
+}
+
+.philosophy {
+  --tint-ink: var(--color-green-ink);
+}
+
+.features {
+  --tint-ink: var(--color-pink-ink);
+}
+
+.pickup {
+  --tint-ink: var(--color-yellow-ink);
+}
+
+.closing {
+  --tint-ink: var(--color-green-ink);
+}
+
+/* --- カード: 白一色だったカードに淡い色を順番に敷く --- */
+.feature-grid > :nth-child(4n + 1),
+.lesson-grid > :nth-child(4n + 1),
+.value-grid > :nth-child(4n + 1),
+.month-grid > :nth-child(4n + 1),
+.guide-flow > :nth-child(4n + 1),
+.event-grid > :nth-child(4n + 1) {
+  --tint-ink: var(--color-green-ink);
+  background: linear-gradient(180deg, #fff 10%, var(--color-green-soft) 100%);
+}
+
+.feature-grid > :nth-child(4n + 2),
+.lesson-grid > :nth-child(4n + 2),
+.value-grid > :nth-child(4n + 2),
+.month-grid > :nth-child(4n + 2),
+.guide-flow > :nth-child(4n + 2),
+.event-grid > :nth-child(4n + 2) {
+  --tint-ink: var(--color-blue-ink);
+  background: linear-gradient(180deg, #fff 10%, var(--color-blue-soft) 100%);
+}
+
+.feature-grid > :nth-child(4n + 3),
+.lesson-grid > :nth-child(4n + 3),
+.value-grid > :nth-child(4n + 3),
+.month-grid > :nth-child(4n + 3),
+.guide-flow > :nth-child(4n + 3),
+.event-grid > :nth-child(4n + 3) {
+  --tint-ink: var(--color-pink-ink);
+  background: linear-gradient(180deg, #fff 10%, var(--color-pink-soft) 100%);
+}
+
+.feature-grid > :nth-child(4n),
+.lesson-grid > :nth-child(4n),
+.value-grid > :nth-child(4n),
+.month-grid > :nth-child(4n),
+.guide-flow > :nth-child(4n),
+.event-grid > :nth-child(4n) {
+  --tint-ink: var(--color-yellow-ink);
+  background: linear-gradient(180deg, #fff 10%, var(--color-yellow-soft) 100%);
+}
+
+/* --- テキストにも色を --- */
+
+/* カードの見出しは、カードに敷いた色と同じ系統の濃色にする */
+.feature-grid > * h3,
+.lesson-grid > * h3,
+.value-grid > * h3,
+.month-grid > * h3,
+.guide-flow > * h3,
+.event-grid > * h3 {
+  color: var(--tint-ink, var(--color-ink));
+}
+
+/* 概要表の項目名（募集職種 など）はセクションの色に合わせる */
+.overview-list dt {
+  color: var(--tint-ink, var(--color-green-deep));
+  background: var(--tint-soft, var(--color-green-soft));
+}
+
+/* 下層ページの大見出しには園の緑を */
+.subpage-hero__copy h1 {
+  color: var(--color-green-ink);
+}
+
+/* トップ締めの見出しと、各ページ下部CTAの見出し */
+.closing__panel h2 {
+  color: var(--tint-ink, var(--color-green-ink));
+}
+
+.page-cta h2 {
+  color: var(--color-green-ink);
 }
