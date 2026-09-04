@@ -36,7 +36,7 @@ get_header();
             <h2>教育の特色</h2>
             <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
           </div>
-          <p>基本的な生活習慣を土台に、好奇心・創造性・考える力・文字や数の基礎を、遊びを通してバランスよく育てます。中でも英語レッスンと体育レッスンは、他の園にはない当園のイチオシです。</p>
+          <p>基本的な生活習慣を土台に、好奇心・創造性・考える力・文字や数の基礎を、遊びを通してバランスよく育てます。中でも英語教育と体育教育は、他の園にはない当園のイチオシです。</p>
         </div>
         <div class="value-grid">
           <article class="value-card">
@@ -65,11 +65,11 @@ get_header();
         <?php
         // assets/images/photo-{photo}.jpg を置くと、アイコンから実写真に自動で切り替わる
         $aiji_lessons = array(
-          array( 'photo' => 'lesson-english', 'icon' => 'card-icon-lesson-english.png', 'title' => '英語レッスン', 'tag' => 'tag--blue', 'body' => '約30年前から、毎週全クラスで外国人講師による英会話指導を実施。物の名前・歌・色カードで楽しく覚えます。' ),
-          array( 'photo' => 'lesson-gym', 'icon' => 'card-icon-lesson-gym.png', 'title' => '体育レッスン', 'tag' => 'tag--green', 'body' => '体育専任講師が毎週指導（年長組）。なわとび・鉄棒・トランポリンで楽しみながら、たくましい体をつくります。' ),
-          array( 'photo' => 'lesson-music', 'icon' => 'card-icon-lesson-music.png', 'title' => '音楽レッスン', 'tag' => '', 'body' => '楽器を使ってリズム感を養い、みんなで合わせる楽しさを経験します。' ),
-          array( 'photo' => 'lesson-writing', 'icon' => 'card-icon-lesson-art.png', 'title' => '作文レッスン', 'tag' => '', 'body' => '今覚えている言葉で作文をつくり、表現する楽しさを育てます。' ),
-          array( 'photo' => 'lesson-numbers', 'icon' => 'card-icon-lesson-numbers.png', 'title' => '数のレッスン', 'tag' => '', 'body' => 'かんたんな足し算と引き算のおけいこで、学びの芽を育てます。' ),
+          array( 'photo' => 'lesson-english', 'icon' => 'card-icon-lesson-english.png', 'title' => '英語教育', 'tag' => 'tag--blue', 'body' => '約30年前から、毎週全クラスで外国人講師による英会話指導を実施。物の名前・歌・色カードで楽しく覚えます。' ),
+          array( 'photo' => 'lesson-gym', 'icon' => 'card-icon-lesson-gym.png', 'title' => '体育教育', 'tag' => 'tag--green', 'body' => '体育専任講師が毎週指導（年長組）。なわとび・鉄棒・トランポリンで楽しみながら、たくましい体をつくります。' ),
+          array( 'photo' => 'lesson-music', 'icon' => 'card-icon-lesson-music.png', 'title' => '音楽あそび', 'tag' => '', 'body' => '楽器を使ってリズム感を養い、みんなで合わせる楽しさを経験します。' ),
+          array( 'photo' => 'lesson-writing', 'icon' => 'card-icon-lesson-art.png', 'title' => '作文あそび', 'tag' => '', 'body' => '今覚えている言葉で作文をつくり、表現する楽しさを育てます。' ),
+          array( 'photo' => 'lesson-numbers', 'icon' => 'card-icon-lesson-numbers.png', 'title' => '数あそび', 'tag' => '', 'body' => 'かんたんな足し算と引き算のおけいこで、学びの芽を育てます。' ),
           array( 'photo' => 'lesson-farm', 'icon' => 'card-icon-annual-season.png', 'title' => '愛児農園', 'tag' => '', 'body' => 'じゃが芋・さつま芋・玉ねぎ・大根作りに挑戦。収穫の喜びを味わいます。' ),
         );
         ?>

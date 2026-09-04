@@ -162,15 +162,15 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
           <div class="feature-grid">
             <article class="feature-card">
               <img class="feature-card__icon" src="<?php echo aiji_asset( 'images/icon-book.png' ); ?>" alt="" aria-hidden="true">
-              <h3>英語レッスン<span class="tag tag--blue">イチオシ</span></h3>
+              <h3>英語教育<span class="tag tag--blue">イチオシ</span></h3>
               <p>約30年続く外国人講師の英会話。歌やカードで楽しく学びます。</p>
-              <a class="mini-circle mini-circle--blue" href="<?php echo aiji_page_url( 'concept' ); ?>" aria-label="英語レッスンを詳しく見る">›</a>
+              <a class="mini-circle mini-circle--blue" href="<?php echo aiji_page_url( 'concept' ); ?>" aria-label="英語教育を詳しく見る">›</a>
             </article>
             <article class="feature-card">
               <img class="feature-card__icon" src="<?php echo aiji_asset( 'images/icon-sprout.png' ); ?>" alt="" aria-hidden="true">
-              <h3>体育レッスン<span class="tag tag--green">イチオシ</span></h3>
+              <h3>体育教育<span class="tag tag--green">イチオシ</span></h3>
               <p>なわとび・鉄棒・トランポリンで、楽しみながら体力づくり。</p>
-              <a class="mini-circle mini-circle--green" href="<?php echo aiji_page_url( 'concept' ); ?>" aria-label="体育レッスンを詳しく見る">›</a>
+              <a class="mini-circle mini-circle--green" href="<?php echo aiji_page_url( 'concept' ); ?>" aria-label="体育教育を詳しく見る">›</a>
             </article>
             <article class="feature-card">
               <img class="feature-card__icon" src="<?php echo aiji_asset( 'images/icon-heart.png' ); ?>" alt="" aria-hidden="true">
@@ -190,31 +190,31 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
 
       <section class="pickup section-anchor" id="lessons">
         <div class="section-heading section-heading--center">
-          <h2>愛児幼稚園の<br class="sp-br">イチオシレッスン</h2>
+          <h2>愛児幼稚園の<br class="sp-br">イチオシ</h2>
           <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
         </div>
-        <p class="pickup__lead">他の園にはない、当園自慢の2つのレッスン。遊びのなかで学んで考える力を育てます。</p>
+        <p class="pickup__lead">他の園にはない、当園自慢の2つの教育。遊びのなかで学んで考える力を育てます。</p>
         <div class="pickup-grid">
           <article class="pickup-card pickup-card--english">
             <figure class="pickup-card__photo">
-              <img src="<?php echo aiji_photo( 'lesson-english' ) ?: aiji_asset( 'images/card-prekindergarten.png' ); ?>" alt="英語レッスンを楽しむ園児">
+              <img src="<?php echo aiji_photo( 'lesson-english' ) ?: aiji_asset( 'images/card-prekindergarten.png' ); ?>" alt="英語教育を楽しむ園児">
               <span class="pickup-card__badge tag tag--blue">イチオシ</span>
             </figure>
             <div class="pickup-card__body">
-              <h3>英語レッスン</h3>
-              <p>約30年前から外国人講師による英会話レッスンを実施。物の名前・歌・色カードを使って、遊びながら自然に英語を覚えます。「できた！」「言えた！」の積み重ねが、ことばへの好奇心を大きく育てます。</p>
-              <a class="button button--small button--blue" href="<?php echo aiji_page_url( 'concept' ); ?>#regular">レッスンを詳しく見る<span aria-hidden="true">›</span></a>
+              <h3>英語教育</h3>
+              <p>約30年前から外国人講師による英会話指導を実施。物の名前・歌・色カードを使って、遊びながら自然に英語を覚えます。「できた！」「言えた！」の積み重ねが、ことばへの好奇心を大きく育てます。</p>
+              <a class="button button--small button--blue" href="<?php echo aiji_page_url( 'concept' ); ?>#regular">詳しく見る<span aria-hidden="true">›</span></a>
             </div>
           </article>
           <article class="pickup-card pickup-card--gym">
             <figure class="pickup-card__photo">
-              <img src="<?php echo aiji_photo( 'lesson-gym' ) ?: aiji_asset( 'images/hero-children-running.png' ); ?>" alt="体育レッスンで走る園児たち">
+              <img src="<?php echo aiji_photo( 'lesson-gym' ) ?: aiji_asset( 'images/hero-children-running.png' ); ?>" alt="体育教育で走る園児たち">
               <span class="pickup-card__badge tag tag--green">イチオシ</span>
             </figure>
             <div class="pickup-card__body">
-              <h3>体育レッスン</h3>
+              <h3>体育教育</h3>
               <p>体育専任講師のもと、なわとび・鉄棒・トランポリンに楽しく挑戦。体を思いきり動かす毎日が、健康で明るく、体力あふれるたくましい体をつくります。</p>
-              <a class="button button--small button--primary" href="<?php echo aiji_page_url( 'concept' ); ?>#regular">レッスンを詳しく見る<span aria-hidden="true">›</span></a>
+              <a class="button button--small button--primary" href="<?php echo aiji_page_url( 'concept' ); ?>#regular">詳しく見る<span aria-hidden="true">›</span></a>
             </div>
           </article>
         </div>

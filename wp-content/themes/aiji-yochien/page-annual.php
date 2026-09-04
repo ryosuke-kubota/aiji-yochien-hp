@@ -48,7 +48,7 @@ get_header();
           </article>
           <article class="schedule-step">
             <div class="schedule-time">10:00</div>
-            <div><h3>設定保育</h3><p>英語・体育・音楽などのレッスンや制作を、年齢に合わせて行います。</p></div>
+            <div><h3>設定保育</h3><p>英語教育・体育教育や、音楽あそび・制作などを、年齢に合わせて行います。</p></div>
             <img src="<?php echo aiji_photo( 'day-lesson' ) ?: aiji_asset( 'images/philosophy-craft-circle.png' ); ?>" alt="設定保育のようす">
           </article>
           <article class="schedule-step">

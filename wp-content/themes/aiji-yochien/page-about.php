@@ -151,7 +151,7 @@ get_header();
       <section class="page-cta">
         <div>
           <h2>教育についてもあわせてご覧ください</h2>
-          <p>カリキュラムやレッスン、子育てサポートなど、毎日の保育内容を整理しています。</p>
+          <p>カリキュラムや教育・あそびの内容、子育てサポートなど、毎日の保育内容を整理しています。</p>
         </div>
         <a class="button button--ghost" href="<?php echo aiji_page_url( 'concept' ); ?>">教育についてへ<span aria-hidden="true">›</span></a>
       </section>
