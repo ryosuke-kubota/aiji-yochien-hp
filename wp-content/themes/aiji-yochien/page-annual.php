@@ -25,6 +25,7 @@ get_header();
 
       <nav class="page-tabs" aria-label="ページ内メニュー">
         <a href="#daily">1日の流れ</a>
+        <a href="#mixed-age">異年齢保育</a>
         <a href="#care">預かり保育</a>
         <a href="<?php echo aiji_page_url( 'events' ); ?>">年間行事へ</a>
       </nav>
@@ -70,7 +71,12 @@ get_header();
       </section>
 
       <section class="page-section" id="care">
-        <div class="value-grid">
+        <div class="value-grid value-grid--four">
+          <article class="value-card" id="mixed-age">
+            <img src="<?php echo aiji_asset( 'images/card-icon-mixed-age.png' ); ?>" alt="" aria-hidden="true">
+            <h3>異年齢保育</h3>
+            <p>学年のちがう子どもたちが関わり合い、思いやりの心と「やってみたい」というあこがれを育みます。</p>
+          </article>
           <article class="value-card">
             <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true">
             <h3>早朝保育</h3>

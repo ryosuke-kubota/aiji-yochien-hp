@@ -1857,6 +1857,10 @@ main {
   gap: 18px;
 }
 
+.value-grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .value-card {
   min-height: 200px;
   padding: 24px;
@@ -3276,6 +3280,10 @@ main {
 @media (max-width: 1024px) {
   .pickup-grid {
     grid-template-columns: 1fr;
+  }
+
+  .value-grid--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
