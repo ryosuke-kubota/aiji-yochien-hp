@@ -3,7 +3,7 @@ Theme Name: 愛児幼稚園 (Aiji Yochien)
 Theme URI: https://example.com/
 Author: 愛児学園
 Description: 学校法人 愛児学園 愛児幼稚園の公式サイトテーマ。静的HTMLサイトからの移植版。
-Version: 1.52.2
+Version: 1.53.0
 Requires at least: 6.0
 Requires PHP: 8.0
 License: GNU General Public License v2 or later
@@ -1849,6 +1849,240 @@ main {
   height: auto;
   aspect-ratio: 3 / 4;
   object-position: top;
+}
+
+.policy-section {
+  padding-block: 24px;
+  scroll-margin-top: 120px;
+}
+
+.policy-section__lead {
+  margin: 22px 0 12px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.6;
+}
+
+.policy-section__intro {
+  margin: 0;
+  text-align: center;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.policy-map {
+  position: relative;
+  width: min(100%, 1000px);
+  margin: 30px auto 0;
+  padding-block: 70px;
+  letter-spacing: 0;
+}
+
+.policy-map__art {
+  position: relative;
+  width: 60%;
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+
+.policy-map__star {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.policy-map__center {
+  position: absolute;
+  inset: 37% 20% auto;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.policy-map__center span {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.policy-map__center strong {
+  color: #b84154;
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.6;
+}
+
+.policy-map__markers {
+  display: none;
+}
+
+.policy-strengths {
+  margin: 0;
+}
+
+.policy-strength {
+  position: absolute;
+  left: var(--policy-x);
+  top: var(--policy-y);
+  width: 210px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.policy-strength--self {
+  --policy-x: 50%;
+  --policy-y: 10%;
+  --policy-color: #467b26;
+  --policy-soft: #edf6e4;
+}
+
+.policy-strength--explore {
+  --policy-x: 85%;
+  --policy-y: 42%;
+  --policy-color: #286d9c;
+  --policy-soft: #eaf4fc;
+}
+
+.policy-strength--express {
+  --policy-x: 74%;
+  --policy-y: 86%;
+  --policy-color: #b84154;
+  --policy-soft: #fceef0;
+}
+
+.policy-strength--challenge {
+  --policy-x: 26%;
+  --policy-y: 86%;
+  --policy-color: #946000;
+  --policy-soft: #fff5d7;
+}
+
+.policy-strength--grow {
+  --policy-x: 15%;
+  --policy-y: 42%;
+  --policy-color: #297767;
+  --policy-soft: #e8f5f0;
+}
+
+.policy-strength dt {
+  color: var(--policy-color);
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.policy-strength dd {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 12px;
+  margin: 8px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+.policy-strength dd span {
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .policy-section__lead {
+    font-size: 23px;
+  }
+
+  .policy-section__intro {
+    font-size: 14px;
+  }
+
+  .policy-map {
+    max-width: 480px;
+    margin-top: 26px;
+    padding-block: 0;
+  }
+
+  .policy-map__art {
+    width: 100%;
+  }
+
+  .policy-map__center {
+    inset: 39% 20% auto;
+  }
+
+  .policy-map__center span {
+    font-size: 11px;
+  }
+
+  .policy-map__center strong {
+    font-size: 38px;
+    line-height: 1.5;
+  }
+
+  .policy-map__markers {
+    display: block;
+  }
+
+  .policy-map__markers span {
+    position: absolute;
+    left: var(--policy-x);
+    top: var(--policy-y);
+    transform: translate(-50%, -50%);
+    color: var(--policy-color);
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .policy-map__markers .policy-strength--self {
+    top: 19%;
+  }
+
+  .policy-map__markers .policy-strength--explore {
+    left: 82%;
+  }
+
+  .policy-map__markers .policy-strength--grow {
+    left: 18%;
+  }
+
+  .policy-map__markers .policy-strength--express,
+  .policy-map__markers .policy-strength--challenge {
+    top: 81%;
+  }
+
+  .policy-strengths {
+    margin-top: 26px;
+  }
+
+  .policy-strength {
+    position: static;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-line);
+    transform: none;
+    text-align: left;
+  }
+
+  .policy-strength dt {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--policy-soft);
+    font-size: 27px;
+  }
+
+  .policy-strength dd {
+    justify-content: flex-start;
+    margin: 0;
+    font-size: 14px;
+  }
 }
 
 .value-grid {

@@ -59,30 +59,40 @@ get_header();
         </figure>
       </section>
 
-      <section class="page-section" id="policy">
-        <div class="page-section__head">
-          <div class="section-heading section-heading--left">
-            <h2>教育理念</h2>
+      <section class="page-section policy-section" id="policy" aria-labelledby="policy-title">
+          <div class="section-heading section-heading--center">
+            <h2 id="policy-title">教育理念</h2>
             <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
           </div>
-          <p>幼児期（2歳〜5歳）は、性格・人格・個性が作られる大切な時期。心・力・性のバランスを大切に育てます。</p>
-        </div>
-        <div class="value-grid">
-          <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/card-icon-lesson-manners.png' ); ?>" alt="" aria-hidden="true">
-            <h3>心（マインド）</h3>
-            <p>自立心・向上心・競争心・探求心・好奇心を日々の遊びの中で育みます。</p>
-          </article>
-          <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/card-icon-lesson-gym.png' ); ?>" alt="" aria-hidden="true">
-            <h3>力（能力）</h3>
-            <p>表現力・判断力・理解力・集中力・注意力を、体験を通して伸ばします。</p>
-          </article>
-          <article class="value-card">
-            <img src="<?php echo aiji_asset( 'images/card-icon-about-craft.png' ); ?>" alt="" aria-hidden="true">
-            <h3>性（パーソナリティ）</h3>
-            <p>創造性・積極性・感受性・協調性・社会性を、友だちとの関わりの中で培います。</p>
-          </article>
+          <p class="policy-section__lead">5つの力が育む、<br class="sp-br">子どもたちの「笑顔」。</p>
+          <p class="policy-section__intro">自分で考え、心を動かし、仲間と育つ。<br>毎日の遊びや体験の中で、5つの力を大切に育みます。</p>
+        <?php
+        $aiji_strengths = array(
+          array( 'key' => 'self', 'label' => '自', 'skills' => array( '自立心', '判断力', '向上心', '注意力' ) ),
+          array( 'key' => 'explore', 'label' => '探', 'skills' => array( '好奇心', '探究心', '理解力' ) ),
+          array( 'key' => 'express', 'label' => '表', 'skills' => array( '表現力', '創造性', '感受性' ) ),
+          array( 'key' => 'challenge', 'label' => '挑', 'skills' => array( '積極性', '集中力', '競争心', '挑戦する心' ) ),
+          array( 'key' => 'grow', 'label' => '育', 'skills' => array( '協調性', '社会性', '自然体験・収穫' ) ),
+        );
+        ?>
+        <div class="policy-map">
+          <div class="policy-map__art">
+            <img class="policy-map__star" src="<?php echo aiji_asset( 'images/policy-five-strengths-star.webp' ); ?>" alt="" width="900" height="900" loading="lazy" aria-hidden="true">
+            <div class="policy-map__center"><span>5つの力がつながって</span><strong>笑顔</strong><span>一人ひとりの、輝きに。</span></div>
+            <div class="policy-map__markers" aria-hidden="true">
+              <?php foreach ( $aiji_strengths as $aiji_strength ) : ?>
+              <span class="policy-strength--<?php echo esc_attr( $aiji_strength['key'] ); ?>"><?php echo esc_html( $aiji_strength['label'] ); ?></span>
+              <?php endforeach; ?>
+            </div>
+          </div>
+          <dl class="policy-strengths">
+            <?php foreach ( $aiji_strengths as $aiji_strength ) : ?>
+            <div class="policy-strength policy-strength--<?php echo esc_attr( $aiji_strength['key'] ); ?>">
+              <dt><?php echo esc_html( $aiji_strength['label'] ); ?></dt>
+              <dd><?php foreach ( $aiji_strength['skills'] as $aiji_skill ) : ?><span><?php echo esc_html( $aiji_skill ); ?></span><?php endforeach; ?></dd>
+            </div>
+            <?php endforeach; ?>
+          </dl>
         </div>
       </section>
 
