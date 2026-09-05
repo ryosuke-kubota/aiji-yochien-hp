@@ -1861,6 +1861,10 @@ main {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+#mixed-age {
+  scroll-margin-top: 124px;
+}
+
 .value-card {
   min-height: 200px;
   padding: 24px;
@@ -3284,6 +3288,12 @@ main {
 
   .value-grid--four {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .value-grid--four {
+    grid-template-columns: 1fr;
   }
 }
 
