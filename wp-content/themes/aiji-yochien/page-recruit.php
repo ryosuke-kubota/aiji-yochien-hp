@@ -26,6 +26,7 @@ get_header();
 
       <nav class="page-tabs" aria-label="ページ内メニュー">
         <a href="#jobs">募集要項</a>
+        <a href="#day">1日の流れ</a>
         <a href="#entry">応募フォーム</a>
       </nav>
 
@@ -40,6 +41,68 @@ get_header();
           <dt>選考の流れ</dt><dd>応募フォームまたはお電話でご連絡 → 園見学・面接 → 採用のご連絡</dd>
           <dt>お問い合わせ</dt><dd>TEL 06-6691-0502（受付時間 10:00〜17:00）　採用担当まで</dd>
         </dl>
+      </section>
+
+      <section class="page-section soft-panel" id="day">
+        <div class="page-section__head">
+          <div class="section-heading section-heading--left">
+            <h2>1日の流れ</h2>
+            <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
+          </div>
+          <p>出勤・降園は3つの時間帯に分かれますが、日中の流れはどの出勤でも共通です。</p>
+        </div>
+        <div class="dayflow">
+          <p class="dayflow__label">出勤（3つの時間帯）</p>
+          <div class="dayflow__ends">
+            <div class="dayflow__chip dayflow__chip--early">
+              <span class="dayflow__chip-name">早い出勤</span>
+              <span class="dayflow__chip-time"><b>7:30</b> 出勤</span>
+            </div>
+            <div class="dayflow__chip dayflow__chip--normal">
+              <span class="dayflow__chip-name">普通出勤</span>
+              <span class="dayflow__chip-time"><b>8:00</b> 出勤</span>
+            </div>
+            <div class="dayflow__chip dayflow__chip--late">
+              <span class="dayflow__chip-name">遅い出勤</span>
+              <span class="dayflow__chip-time"><b>9:30</b> 出勤</span>
+            </div>
+          </div>
+          <p class="dayflow__label">日中の流れ（どの出勤でも共通）</p>
+          <div class="schedule-track">
+            <article class="schedule-step schedule-step--simple">
+              <div class="schedule-time">10:00</div>
+              <div><h3>設定保育</h3></div>
+            </article>
+            <article class="schedule-step schedule-step--simple">
+              <div class="schedule-time">11:30</div>
+              <div><h3>給食</h3></div>
+            </article>
+            <article class="schedule-step schedule-step--simple">
+              <div class="schedule-time">14:30</div>
+              <div><h3>子ども降園or延長保育</h3></div>
+            </article>
+            <article class="schedule-step schedule-step--simple">
+              <div class="schedule-time">14:35</div>
+              <div><h3>掃除・明日の準備</h3></div>
+            </article>
+          </div>
+          <p class="dayflow__label">降園（時間帯ごと）</p>
+          <div class="dayflow__ends">
+            <div class="dayflow__chip dayflow__chip--early">
+              <span class="dayflow__chip-name">早い出勤</span>
+              <span class="dayflow__chip-time"><b>16:30</b> 降園</span>
+            </div>
+            <div class="dayflow__chip dayflow__chip--normal">
+              <span class="dayflow__chip-name">普通出勤</span>
+              <span class="dayflow__chip-time"><b>17:00</b> 降園</span>
+            </div>
+            <div class="dayflow__chip dayflow__chip--late">
+              <span class="dayflow__chip-name">遅い出勤</span>
+              <span class="dayflow__chip-time"><b>17:00</b> 延長保育</span>
+              <span class="dayflow__chip-time"><b>18:30</b> 降園</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="page-section soft-panel cream-panel" id="entry">

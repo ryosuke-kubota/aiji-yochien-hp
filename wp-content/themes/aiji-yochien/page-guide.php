@@ -25,6 +25,7 @@ get_header();
 
       <nav class="page-tabs" aria-label="ページ内メニュー">
         <a href="#preschool">2歳児クラス</a>
+        <a href="#panda">仲良しパンダクラブ</a>
         <a href="#tour">見学・相談</a>
         <a href="#faq">よくあるご質問</a>
         <a href="#contact">お問い合わせ</a>
@@ -50,6 +51,46 @@ get_header();
         <figure class="photo-card">
           <img src="<?php echo aiji_asset( 'images/card-parenting.png' ); ?>" alt="2歳児クラスの親子のイメージ">
         </figure>
+      </section>
+
+      <section class="page-section soft-panel" id="panda">
+        <div class="page-section__head">
+          <div class="section-heading section-heading--left">
+            <h2>仲良しパンダクラブ</h2>
+            <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
+          </div>
+          <p>2歳児クラス「仲良しパンダクラブ」の園生活、1日の流れをご紹介します。</p>
+        </div>
+        <div class="schedule-track">
+          <article class="schedule-step schedule-step--simple">
+            <div class="schedule-time">9:50</div>
+            <div><h3>排泄</h3></div>
+          </article>
+          <article class="schedule-step schedule-step--simple">
+            <div class="schedule-time">10:00</div>
+            <div><h3>設定保育</h3></div>
+          </article>
+          <article class="schedule-step schedule-step--simple">
+            <div class="schedule-time">11:30</div>
+            <div><h3>手作り給食</h3></div>
+          </article>
+          <article class="schedule-step schedule-step--simple">
+            <div class="schedule-time">13:00</div>
+            <div><h3>お昼寝</h3></div>
+          </article>
+          <article class="schedule-step schedule-step--simple">
+            <div class="schedule-time">14:30</div>
+            <div><h3>起床</h3></div>
+          </article>
+          <article class="schedule-step schedule-step--simple">
+            <div class="schedule-time">15:00</div>
+            <div><h3>おやつ</h3></div>
+          </article>
+          <article class="schedule-step schedule-step--simple">
+            <div class="schedule-time">15:30</div>
+            <div><h3>降園or延長保育</h3></div>
+          </article>
+        </div>
       </section>
 
       <section class="page-section" id="tour">
