@@ -44,8 +44,11 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
             <a class="button button--ghost" href="<?php echo aiji_page_url( 'about' ); ?>">園について知る<span aria-hidden="true">›</span></a>
           </div>
         </div>
-        <div class="hero__visual" aria-label="園庭で遊ぶ園児たちと愛児幼稚園の園舎の写真">
-          <img src="<?php echo aiji_asset( 'images/hero-main.jpg' ); ?>" alt="">
+        <div class="hero__visual" aria-label="園庭で遊ぶ園児たちと愛児幼稚園の園舎の動画">
+          <?php // 自動再生には消音(muted)とplaysinlineが必須。読み込み中と再生不可時はposterの写真を表示 ?>
+          <video autoplay muted loop playsinline preload="auto" poster="<?php echo aiji_asset( 'images/hero-main.jpg' ); ?>">
+            <source src="<?php echo aiji_asset( 'videos/hero.mp4' ); ?>" type="video/mp4">
+          </video>
         </div>
         <?php // hero写真を「下辺だけ手描き風に波打つ全幅シート」に切り抜くクリップパス。<animate> が波をゆっくりうねらせ続ける ?>
         <svg class="hero__clip-defs" width="0" height="0" aria-hidden="true" focusable="false">

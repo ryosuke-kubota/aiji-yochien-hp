@@ -446,11 +446,21 @@ main {
   clip-path: url(#aiji-hero-clip);
 }
 
-.hero__visual img {
+.hero__visual img,
+.hero__visual video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 51% 50%;
+}
+
+/* 映像の上に薄い白のベールを敷き、サイトのクリーム基調に馴染ませて文字も読みやすくする */
+.hero__visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 253, 248, 0.32);
+  pointer-events: none;
 }
 
 .deco {
@@ -4167,7 +4177,8 @@ main {
   }
 
   /* 縦長トリミングでは写真の右側（園舎の看板側と砂場の子どもたち）を見せる */
-  .hero__visual img {
+  .hero__visual img,
+  .hero__visual video {
     object-position: 84% 48%;
   }
 
