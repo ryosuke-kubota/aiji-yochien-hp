@@ -46,7 +46,7 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
         </div>
         <div class="hero__visual" aria-label="園庭で遊ぶ園児たちと愛児幼稚園の園舎の動画">
           <?php // 自動再生には消音(muted)とplaysinlineが必須。読み込み中と再生不可時はposterの写真を表示 ?>
-          <video autoplay muted loop playsinline preload="auto" poster="<?php echo aiji_asset( 'images/hero-main.jpg' ); ?>">
+          <video autoplay muted loop playsinline preload="auto" poster="<?php echo aiji_asset( 'images/hero-poster.jpg' ); ?>">
             <source src="<?php echo aiji_asset( 'videos/hero.mp4' ); ?>" type="video/mp4">
           </video>
         </div>
