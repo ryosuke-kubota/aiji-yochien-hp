@@ -2548,7 +2548,7 @@ main {
   }
 
   .hero__copy {
-    width: min(480px, calc(100% - 40px));
+    width: min(480px, calc(100% - 20px));
   }
 
   /* 画面幅に合わせて見出しを大きく（全幅を使う） */
@@ -4148,6 +4148,8 @@ main {
   /* テキストのまわりに余裕をもたせたにじみ */
   .hero__copy::before {
     inset: -90px -82px -76px;
+    /* スマホはテキスト領域が画面の大半を占めるため、白を薄くして動画を見せる */
+    background: radial-gradient(ellipse at 50% 48%, rgba(255, 253, 248, 0.7) 0%, rgba(255, 253, 248, 0.52) 40%, rgba(255, 253, 248, 0.24) 62%, rgba(255, 253, 248, 0) 80%);
     filter: blur(14px);
   }
 
