@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const AIJI_THEME_VERSION = '1.56.0';
+const AIJI_THEME_VERSION = '1.56.1';
 
 /** テーマサポート */
 function aiji_setup(): void {
