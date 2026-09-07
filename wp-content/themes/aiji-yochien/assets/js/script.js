@@ -1,3 +1,48 @@
+// リロード・「戻る」時のスクロール位置を自前で即復元する。
+// ブラウザ標準の復元は描画が落ち着くまで遅れることがあり、
+// 「一瞬トップが見えてから元の位置へジャンプ」して見えるため。
+(() => {
+  if (!("scrollRestoration" in history)) return;
+  history.scrollRestoration = "manual";
+  const SCROLL_KEY = "aiji-scroll-" + location.pathname;
+  const saveScroll = () => {
+    try {
+      sessionStorage.setItem(SCROLL_KEY, String(Math.round(window.scrollY)));
+    } catch (error) {
+      // プライベートモード等で保存できなくても、機能自体は諦めるだけでよい
+    }
+  };
+  window.addEventListener("pagehide", saveScroll);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") saveScroll();
+  });
+
+  if (location.hash) return; // アンカー指定はブラウザの挙動に任せる
+  const nav = performance.getEntriesByType("navigation")[0];
+  if (!nav || (nav.type !== "reload" && nav.type !== "back_forward")) return;
+  try {
+    const saved = Number(sessionStorage.getItem(SCROLL_KEY));
+    if (saved > 0) {
+      window.scrollTo(0, saved);
+      // この時点では画像が未読み込みでページが短く、手前に着地することがある。
+      // 利用者が操作を始めていなければ、読み込み完了後にもう一度正確な位置へ合わせる。
+      let interacted = false;
+      const markInteracted = () => {
+        interacted = true;
+      };
+      window.addEventListener("wheel", markInteracted, { once: true, passive: true });
+      window.addEventListener("touchstart", markInteracted, { once: true, passive: true });
+      window.addEventListener("load", () => {
+        if (!interacted && Math.abs(window.scrollY - saved) > 4) {
+          window.scrollTo(0, saved);
+        }
+      });
+    }
+  } catch (error) {
+    // 読み出せない場合はトップ表示のままでよい
+  }
+})();
+
 const header = document.querySelector("[data-header]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const toTop = document.querySelector("[data-to-top]");
