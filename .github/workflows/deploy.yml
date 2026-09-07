@@ -43,6 +43,9 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
+          # 動画など大きめのファイルで転送が既定の30秒を超えて失敗することが
+          # あったため、1操作あたりのタイムアウトを2分に延長する
+          timeout: 120000
           # 転送元: テーマフォルダのみ（末尾スラッシュ必須）
           local-dir: ./wp-content/themes/aiji-yochien/
           # 転送先: 本番テーマの場所（末尾スラッシュ必須）
