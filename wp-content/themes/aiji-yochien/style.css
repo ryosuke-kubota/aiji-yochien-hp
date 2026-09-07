@@ -444,6 +444,9 @@ main {
   z-index: 1;
   overflow: hidden;
   clip-path: url(#aiji-hero-clip);
+  /* スクロール中の再描画で切り抜きレイヤーが一瞬ズレて見えるのを防ぐ。
+     専用のGPUレイヤーに固定して、スクロールごとの再ラスタライズをなくす */
+  transform: translateZ(0);
 }
 
 .hero__visual img,
@@ -452,6 +455,7 @@ main {
   height: 100%;
   object-fit: cover;
   object-position: 51% 50%;
+  transform: translateZ(0);
 }
 
 /* 映像の上に薄い白のベールを敷き、サイトのクリーム基調に馴染ませて文字も読みやすくする */
