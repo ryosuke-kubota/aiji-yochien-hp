@@ -433,7 +433,7 @@ main {
 }
 
 /* 画面幅いっぱいの写真シート。下辺だけが手描き風に波打つ。
-   front-page.php 内の SVG clipPath（#aiji-hero-clip）で切り抜き、
+   下辺を半円アーチに切り抜き、
    <animate> が波をゆっくりうねらせ続ける */
 .hero__visual {
   position: absolute;
@@ -443,7 +443,8 @@ main {
   right: calc((100vw - min(var(--container), calc(100vw - var(--page-gutter)))) / -2);
   z-index: 1;
   overflow: hidden;
-  clip-path: url(#aiji-hero-clip);
+  /* 下辺がふわっと膨らむ半円アーチで切り抜く（幅に対する割合なのでPC/スマホ共通） */
+  clip-path: ellipse(120% 96% at 50% 0%);
   /* スクロール中の再描画で切り抜きレイヤーが一瞬ズレて見えるのを防ぐ。
      専用のGPUレイヤーに固定して、スクロールごとの再ラスタライズをなくす */
   transform: translateZ(0);
@@ -2584,13 +2585,10 @@ main {
     gap: 16px;
   }
 
-  /* 写真はビューポート幅いっぱいにブリードさせる */
+  /* 写真はビューポート幅いっぱいにブリードさせる（アーチの切り抜きはPCと共通） */
   .hero__visual {
     left: calc(50% - 50vw);
     right: calc(50% - 50vw);
-    /* クリップの座標は要素サイズに対する割合なので、幅が狭く縦に長いスマホでは
-       同じ割合でも波が急に見える。振幅を抑えた専用のパスに切り替える。 */
-    clip-path: url(#aiji-hero-clip-sp);
   }
 
   /* 積み上げレイアウトではPC用座標の装飾が写真に重なるため調整 */

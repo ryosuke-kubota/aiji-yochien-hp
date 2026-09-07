@@ -123,10 +123,8 @@ window.addEventListener("scroll", updateToTop, { passive: true });
 // ===== アニメーション =====
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// heroクリップパスのSMILモーフはCSSでは止められないため、ここで除去する
 if (prefersReducedMotion) {
-  document.querySelectorAll(".hero__clip-defs animate").forEach((el) => el.remove());
-  // hero背景の動画も止めて、poster（写真）表示に戻す
+  // hero背景の動画を止めて、poster（写真）表示に戻す
   document.querySelectorAll(".hero__visual video").forEach((video) => {
     video.removeAttribute("autoplay");
     video.pause();
