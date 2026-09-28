@@ -285,7 +285,7 @@ function aiji_dashboard_widget_render(): void {
 		<strong>書き方（3ステップ）</strong><br>
 		1. タイトルと本文を入力（写真は「＋」→「画像」で何枚でも追加OK）<br>
 		2. 右上の「公開」を押す<br>
-		3. トップの「重要なお知らせ」に載せたいときは、右側の「概要」パネルで「ブログのトップに固定」にチェック
+		3. トップの「重要なお知らせ」に載せたいときは、右側の「ステータス」の「下書き」を押して「先頭固定表示」にチェック
 	</p>';
 	echo '<p class="aiji-qp-steps" style="margin-top:10px;">
 		<strong>📷 写真のあげ方（記事は不要です）</strong><br>
