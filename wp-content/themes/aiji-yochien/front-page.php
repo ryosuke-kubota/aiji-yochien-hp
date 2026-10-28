@@ -27,6 +27,12 @@ if ( ! $aiji_important ) {
 $aiji_news = get_posts( array( 'posts_per_page' => 5 ) );
 
 $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_option( 'page_for_posts' ) ) : home_url( '/' );
+
+// hero動画: 2026/11/14（サイトのタイムゾーン）までは運動会の動画、以降は通常の動画
+$aiji_undoukai_end = new DateTimeImmutable( '2026-11-15 00:00:00', wp_timezone() );
+$aiji_is_undoukai  = current_datetime() < $aiji_undoukai_end;
+$aiji_hero_video   = $aiji_is_undoukai ? 'videos/hero-undoukai.mp4' : 'videos/hero.mp4';
+$aiji_hero_poster  = $aiji_is_undoukai ? 'images/hero-undoukai-poster.jpg' : 'images/hero-poster.jpg';
 ?>
 
     <main>
@@ -46,8 +52,8 @@ $aiji_news_page_url = get_option( 'page_for_posts' ) ? get_permalink( (int) get_
         </div>
         <div class="hero__visual" aria-label="園庭で遊ぶ園児たちと愛児幼稚園の園舎の動画">
           <?php // 自動再生には消音(muted)とplaysinlineが必須。読み込み中と再生不可時はposterの写真を表示 ?>
-          <video autoplay muted loop playsinline preload="auto" poster="<?php echo aiji_asset( 'images/hero-poster.jpg' ); ?>">
-            <source src="<?php echo aiji_asset( 'videos/hero.mp4' ); ?>" type="video/mp4">
+          <video autoplay muted loop playsinline preload="auto" poster="<?php echo aiji_asset( $aiji_hero_poster ); ?>">
+            <source src="<?php echo aiji_asset( $aiji_hero_video ); ?>" type="video/mp4">
           </video>
         </div>
       </section>
