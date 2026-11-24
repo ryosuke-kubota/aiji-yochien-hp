@@ -13,7 +13,7 @@ get_header();
           <h1>入園のご案内</h1>
           <p class="subpage-hero__lead">
             願書配布は9月1日から、願書受付は10月1日から。
-            2歳児から受け入れています。募集要項と入園までの流れをご案内します。
+            1歳児から受け入れています。募集要項と入園までの流れをご案内します。
           </p>
           <a class="button button--primary" href="<?php echo aiji_page_url( 'tour' ); ?>">見学会で雰囲気を見る<span aria-hidden="true">›</span></a>
         </div>
@@ -56,8 +56,8 @@ get_header();
           </article>
           <article class="event-card event-card--icon">
             <img src="<?php echo aiji_asset( 'images/card-icon-about-playground.png' ); ?>" alt="" aria-hidden="true">
-            <h3>2歳児から受け入れます</h3>
-            <p>2歳児クラスからの入園が可能。詳しくは未就園児の方へのページをご覧ください。</p>
+            <h3>1歳児から受け入れます</h3>
+            <p>1歳児からの入園が可能。詳しくは未就園児の方へのページをご覧ください。</p>
             <a class="button button--small button--blue" href="<?php echo aiji_page_url( 'guide' ); ?>">詳しく見る<span aria-hidden="true">›</span></a>
           </article>
           <article class="event-card event-card--icon">
@@ -89,7 +89,7 @@ get_header();
           <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
         </div>
         <dl class="overview-list">
-          <dt>入園資格</dt><dd>2歳児より就学始期に達するまでの幼児</dd>
+          <dt>入園資格</dt><dd>1歳児より就学始期に達するまでの幼児</dd>
           <dt>募集人数</dt><dd>2才児: 若干名／年少クラス（3才児）: 30名／年中クラス（4才児）: 20名／年長クラス（5才児）: 若干名</dd>
           <dt>願書配布</dt><dd>9月1日から</dd>
           <dt>募集期間</dt><dd>10月1日〜 願書受付開始（受付時間 10:00〜17:00）　※定員になり次第締め切らせていただきます。</dd>
@@ -155,7 +155,7 @@ get_header();
       <section class="page-cta" id="contact">
         <div>
           <h2>入園について相談する</h2>
-          <p>募集状況、願書、2歳児クラスなど、お気軽にお問い合わせください。<br>認定こども園 愛児幼稚園　TEL 06-6691-0502</p>
+          <p>募集状況、願書、乳児クラスなど、お気軽にお問い合わせください。<br>認定こども園 愛児幼稚園　TEL 06-6691-0502</p>
         </div>
         <a class="button button--primary" href="tel:0666910502">電話で問い合わせる<span aria-hidden="true">›</span></a>
       </section>

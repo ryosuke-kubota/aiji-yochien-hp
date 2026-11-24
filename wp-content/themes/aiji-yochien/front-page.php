@@ -75,6 +75,28 @@ $aiji_hero_poster  = $aiji_is_undoukai ? 'images/hero-undoukai-poster.jpg' : 'im
       </section>
       <?php endif; ?>
 
+      <?php // 園児募集・先生募集への入口。トップの目立つ位置に置き、カード全体をリンクにする ?>
+      <section class="entry-banners" aria-label="募集のご案内">
+        <a class="entry-banner entry-banner--kids" href="<?php echo aiji_page_url( 'schedule' ); ?>">
+          <div class="entry-banner__copy">
+            <span class="entry-banner__badge">園児募集中</span>
+            <h2 class="entry-banner__title">入園のご案内</h2>
+            <p class="entry-banner__text">1歳児から入園できます。募集要項や入園までの流れはこちら。</p>
+            <span class="entry-banner__more">募集要項を見る<span aria-hidden="true">›</span></span>
+          </div>
+          <img class="entry-banner__photo" src="<?php echo aiji_photo( 'day-arrival' ) ?: aiji_asset( 'images/card-admission.png' ); ?>" alt="" loading="lazy">
+        </a>
+        <a class="entry-banner entry-banner--staff" href="<?php echo aiji_page_url( 'recruit' ); ?>">
+          <div class="entry-banner__copy">
+            <span class="entry-banner__badge">先生募集中</span>
+            <h2 class="entry-banner__title">採用情報</h2>
+            <p class="entry-banner__text">幼稚園教諭・保育補助・預かり保育スタッフを募集しています。見学だけでも歓迎です。</p>
+            <span class="entry-banner__more">採用情報を見る<span aria-hidden="true">›</span></span>
+          </div>
+          <img class="entry-banner__photo" src="<?php echo aiji_photo( 'hero-recruit' ) ?: aiji_photo( 'support-teachers' ); ?>" alt="" loading="lazy">
+        </a>
+      </section>
+
       <section class="news-panel section-anchor" id="news">
         <div class="news-panel__media">
           <div class="section-heading section-heading--left section-heading--inline">
@@ -157,8 +179,8 @@ $aiji_hero_poster  = $aiji_is_undoukai ? 'images/hero-undoukai-poster.jpg' : 'im
             </article>
             <article class="feature-card">
               <img class="feature-card__icon" src="<?php echo aiji_asset( 'images/icon-heart.png' ); ?>" alt="" aria-hidden="true">
-              <h3>2歳児から入園OK</h3>
-              <p>2歳児から受け入れ。長時間保育で子育てを支えます。</p>
+              <h3>1歳児から入園OK</h3>
+              <p>1歳児から受け入れ。長時間保育で子育てを支えます。</p>
               <a class="mini-circle mini-circle--pink" href="<?php echo aiji_page_url( 'guide' ); ?>" aria-label="入園について詳しく見る">›</a>
             </article>
             <article class="feature-card">
@@ -215,7 +237,7 @@ $aiji_hero_poster  = $aiji_is_undoukai ? 'images/hero-undoukai-poster.jpg' : 'im
         <article class="link-card link-card--yellow section-anchor" id="pre">
           <div class="link-card__copy">
             <h2>未就園児の方へ</h2>
-            <p>2歳児クラスや、親子で参加できる活動のご案内はこちら。</p>
+            <p>乳児クラスや、親子で参加できる活動のご案内はこちら。</p>
             <a class="button button--small button--yellow" href="<?php echo aiji_page_url( 'guide' ); ?>">詳しく見る<span aria-hidden="true">›</span></a>
           </div>
           <img src="<?php echo aiji_asset( 'images/card-admission.png' ); ?>" alt="未就園児の方へのイメージ写真">

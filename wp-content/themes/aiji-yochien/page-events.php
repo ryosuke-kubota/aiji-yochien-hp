@@ -41,7 +41,7 @@ get_header();
           </article>
           <article class="month-card month-card--thumb">
             <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'may', 'images/card-icon-guide-consult.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
-            <div class="month-card__body"><h3>5月</h3><ul><li>健康診断</li><li>プラネタリウム</li></ul></div>
+            <div class="month-card__body"><h3>5月</h3><ul><li>健康診断</li><li>自然史博物館（年中）</li><li>プラネタリウム（年長）</li></ul></div>
           </article>
           <article class="month-card month-card--thumb">
             <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'june', 'images/card-parenting.png' ); ?>" alt="保育参観の様子" loading="lazy"></figure>
@@ -60,16 +60,16 @@ get_header();
             <div class="month-card__body"><h3>9月</h3><ul><li>2学期スタート</li></ul></div>
           </article>
           <article class="month-card month-card--thumb" id="autumn">
-            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'october', 'images/hero-children-running.png' ); ?>" alt="運動会で走る子どもたち" loading="lazy"></figure>
-            <div class="month-card__body"><h3>10月</h3><ul><li>運動会</li><li>お芋掘り</li><li>秋の遠足</li></ul></div>
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'october', 'images/philosophy-craft-circle.png' ); ?>" alt="作品展に並ぶ子どもたちの絵" loading="lazy"></figure>
+            <div class="month-card__body"><h3>10月</h3><ul><li>作品展</li><li>お芋掘り</li><li>秋の遠足</li></ul></div>
           </article>
           <article class="month-card month-card--thumb">
-            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'november', 'images/philosophy-craft-circle.png' ); ?>" alt="作品展の制作活動" loading="lazy"></figure>
-            <div class="month-card__body"><h3>11月</h3><ul><li>作品展</li></ul></div>
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'november', 'images/hero-children-running.png' ); ?>" alt="運動会の玉入れをする子どもたち" loading="lazy"></figure>
+            <div class="month-card__body"><h3>11月</h3><ul><li>運動会</li></ul></div>
           </article>
           <article class="month-card month-card--thumb" id="winter">
             <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'december', 'images/card-icon-lesson-music.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
-            <div class="month-card__body"><h3>12月</h3><ul><li>クリスマス会</li><li>おもちつき</li></ul></div>
+            <div class="month-card__body"><h3>12月</h3><ul><li>クリスマス音楽会</li><li>おもちつき</li></ul></div>
           </article>
           <article class="month-card month-card--thumb">
             <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'january', 'images/card-icon-lesson-manners.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
@@ -77,11 +77,11 @@ get_header();
           </article>
           <article class="month-card month-card--thumb">
             <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'february', 'images/card-icon-about-playground.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
-            <div class="month-card__body"><h3>2月</h3><ul><li>豆まき</li><li>おゆうぎ会</li></ul></div>
+            <div class="month-card__body"><h3>2月</h3><ul><li>豆まき</li><li>おゆうぎ会</li><li>お別れ遠足</li></ul></div>
           </article>
           <article class="month-card month-card--thumb">
-            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'march', 'images/card-admission.png' ); ?>" alt="お別れ遠足の様子" loading="lazy"></figure>
-            <div class="month-card__body"><h3>3月</h3><ul><li>お別れ遠足</li><li>卒園式</li></ul></div>
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'march', 'images/card-admission.png' ); ?>" alt="卒園式の日の園門" loading="lazy"></figure>
+            <div class="month-card__body"><h3>3月</h3><ul><li>卒園式</li></ul></div>
           </article>
         </div>
         <p class="month-grid__note">このほか、お誕生日会と身体測定を毎月行っています。</p>

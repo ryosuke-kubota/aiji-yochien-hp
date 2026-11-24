@@ -2110,10 +2110,6 @@ main {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-#mixed-age {
-  scroll-margin-top: 124px;
-}
-
 .value-card {
   min-height: 200px;
   padding: 24px;
@@ -4836,7 +4832,7 @@ main {
 }
 
 /* =========================================
-   仲良しパンダクラブ（未就園児ページ）: 写真列なしの1日の流れ
+   写真列なしの1日の流れ（園での生活の乳児タブ）
    ========================================= */
 
 .schedule-step--simple {
@@ -4851,5 +4847,314 @@ main {
   .schedule-step--simple {
     grid-template-columns: 86px 1fr;
     gap: 12px;
+  }
+}
+
+/* =========================================
+   園での生活: 早朝保育・延長保育の時間を目立たせる
+   ========================================= */
+
+/* ページ上部のリード下に置く時間のピル */
+.care-hours {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -8px 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.care-hours li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 8px 20px;
+  border: 2px solid var(--hours-color);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.care-hours b {
+  color: var(--hours-ink);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 色は下の預かり保育カード（早朝=緑、延長=青）とそろえる */
+.care-hours__early {
+  --hours-color: var(--color-green);
+  --hours-ink: var(--color-green-ink);
+}
+
+.care-hours__late {
+  --hours-color: var(--color-blue);
+  --hours-ink: var(--color-blue-ink);
+}
+
+/* 預かり保育カードの本文中の時間を、カードの色で大きく見せる */
+.care-time {
+  margin: 0 2px;
+  color: var(--tint-ink, var(--color-blue-ink));
+  font-size: 1.6em;
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .care-hours b {
+    font-size: 22px;
+  }
+}
+
+/* =========================================
+   園での生活: 1日の流れを「幼児／乳児」で切り替えるタブ
+   JS無効時はタブを出さず、両方の流れを見出しつきで続けて表示する
+   ========================================= */
+
+.age-tabs {
+  display: inline-flex;
+  gap: 6px;
+  margin-top: 18px;
+  padding: 6px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+}
+
+.age-tabs[hidden] {
+  display: none;
+}
+
+.age-tabs__tab {
+  --tab-color: var(--color-blue);
+  --tab-soft: var(--color-blue-soft);
+  --tab-ink: var(--color-blue-ink);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--tab-ink);
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 44px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.age-tabs__tab + .age-tabs__tab {
+  --tab-color: var(--color-pink);
+  --tab-soft: var(--color-pink-soft);
+  --tab-ink: var(--color-pink-ink);
+}
+
+.age-tabs__tab small {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.age-tabs__tab:hover {
+  background: var(--tab-soft);
+}
+
+.age-tabs__tab[aria-selected="true"] {
+  color: #fff;
+  background: var(--tab-color);
+}
+
+.age-tabs__tab:focus-visible {
+  outline: 3px solid var(--tab-color);
+  outline-offset: 2px;
+}
+
+.age-panel + .age-panel {
+  margin-top: 36px;
+}
+
+.age-panel__title {
+  margin: 24px 0 0;
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--color-blue-ink);
+}
+
+.age-panel--infant .age-panel__title {
+  color: var(--color-pink-ink);
+}
+
+/* 乳児の時刻はタブと同じピンク系にして、幼児と見分けやすくする */
+.age-panel--infant .schedule-time {
+  color: var(--color-pink-deep);
+}
+
+/* タブ表示中は、選んだ方だけを出す（見出しはタブが兼ねる） */
+.is-age-tabbed .age-panel + .age-panel {
+  margin-top: 0;
+}
+
+.is-age-tabbed .age-panel__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .age-tabs {
+    display: flex;
+  }
+
+  .age-tabs__tab {
+    flex: 1;
+    justify-content: center;
+    padding: 0 12px;
+    font-size: 15px;
+  }
+}
+
+/* =========================================
+   トップ: 園児募集・先生募集のバナー
+   重要なお知らせの直下に置き、カード全体をリンクにする
+   ========================================= */
+
+.entry-banners {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: min(var(--container), calc(100% - var(--page-gutter)));
+  margin: 40px auto 0;
+}
+
+/* 直上の「重要なお知らせ」がピンクなので、園児募集は黄色にして見分けやすくする */
+.entry-banner {
+  --banner-color: var(--color-yellow-ink);
+  --banner-ink: var(--color-yellow-ink);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40%;
+  min-height: 210px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  color: var(--color-ink);
+  background: linear-gradient(135deg, #fffaea, var(--color-yellow-soft));
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  transition: translate 0.3s ease, box-shadow 0.3s ease;
+}
+
+.entry-banner--staff {
+  --banner-color: var(--color-green-deep);
+  --banner-ink: var(--color-green-ink);
+  background: linear-gradient(135deg, #f5fbef, var(--color-green-soft));
+}
+
+.entry-banner:hover {
+  translate: 0 -6px;
+  box-shadow: 0 20px 40px rgba(96, 83, 66, 0.13);
+}
+
+.entry-banner:focus-visible {
+  outline: 3px solid var(--banner-color);
+  outline-offset: 3px;
+}
+
+.entry-banner__copy {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 8px;
+  padding: 26px 18px 26px 28px;
+}
+
+.entry-banner__badge {
+  padding: 4px 14px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--banner-color);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.entry-banner__title {
+  margin: 2px 0 0;
+  color: var(--banner-ink);
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.entry-banner__text {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.entry-banner__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  color: var(--banner-ink);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.entry-banner__more span {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--banner-color);
+  transition: translate 0.3s ease;
+}
+
+.entry-banner:hover .entry-banner__more span {
+  translate: 4px 0;
+}
+
+/* 写真は左端を丸く切り抜き、文字側へやわらかくつなげる */
+.entry-banner__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: ellipse(100% 78% at 100% 50%);
+}
+
+@media (max-width: 860px) {
+  .entry-banners {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 720px) {
+  .entry-banner {
+    grid-template-columns: minmax(0, 1fr) 34%;
+    min-height: 170px;
+  }
+
+  .entry-banner__copy {
+    padding: 20px 12px 20px 18px;
+  }
+
+  .entry-banner__text {
+    font-size: 12px;
   }
 }

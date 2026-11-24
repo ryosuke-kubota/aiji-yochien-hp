@@ -68,7 +68,7 @@ get_header();
           array( 'photo' => 'lesson-english', 'icon' => 'card-icon-lesson-english.png', 'title' => '英語教育', 'tag' => 'tag--blue', 'body' => '約30年前から、毎週全クラスで外国人講師による英会話指導を実施。物の名前・歌・色カードで楽しく覚えます。' ),
           array( 'photo' => 'lesson-gym', 'icon' => 'card-icon-lesson-gym.png', 'title' => '体育教育', 'tag' => 'tag--green', 'body' => '体育専任講師が毎週指導（年長組）。なわとび・鉄棒・トランポリンで楽しみながら、たくましい体をつくります。' ),
           array( 'photo' => 'lesson-music', 'icon' => 'card-icon-lesson-music.png', 'title' => '音楽あそび', 'tag' => '', 'body' => '楽器を使ってリズム感を養い、みんなで合わせる楽しさを経験します。' ),
-          array( 'photo' => 'lesson-writing', 'icon' => 'card-icon-lesson-art.png', 'title' => '作文あそび', 'tag' => '', 'body' => '今覚えている言葉で作文をつくり、表現する楽しさを育てます。' ),
+          array( 'photo' => 'lesson-writing', 'icon' => 'card-icon-lesson-art.png', 'title' => '作文あそび', 'tag' => '', 'body' => '年長組で取り組みます。今覚えている言葉で作文をつくり、表現する楽しさを育てます。' ),
           array( 'photo' => 'lesson-numbers', 'icon' => 'card-icon-lesson-numbers.png', 'title' => '数あそび', 'tag' => '', 'body' => 'かんたんな足し算と引き算のおけいこで、学びの芽を育てます。' ),
           array( 'photo' => 'lesson-farm', 'icon' => 'card-icon-annual-season.png', 'title' => '愛児農園', 'tag' => '', 'body' => 'じゃが芋・さつま芋・玉ねぎ・大根作りに挑戦。収穫の喜びを味わいます。' ),
         );
@@ -93,13 +93,13 @@ get_header();
             <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
           </div>
           <p>
-            12時からはお弁当の時間。みんなで楽しく食べる経験を大切にしています。
+            11時半からはお弁当給食の時間。お家からのお弁当は月に1回だけです。みんなで楽しく食べる経験を大切にしています。
             愛児農園で育てた野菜の収穫など、食育につながる体験も保育に取り入れています。
           </p>
         </div>
         <?php $aiji_lunch_photo = aiji_photo( 'lunch' ); ?>
         <figure class="photo-card<?php echo $aiji_lunch_photo ? '' : ' photo-card--icon'; ?>">
-          <img src="<?php echo $aiji_lunch_photo ? $aiji_lunch_photo : aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="お弁当の時間のようす">
+          <img src="<?php echo $aiji_lunch_photo ? $aiji_lunch_photo : aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="お弁当給食の時間のようす">
         </figure>
       </section>
     </main>

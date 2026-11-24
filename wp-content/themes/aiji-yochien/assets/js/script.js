@@ -438,3 +438,41 @@ if (galleryItems.length > 0) {
     if (photos.length > 1 && event.key === "ArrowLeft") showPrev();
   });
 }
+
+// 園での生活: 1日の流れを「幼児／乳児」タブで切り替える。
+// JS無効時は両方を続けて表示しておき、ここでタブ表示に切り替える。
+const ageTabs = document.querySelector("[data-age-tabs]");
+if (ageTabs) {
+  const tabs = Array.from(ageTabs.querySelectorAll('[role="tab"]'));
+  const panels = tabs.map((tab) => document.getElementById(tab.getAttribute("aria-controls")));
+
+  const selectTab = (index, { focus = false } = {}) => {
+    tabs.forEach((tab, i) => {
+      const isSelected = i === index;
+      tab.setAttribute("aria-selected", String(isSelected));
+      tab.tabIndex = isSelected ? 0 : -1;
+      panels[i].hidden = !isSelected;
+    });
+    if (focus) tabs[index].focus();
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectTab(index));
+    // 左右キーでタブを移動（WAI-ARIAのタブの操作に合わせる）
+    tab.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      const step = event.key === "ArrowRight" ? 1 : -1;
+      selectTab((index + step + tabs.length) % tabs.length, { focus: true });
+    });
+  });
+
+  // 他ページから #daily-infant で来たときは乳児を開いた状態で1日の流れへ移動する
+  const linkedIndex = panels.findIndex((panel) => `#${panel.id}` === location.hash);
+  ageTabs.hidden = false;
+  ageTabs.parentElement.classList.add("is-age-tabbed");
+  selectTab(Math.max(linkedIndex, 0));
+  if (linkedIndex > 0) {
+    ageTabs.parentElement.scrollIntoView();
+  }
+}

@@ -39,22 +39,28 @@ get_header();
           <p>ご都合に合わせてお選びください。日程のご相談もお気軽にどうぞ。</p>
         </div>
         <div class="event-grid">
-          <article class="event-card event-card--icon">
-            <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true">
-            <h3>園見学　随時</h3>
-            <p>保育中の園内をご覧いただけます。2歳児クラス・転入・通園方法のご相談も承ります。</p>
+          <article class="event-card event-card--icon" id="panda">
+            <img src="<?php echo aiji_asset( 'images/card-icon-mixed-age.png' ); ?>" alt="" aria-hidden="true">
+            <h3>仲良しパンダクラブ　毎週水曜日</h3>
+            <p>未就園児の体験保育です。10:15〜11:15に、園での遊びや活動を体験できます。親子体操教室がある週はお休みです。</p>
             <a class="button button--small button--primary" href="#form">申し込む<span aria-hidden="true">›</span></a>
           </article>
           <article class="event-card event-card--icon">
-            <img src="<?php echo aiji_asset( 'images/card-icon-annual-season.png' ); ?>" alt="" aria-hidden="true">
-            <h3>未就園児体験　毎月1回</h3>
-            <p>6月〜2月に毎月1回、バルーン体験など親子で楽しめる体験の機会をご用意しています。</p>
-            <a class="button button--small button--yellow" href="#form">申し込む<span aria-hidden="true">›</span></a>
+            <img src="<?php echo aiji_asset( 'images/card-icon-lesson-gym.png' ); ?>" alt="" aria-hidden="true">
+            <h3>親子体操教室　月1回</h3>
+            <p>月に1回、親子でいっしょに体を動かして楽しむ体操教室です。開催する週は、仲良しパンダクラブはお休みになります。</p>
+            <a class="button button--small button--blue" href="#form">申し込む<span aria-hidden="true">›</span></a>
+          </article>
+          <article class="event-card event-card--icon">
+            <img src="<?php echo aiji_asset( 'images/card-icon-guide-tour.png' ); ?>" alt="" aria-hidden="true">
+            <h3>園見学　随時</h3>
+            <p>保育中の園内をご覧いただけます。乳児クラス・転入・通園方法のご相談も承ります。</p>
+            <a class="button button--small button--primary" href="#form">申し込む<span aria-hidden="true">›</span></a>
           </article>
           <article class="event-card event-card--icon">
             <img src="<?php echo aiji_asset( 'images/card-icon-about-playground.png' ); ?>" alt="" aria-hidden="true">
             <h3>園庭開放　第2・第4土曜日</h3>
-            <p>10:30〜12:30に園庭を開放しています。未就園児のお子さまも親子でご参加いただけます。</p>
+            <p>10:00〜12:00に園庭を開放しています。未就園児のお子さまも親子でご参加いただけます。</p>
             <a class="button button--small button--blue" href="#form">申し込む<span aria-hidden="true">›</span></a>
           </article>
           <article class="event-card event-card--icon">
