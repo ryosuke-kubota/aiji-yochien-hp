@@ -99,7 +99,7 @@ get_header();
             <div class="dayflow__chip dayflow__chip--late">
               <span class="dayflow__chip-name">遅い出勤</span>
               <span class="dayflow__chip-time"><b>17:00</b> 延長保育</span>
-              <span class="dayflow__chip-time"><b>18:30</b> 降園</span>
+              <span class="dayflow__chip-time"><b>19:00</b> 降園</span>
             </div>
           </div>
         </div>

@@ -107,7 +107,7 @@ get_header();
         <?php
         // assets/images/photo-{photo}.jpg を置くと、アイコンから実写真に自動で切り替わる
         $aiji_features = array(
-          array( 'photo' => 'support-daycare', 'icon' => 'card-icon-annual-calendar.png', 'title' => '預かり保育が充実', 'body' => 'ホームクラス（預かり保育）は自由がきき、当日のお電話でもOK。18:30までお預かりします。早朝保育は7:30〜8:30です。' ),
+          array( 'photo' => 'support-daycare', 'icon' => 'card-icon-annual-calendar.png', 'title' => '預かり保育が充実', 'body' => 'ホームクラス（預かり保育）は自由がきき、当日のお電話でもOK。19:00までお預かりします。早朝保育は7:30〜8:30です。' ),
           array( 'photo' => 'support-class', 'icon' => 'icon-heart.png', 'title' => '目の届く児童数', 'body' => 'どの先生にも安心して話せるよう、一人ひとりに寄り添って接しています。入園当初に不安なお子さまも、少しずつ慣れていけるよう見守ります。' ),
           array( 'photo' => 'support-teachers', 'icon' => 'card-icon-lesson-english.png', 'title' => '専任講師も充実', 'body' => '約30年前から毎週、全クラスで外国人講師による英会話指導を実施。体育も専任講師が毎週1回、年長組に指導しています。' ),
           array( 'photo' => 'support-events', 'icon' => 'card-icon-annual-season.png', 'title' => '親子参加型の行事も', 'body' => '運動会は親子競技や保護者の出番、賞品もご用意。盆踊りやお餅つきなど、園庭で親子のひとときを楽しめる行事が豊富です。' ),
@@ -149,7 +149,7 @@ get_header();
           <dt>メール</dt><dd>aiji@athena.ocn.ne.jp</dd>
           <dt>対象</dt><dd>2歳児・3歳児（年少）・4歳児（年中）・5歳児（年長）</dd>
           <dt>沿革</dt><dd>昭和26年8月 設立認可・開園。昭和62年 学校法人稲垣学園 設立。平成31年4月 新園舎竣工、「認定こども園」へ移行。</dd>
-          <dt>保育時間</dt><dd>早朝保育 7:30〜8:30／通常保育 8:30〜14:30（水曜は13:30降園）／延長保育 18:30まで</dd>
+          <dt>保育時間</dt><dd>早朝保育 7:30〜8:30／通常保育 8:30〜14:30（水曜は13:30降園）／延長保育 19:00まで</dd>
           <dt>休園日</dt><dd>日曜・祝日・土曜・開園記念日（6月第3金曜日）　※夏期・冬期・春期休業あり（休業中も預かり保育を実施）</dd>
           <dt>通園</dt><dd>徒歩・個人送迎・園バス（希望者）</dd>
           <dt>安全</dt><dd>耐震・遮熱断熱性に優れた新園舎（平成31年竣工）、大手セキュリティ会社と契約（24時間安心・カード管理）</dd>

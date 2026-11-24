@@ -43,7 +43,7 @@ get_header();
             幼児期のいちばん大切な時期を、先生や友だちとの遊びの中でゆっくり育みます。
           </p>
           <p>
-            早朝保育7:30から延長保育18:30までの長時間保育と送迎バスで、
+            早朝保育7:30から延長保育19:00までの長時間保育と送迎バスで、
             働くご家庭の子育てもしっかり支えます。
           </p>
           <a class="button button--ghost" href="<?php echo aiji_page_url( 'schedule' ); ?>">募集要項・入園の流れを見る<span aria-hidden="true">›</span></a>

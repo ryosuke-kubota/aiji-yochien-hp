@@ -12,7 +12,7 @@ get_header();
         <div class="subpage-hero__copy">
           <h1>園での生活</h1>
           <p class="subpage-hero__lead">
-            朝7:30の早朝保育から18:30の延長保育まで。
+            朝7:30の早朝保育から19:00の延長保育まで。
             登園から降園までの毎日の流れと、安心の預かり体制をご紹介します。
           </p>
           <a class="button button--yellow" href="<?php echo aiji_page_url( 'schedule' ); ?>">入園のご案内も見る<span aria-hidden="true">›</span></a>
@@ -64,8 +64,13 @@ get_header();
           </article>
           <article class="schedule-step">
             <div class="schedule-time">14:30</div>
-            <div><h3>降園・延長保育</h3><p>月・火・木・金は14:30、水曜は13:30降園。延長保育は18:30までです。</p></div>
+            <div><h3>降園</h3><p>月・火・木・金は14:30、水曜は13:30降園です。</p></div>
             <img src="<?php echo aiji_photo( 'day-return' ) ?: aiji_asset( 'images/card-icon-about-building.png' ); ?>" alt="降園のようす">
+          </article>
+          <article class="schedule-step">
+            <div class="schedule-time">19:00</div>
+            <div><h3>延長保育</h3><p>降園後は19:00まで延長保育。当日のお電話でも利用でき、手作りおやつを提供します。</p></div>
+            <img src="<?php echo aiji_photo( 'day-extended' ) ?: aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="延長保育のようす">
           </article>
         </div>
       </section>
@@ -85,12 +90,12 @@ get_header();
           <article class="value-card">
             <img src="<?php echo aiji_asset( 'images/card-icon-lunch.png' ); ?>" alt="" aria-hidden="true">
             <h3>延長保育</h3>
-            <p>降園後は18:30まで延長保育。当日のお電話でも利用でき、手作りおやつを提供します。</p>
+            <p>降園後は19:00まで延長保育。当日のお電話でも利用でき、手作りおやつを提供します。</p>
           </article>
           <article class="value-card">
             <img src="<?php echo aiji_asset( 'images/card-icon-lesson-swimming.png' ); ?>" alt="" aria-hidden="true">
             <h3>土曜・長期休みの預かり</h3>
-            <p>土曜は8:00〜15:00、夏・冬・春休み中は7:30〜18:30で預かり保育を実施します。</p>
+            <p>土曜は8:00〜15:00、夏・冬・春休み中は7:30〜19:00で預かり保育を実施します。</p>
           </article>
         </div>
       </section>
