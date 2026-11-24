@@ -25,10 +25,37 @@ get_header();
       </section>
 
       <nav class="page-tabs" aria-label="ページ内メニュー">
+        <a href="#workplace">働く環境</a>
         <a href="#jobs">募集要項</a>
-        <a href="#day">1日の流れ</a>
         <a href="#entry">応募フォーム</a>
       </nav>
+
+      <section class="page-section" id="workplace">
+        <div class="page-section__head">
+          <div class="section-heading section-heading--left">
+            <h2>安心して働ける職場です</h2>
+            <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
+          </div>
+          <p>「仕事とプライベートを両立できる？」「職場の人間関係は？」。応募の前に気になるのは、きっとこのあたりのこと。先生たちが毎日笑顔で子どもたちと向き合えるよう、働きやすさを大切にしています。</p>
+        </div>
+        <div class="value-grid">
+          <article class="value-card">
+            <img src="<?php echo aiji_asset( 'images/icon-house.png' ); ?>" alt="" aria-hidden="true">
+            <h3>残業なしで、自分の時間も</h3>
+            <p>掃除や翌日の準備も勤務時間内に終わらせます。仕事を家に持ち帰ることもなく、終業後は家族や自分の時間を大切にできます。</p>
+          </article>
+          <article class="value-card">
+            <img src="<?php echo aiji_asset( 'images/icon-heart.png' ); ?>" alt="" aria-hidden="true">
+            <h3>なんでも相談できる関係</h3>
+            <p>経験年数に関係なく、困ったことや気になることは気軽に話せる職場です。一人で抱え込まず、みんなで支え合いながら保育をしています。</p>
+          </article>
+          <article class="value-card">
+            <img src="<?php echo aiji_asset( 'images/icon-sprout.png' ); ?>" alt="" aria-hidden="true">
+            <h3>先生どうしも仲よし</h3>
+            <p>子どもたちに向けるやさしさは、先生どうしの間にも。行事の準備も、声をかけ合い、笑い合いながら進めています。</p>
+          </article>
+        </div>
+      </section>
 
       <section class="page-section soft-panel" id="jobs">
         <div class="section-heading section-heading--left">
@@ -41,68 +68,6 @@ get_header();
           <dt>選考の流れ</dt><dd>応募フォームまたはお電話でご連絡 → 園見学・面接 → 採用のご連絡</dd>
           <dt>お問い合わせ</dt><dd>TEL 06-6691-0502（受付時間 10:00〜17:00）　採用担当まで</dd>
         </dl>
-      </section>
-
-      <section class="page-section soft-panel" id="day">
-        <div class="page-section__head">
-          <div class="section-heading section-heading--left">
-            <h2>1日の流れ</h2>
-            <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
-          </div>
-          <p>出勤・降園は3つの時間帯に分かれますが、日中の流れはどの出勤でも共通です。</p>
-        </div>
-        <div class="dayflow">
-          <p class="dayflow__label">出勤（3つの時間帯）</p>
-          <div class="dayflow__ends">
-            <div class="dayflow__chip dayflow__chip--early">
-              <span class="dayflow__chip-name">早い出勤</span>
-              <span class="dayflow__chip-time"><b>7:30</b> 出勤</span>
-            </div>
-            <div class="dayflow__chip dayflow__chip--normal">
-              <span class="dayflow__chip-name">普通出勤</span>
-              <span class="dayflow__chip-time"><b>8:00</b> 出勤</span>
-            </div>
-            <div class="dayflow__chip dayflow__chip--late">
-              <span class="dayflow__chip-name">遅い出勤</span>
-              <span class="dayflow__chip-time"><b>9:30</b> 出勤</span>
-            </div>
-          </div>
-          <p class="dayflow__label">日中の流れ（どの出勤でも共通）</p>
-          <div class="schedule-track">
-            <article class="schedule-step schedule-step--simple">
-              <div class="schedule-time">10:00</div>
-              <div><h3>設定保育</h3></div>
-            </article>
-            <article class="schedule-step schedule-step--simple">
-              <div class="schedule-time">11:30</div>
-              <div><h3>給食</h3></div>
-            </article>
-            <article class="schedule-step schedule-step--simple">
-              <div class="schedule-time">14:30</div>
-              <div><h3>子ども降園or延長保育</h3></div>
-            </article>
-            <article class="schedule-step schedule-step--simple">
-              <div class="schedule-time">14:35</div>
-              <div><h3>掃除・明日の準備</h3></div>
-            </article>
-          </div>
-          <p class="dayflow__label">降園（時間帯ごと）</p>
-          <div class="dayflow__ends">
-            <div class="dayflow__chip dayflow__chip--early">
-              <span class="dayflow__chip-name">早い出勤</span>
-              <span class="dayflow__chip-time"><b>16:30</b> 降園</span>
-            </div>
-            <div class="dayflow__chip dayflow__chip--normal">
-              <span class="dayflow__chip-name">普通出勤</span>
-              <span class="dayflow__chip-time"><b>17:00</b> 降園</span>
-            </div>
-            <div class="dayflow__chip dayflow__chip--late">
-              <span class="dayflow__chip-name">遅い出勤</span>
-              <span class="dayflow__chip-time"><b>17:00</b> 延長保育</span>
-              <span class="dayflow__chip-time"><b>19:00</b> 降園</span>
-            </div>
-          </div>
-        </div>
       </section>
 
       <section class="page-section soft-panel cream-panel" id="entry">
