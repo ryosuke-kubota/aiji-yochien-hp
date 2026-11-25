@@ -109,6 +109,8 @@ get_header();
         $aiji_features = array(
           array( 'photo' => 'support-daycare', 'icon' => 'card-icon-annual-calendar.png', 'title' => '預かり保育が充実', 'body' => 'ホームクラス（預かり保育）は自由がきき、当日のお電話でもOK。19:00までお預かりします。早朝保育は7:30〜8:30です。' ),
           array( 'photo' => 'support-class', 'icon' => 'icon-heart.png', 'title' => '目の届く児童数', 'body' => 'どの先生にも安心して話せるよう、一人ひとりに寄り添って接しています。入園当初に不安なお子さまも、少しずつ慣れていけるよう見守ります。' ),
+          array( 'photo' => 'support-toilet', 'icon' => 'icon-heart.png', 'title' => 'トイレトレーニングも安心', 'body' => 'お子さま一人ひとりの成長やタイミングに合わせて進めます。周りと比べたり焦ったりする必要はありません。排泄のタイミングや気持ちを大切に、無理なくトイレに向かえるよう丁寧に声をかけます。ご家庭での不安や悩みも、いつでもご相談ください。' ),
+          array( 'photo' => 'lunch', 'icon' => 'card-icon-lunch.png', 'title' => '食事・偏食も寄り添って', 'body' => '「好き嫌いが多くて心配」「なかなか食べてくれない」というお悩みも大丈夫。無理に食べさせるのではなく、食材に触れたり、見たり、少し口にしてみたりする経験を大切に、食べる楽しさを感じられるよう援助します。' ),
           array( 'photo' => 'support-teachers', 'icon' => 'card-icon-lesson-english.png', 'title' => '専任講師も充実', 'body' => '約30年前から毎週、全クラスで外国人講師による英会話指導を実施。体育も専任講師が毎週1回、年長組に指導しています。' ),
           array( 'photo' => 'support-events', 'icon' => 'card-icon-annual-season.png', 'title' => '親子参加型の行事も', 'body' => '運動会は親子競技や保護者の出番、賞品もご用意。盆踊りやお餅つきなど、園庭で親子のひとときを楽しめる行事が豊富です。' ),
           array( 'photo' => 'support-bus', 'icon' => 'card-icon-guide-consult.png', 'title' => '病院搬送サービス', 'body' => '園内でケガをした場合は園から病院へお連れし、完治するまで通院もお連れします。' ),

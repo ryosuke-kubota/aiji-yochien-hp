@@ -27,6 +27,7 @@ get_header();
       <nav class="page-tabs" aria-label="ページ内メニュー">
         <a href="#summary">特色</a>
         <a href="#regular">カリキュラム</a>
+        <a href="#awards">絵画の受賞</a>
         <a href="#lunch">お昼・食育</a>
       </nav>
 
@@ -84,6 +85,55 @@ get_header();
           </article>
           <?php endforeach; ?>
         </div>
+      </section>
+
+      <section class="page-section award-section" id="awards" aria-labelledby="awards-title">
+        <div class="award-section__copy">
+          <div class="section-heading section-heading--left">
+            <h2 id="awards-title">絵画コンクールで多数受賞</h2>
+            <img class="heading-dots" src="<?php echo aiji_asset( 'images/heading-dots.png' ); ?>" alt="" aria-hidden="true">
+          </div>
+          <p class="award-section__lead">のびのび描いた作品が、たくさんの賞をいただいています。</p>
+          <?php
+          // 'top' => true の賞は金色のバッジで目立たせる
+          $aiji_awards = array(
+            array( 'contest' => 'なにわ建築フェスタ', 'prizes' => array( array( 'label' => '特選', 'top' => true ), array( 'label' => '入選' ) ) ),
+            array( 'contest' => 'こども二科展', 'prizes' => array( array( 'label' => '入選' ) ) ),
+            array( 'contest' => 'おさかなコンクール', 'prizes' => array( array( 'label' => '入選' ) ) ),
+            array( 'contest' => '大和川コンクール', 'prizes' => array( array( 'label' => '入選' ) ) ),
+            array( 'contest' => '児童絵画コンクール「トラック」', 'prizes' => array( array( 'label' => '近畿運輸局大阪運輸支局賞', 'top' => true ), array( 'label' => '入選' ) ) ),
+            array( 'contest' => '大阪城絵画展', 'prizes' => array( array( 'label' => '優秀賞', 'note' => '大阪城パークマネジメント株式会社 社長賞', 'top' => true ), array( 'label' => '佳作', 'note' => '大阪城天守閣館長賞', 'top' => true ), array( 'label' => '入選' ) ) ),
+          );
+          ?>
+          <ul class="award-list">
+            <?php foreach ( $aiji_awards as $aiji_award ) : ?>
+            <li class="award-list__item">
+              <h3><?php echo esc_html( $aiji_award['contest'] ); ?></h3>
+              <p class="award-list__prizes">
+                <?php foreach ( $aiji_award['prizes'] as $aiji_prize ) : ?>
+                <span class="award-prize<?php echo ! empty( $aiji_prize['top'] ) ? ' award-prize--top' : ''; ?>"><?php echo esc_html( $aiji_prize['label'] ); ?><?php if ( ! empty( $aiji_prize['note'] ) ) : ?><small><?php echo esc_html( $aiji_prize['note'] ); ?></small><?php endif; ?></span>
+                <?php endforeach; ?>
+              </p>
+            </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+        <?php
+        // assets/images/photo-award-{1〜4}.jpg がある分だけ表示する
+        $aiji_award_photos = array_filter( array(
+          aiji_photo( 'award-1' ),
+          aiji_photo( 'award-2' ),
+          aiji_photo( 'award-3' ),
+          aiji_photo( 'award-4' ),
+        ) );
+        if ( $aiji_award_photos ) :
+          ?>
+        <div class="award-gallery">
+          <?php foreach ( $aiji_award_photos as $aiji_award_photo ) : ?>
+          <figure class="award-gallery__item"><img src="<?php echo $aiji_award_photo; ?>" alt="絵画コンクールの表彰式・受賞のようす" width="600" height="800" loading="lazy"></figure>
+          <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
       </section>
 
       <section class="page-section soft-panel split-section" id="lunch">
