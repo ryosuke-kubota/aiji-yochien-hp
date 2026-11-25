@@ -48,14 +48,14 @@ get_header();
             「先生！だいすき！」と信頼関係を築くことで「安心」できる場となり、「友だち大好き！」と
             先生や友だちと一緒にさまざまな遊びを経験することで、生きる力の基礎や知識を蓄える基礎が形成されると考えます。
           </p>
-          <p class="about-signature">理事長　白樫 章行</p>
+          <p class="about-signature">理事長　白樫 旬子</p>
         </div>
         <?php
         // assets/images/photo-chairman.jpg を置くと理事長の写真に自動で切り替わる
         $aiji_chairman_photo = aiji_photo( 'chairman' );
         ?>
         <figure class="photo-card<?php echo $aiji_chairman_photo ? ' photo-card--portrait' : ''; ?>">
-          <img src="<?php echo $aiji_chairman_photo ? $aiji_chairman_photo : aiji_asset( 'images/hero-children-running.png' ); ?>" alt="<?php echo $aiji_chairman_photo ? '理事長 白樫章行' : '園庭で遊ぶ子どもたち'; ?>">
+          <img src="<?php echo $aiji_chairman_photo ? $aiji_chairman_photo : aiji_asset( 'images/hero-children-running.png' ); ?>" alt="<?php echo $aiji_chairman_photo ? '理事長 白樫旬子' : '園庭で遊ぶ子どもたち'; ?>">
         </figure>
       </section>
 
