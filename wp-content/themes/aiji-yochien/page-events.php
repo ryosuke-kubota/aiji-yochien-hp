@@ -40,7 +40,7 @@ get_header();
             <div class="month-card__body"><h3>4月</h3><ul><li>入園式</li></ul></div>
           </article>
           <article class="month-card month-card--thumb">
-            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'may', 'images/card-icon-guide-consult.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'may', 'images/card-icon-guide-consult.png' ); ?>" alt="博物館で恐竜の骨格を見上げる子どもたち" loading="lazy"></figure>
             <div class="month-card__body"><h3>5月</h3><ul><li>健康診断</li><li>自然史博物館（年中）</li><li>プラネタリウム（年長）</li></ul></div>
           </article>
           <article class="month-card month-card--thumb">
@@ -52,11 +52,11 @@ get_header();
             <div class="month-card__body"><h3>7月</h3><ul><li>プール開き</li><li>七夕まつり</li><li>盆踊り・夏期保育</li></ul></div>
           </article>
           <article class="month-card month-card--thumb" id="summer">
-            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'august', 'images/card-icon-about-building.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'august', 'images/card-icon-about-building.png' ); ?>" alt="お泊まり保育のキャンプファイヤー" loading="lazy"></figure>
             <div class="month-card__body"><h3>8月</h3><ul><li>夏期保育</li><li>お泊まり保育</li></ul></div>
           </article>
           <article class="month-card month-card--thumb">
-            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'september', 'images/card-icon-annual-calendar.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'september', 'images/card-icon-annual-calendar.png' ); ?>" alt="2学期のはじまりの園庭" loading="lazy"></figure>
             <div class="month-card__body"><h3>9月</h3><ul><li>2学期スタート</li></ul></div>
           </article>
           <article class="month-card month-card--thumb" id="autumn">
@@ -68,15 +68,15 @@ get_header();
             <div class="month-card__body"><h3>11月</h3><ul><li>運動会</li></ul></div>
           </article>
           <article class="month-card month-card--thumb" id="winter">
-            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'december', 'images/card-icon-lesson-music.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'december', 'images/card-icon-lesson-music.png' ); ?>" alt="おもちつきの臼ときね" loading="lazy"></figure>
             <div class="month-card__body"><h3>12月</h3><ul><li>クリスマス音楽会</li><li>おもちつき</li></ul></div>
           </article>
           <article class="month-card month-card--thumb">
-            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'january', 'images/card-icon-lesson-manners.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'january', 'images/card-icon-lesson-manners.png' ); ?>" alt="お正月あそびをする子どもたち" loading="lazy"></figure>
             <div class="month-card__body"><h3>1月</h3><ul><li>3学期スタート</li><li>お正月あそび</li></ul></div>
           </article>
           <article class="month-card month-card--thumb">
-            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'february', 'images/card-icon-about-playground.png' ); ?>" alt="" aria-hidden="true" loading="lazy"></figure>
+            <figure class="month-card__photo"><img src="<?php echo aiji_month_thumb( 'february', 'images/card-icon-about-playground.png' ); ?>" alt="節分の豆まきをする子どもたち" loading="lazy"></figure>
             <div class="month-card__body"><h3>2月</h3><ul><li>豆まき</li><li>おゆうぎ会</li><li>お別れ遠足</li></ul></div>
           </article>
           <article class="month-card month-card--thumb">
