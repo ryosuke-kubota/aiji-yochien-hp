@@ -5166,11 +5166,20 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   gap: clamp(28px, 4vw, 56px);
-  align-items: center;
+  align-items: start;
+  position: relative;
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: var(--radius-panel);
+  /* 金色の淡いパネル＋紙吹雪のような水玉で「お祝い」の空気に */
+  background:
+    radial-gradient(circle at 12% 18%, rgba(201, 138, 0, 0.16) 0 3px, transparent 4px) 0 0 / 46px 46px,
+    radial-gradient(circle at 70% 60%, rgba(232, 122, 150, 0.14) 0 2.5px, transparent 3.5px) 0 0 / 62px 62px,
+    linear-gradient(160deg, #fffaf0 0%, #fff1cc 100%);
+  box-shadow: var(--shadow-card);
 }
 
 .award-section__lead {
-  margin: 4px 0 20px;
+  margin: 4px 0 18px;
   color: var(--color-hero-heading);
   font-size: clamp(17px, 1.4vw, 20px);
   font-weight: 800;
@@ -5178,10 +5187,16 @@ main {
 
 .award-list {
   display: grid;
-  gap: 10px;
+  gap: 0;
   margin: 0;
-  padding: 0;
+  padding: 6px 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
   list-style: none;
+}
+
+.award-list__item:last-child {
+  border-bottom: 0;
 }
 
 .award-list__item {
@@ -5263,6 +5278,37 @@ main {
   transform: rotate(2.2deg) translateY(18px);
 }
 
+.award-gallery__item {
+  position: relative;
+}
+
+/* マスキングテープで貼ったような飾り */
+.award-gallery__item::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  z-index: 1;
+  width: 74px;
+  height: 22px;
+  background: rgba(255, 214, 107, 0.82);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  transform: translateX(-50%) rotate(-4deg);
+}
+
+.award-gallery__item:nth-child(even)::before {
+  background: rgba(244, 168, 186, 0.8);
+  transform: translateX(-50%) rotate(5deg);
+}
+
+.award-gallery__item figcaption {
+  padding: 10px 4px 0;
+  color: var(--color-ink);
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 800;
+  text-align: center;
+}
+
 .award-gallery__item:hover {
   transform: rotate(0) scale(1.03);
 }
@@ -5274,6 +5320,29 @@ main {
   aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 2px;
+}
+
+/* 横長の表彰式写真：セクション下に全幅で2枚並べる */
+.award-gallery--wide {
+  grid-column: 1 / -1;
+  gap: clamp(20px, 3vw, 40px);
+  padding-top: clamp(8px, 2vw, 24px);
+}
+
+.award-gallery--wide .award-gallery__item {
+  transform: rotate(-1.2deg);
+}
+
+.award-gallery--wide .award-gallery__item:nth-child(even) {
+  transform: rotate(1.4deg) translateY(12px);
+}
+
+.award-gallery--wide .award-gallery__item:hover {
+  transform: rotate(0) scale(1.02);
+}
+
+.award-gallery--wide .award-gallery__item img {
+  aspect-ratio: 4 / 3;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5290,6 +5359,10 @@ main {
 
 @media (max-width: 560px) {
   .award-list__item {
+    grid-template-columns: 1fr;
+  }
+
+  .award-gallery--wide {
     grid-template-columns: 1fr;
   }
 }

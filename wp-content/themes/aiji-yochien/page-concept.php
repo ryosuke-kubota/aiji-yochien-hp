@@ -119,21 +119,35 @@ get_header();
           </ul>
         </div>
         <?php
-        // assets/images/photo-award-{1〜4}.jpg がある分だけ表示する
-        $aiji_award_photos = array_filter( array(
-          aiji_photo( 'award-1' ),
-          aiji_photo( 'award-2' ),
-          aiji_photo( 'award-3' ),
-          aiji_photo( 'award-4' ),
-        ) );
-        if ( $aiji_award_photos ) :
+        // assets/images/photo-award-{n}.jpg がある分だけ表示する（'wide' => true は横長写真として2列分の幅で表示）
+        $aiji_award_photo_defs = array(
+          array( 'name' => 'award-1' ),
+          array( 'name' => 'award-2' ),
+          array( 'name' => 'award-3' ),
+          array( 'name' => 'award-4' ),
+          array( 'name' => 'award-5', 'wide' => true, 'alt' => '「おさかな」絵画コンクール表彰式の集合写真', 'caption' => '「おさかな」絵画コンクール 表彰式' ),
+          array( 'name' => 'award-6', 'wide' => true, 'alt' => 'こども二科展の表彰式で賞状を受け取る園児', 'caption' => 'こども二科展 表彰式' ),
+        );
+        // 縦長写真は見出し横のギャラリー、横長写真はセクション下に全幅で並べる
+        $aiji_award_groups = array( 'tall' => array(), 'wide' => array() );
+        foreach ( $aiji_award_photo_defs as $aiji_award_def ) {
+          $aiji_award_src = aiji_photo( $aiji_award_def['name'] );
+          if ( $aiji_award_src ) {
+            $aiji_award_groups[ empty( $aiji_award_def['wide'] ) ? 'tall' : 'wide' ][] = array_merge( $aiji_award_def, array( 'src' => $aiji_award_src ) );
+          }
+        }
+        foreach ( $aiji_award_groups as $aiji_award_group => $aiji_award_photos ) :
+          if ( ! $aiji_award_photos ) {
+            continue;
+          }
+          $aiji_award_wide = 'wide' === $aiji_award_group;
           ?>
-        <div class="award-gallery">
+        <div class="award-gallery<?php echo $aiji_award_wide ? ' award-gallery--wide' : ''; ?>">
           <?php foreach ( $aiji_award_photos as $aiji_award_photo ) : ?>
-          <figure class="award-gallery__item"><img src="<?php echo $aiji_award_photo; ?>" alt="絵画コンクールの表彰式・受賞のようす" width="600" height="800" loading="lazy"></figure>
+          <figure class="award-gallery__item"><img src="<?php echo $aiji_award_photo['src']; ?>" alt="<?php echo esc_attr( $aiji_award_photo['alt'] ?? '絵画コンクールの表彰式・受賞のようす' ); ?>" width="<?php echo $aiji_award_wide ? 800 : 600; ?>" height="<?php echo $aiji_award_wide ? 600 : 800; ?>" loading="lazy"><?php if ( ! empty( $aiji_award_photo['caption'] ) ) : ?><figcaption><?php echo esc_html( $aiji_award_photo['caption'] ); ?></figcaption><?php endif; ?></figure>
           <?php endforeach; ?>
         </div>
-        <?php endif; ?>
+        <?php endforeach; ?>
       </section>
 
       <section class="page-section soft-panel split-section" id="lunch">
