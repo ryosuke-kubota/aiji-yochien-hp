@@ -44,7 +44,12 @@ function aiji_asset( string $path ): string {
 			: $rel;
 	}
 
-	return esc_url( get_template_directory_uri() . '/assets/' . $resolved[ $rel ] );
+	// 同じファイル名で差し替えても古いキャッシュが残らないよう、更新日時を付ける
+	$file  = get_template_directory() . '/assets/' . $resolved[ $rel ];
+	$mtime = file_exists( $file ) ? filemtime( $file ) : false;
+	$query = $mtime ? '?ver=' . $mtime : '';
+
+	return esc_url( get_template_directory_uri() . '/assets/' . $resolved[ $rel ] . $query );
 }
 
 /** スラッグから固定ページURLを取得（未作成ならホームへ） */
